@@ -43,7 +43,7 @@
         </a>
         <form action="{{ route('user.delete') }}" method="POST">
             @csrf
-            <button class="content-item group">
+            <button class="content-item w-full group">
                 <span class="bg-logout-light opacity-[0.62] group-hover:bg-logout-dark group-hover:opacity-100"></span>
                 Keluar
             </button>

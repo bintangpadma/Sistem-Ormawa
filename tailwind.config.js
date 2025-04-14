@@ -48,6 +48,9 @@ export default {
                 'dashboard-student-activity-unit-dark': "url('/public/assets/image/icon/student-activity-unit-dark.svg')",
                 'dashboard-event-dark': "url('/public/assets/image/icon/event-dark.svg')",
                 'dashboard-news-dark': "url('/public/assets/image/icon/news-dark.svg')",
+                'detail-primary': "url('/public/assets/image/icon/detail-primary.svg')",
+                'edit-warning': "url('/public/assets/image/icon/edit-warning.svg')",
+                'delete-danger': "url('/public/assets/image/icon/delete-danger.svg')",
             },
         },
         container: {

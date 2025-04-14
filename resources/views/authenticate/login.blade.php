@@ -18,10 +18,16 @@
             <div class="form-input">
                 <label for="email">Email</label>
                 <input type="email" class="input" name="email" placeholder="Masukkan email anda...">
+                @error('email')
+                    <p class="text-invalid">{{ $message }}</p>
+                @enderror
             </div>
             <div class="form-input">
                 <label for="password">Password</label>
                 <input type="password" class="input" name="password" placeholder="Masukkan password anda...">
+                @error('password')
+                    <p class="text-invalid">{{ $message }}</p>
+                @enderror
             </div>
             <button type="submit" class="button-primary w-full text-center">Masuk</button>
         </form>

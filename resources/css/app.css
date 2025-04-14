@@ -33,7 +33,7 @@
         @apply scroll-smooth bg-dark-800;
     }
 
-    form {
+    form.form {
         @apply flex flex-col gap-[12px] w-full;
     }
 
@@ -61,9 +61,13 @@
         @apply focus:ring-0;
     }
 
+    .text-invalid {
+        @apply text-[0.813rem] text-red m-0 mt-[4px];
+    }
+
     .button-primary,
     .button-secondary {
-        @apply w-fit px-[20px] py-[14px] text-[0.913rem] text-light bg-primary rounded-[3px];
+        @apply w-fit px-[20px] py-[14px] text-[0.875rem] text-light bg-primary rounded-[3px] text-nowrap;
         @apply hover:brightness-90;
     }
 
@@ -81,6 +85,104 @@
 
     .alert.alert-danger {
         @apply text-red bg-red/[0.24] border border-red/[0.24];
+    }
+
+    .wrapper-table {
+        @apply overflow-x-auto mt-4;
+    }
+
+    .wrapper-table table {
+        @apply w-full overflow-hidden rounded-[4px];
+    }
+
+    .wrapper-table table tr,
+    .wrapper-table table th,
+    .wrapper-table table td {
+        @apply px-[16px] py-[12px] border-t border-b border-light/[0.06] first:border-l last:border-r text-nowrap;
+    }
+
+    .wrapper-table table th,
+    .wrapper-table table td {
+        @apply text-[0.85rem] text-light/[0.62];
+    }
+
+    .wrapper-table table th {
+        @apply text-start font-medium bg-light/[0.04] text-light/[0.42];
+    }
+
+    .wrapper-table table td .action-button {
+        @apply justify-end;
+    }
+
+    .wrapper-table table td .action-button .button {
+        @apply w-[32px] h-[32px] rounded-[3px] flex items-center justify-center;
+    }
+
+    .wrapper-table table td .action-button .button span {
+        @apply w-[16px] h-[16px] bg-cover bg-center bg-no-repeat;
+    }
+
+    .wrapper-table table td .action-button .button.icon-detail {
+        @apply bg-primary/[0.12] hover:bg-primary/[0.24];
+    }
+
+    .wrapper-table table td .action-button .button.icon-edit {
+        @apply bg-yellow/[0.20] hover:bg-yellow/[0.32];
+    }
+
+    .wrapper-table table td .action-button .button.icon-delete {
+        @apply bg-red/[0.20] hover:bg-red/[0.32];
+    }
+
+    .wrapper-paginate {
+        @apply w-full flex justify-center mt-4;
+    }
+
+    .wrapper-paginate .page-link,
+    .wrapper-paginate .page-link:hover {
+        @apply text-primary;
+    }
+
+    .wrapper-paginate .active > .page-link,
+    .wrapper-paginate .page-link.active {
+        @apply bg-primary border-primary;
+    }
+
+    .wrapper-paginate .active > .page-link,
+    .wrapper-paginate .page-link.active:hover {
+        @apply text-primary;
+    }
+
+    .modal {
+        @apply fixed inset-0 bg-black/[0.62] items-center justify-center z-50 hidden;
+    }
+
+    .modal.show {
+        @apply flex;
+    }
+
+    .modal .modal-content {
+        @apply w-full md:w-[500px] m-[16px] md:m-0 bg-dark-800 rounded-[6px] overflow-hidden;
+    }
+
+    .modal .modal-content .content-header {
+        @apply rounded-tl-[6px] rounded-tr-[6px] px-[16px] md:px-[20px] py-[14px] bg-dark-700 border border-light/[0.06] border-b-transparent;
+    }
+
+    .modal .modal-content .content-header p {
+        @apply text-light/[0.62] text-nowrap;
+    }
+
+    .modal .modal-content .content-body {
+        @apply px-[16px] md:px-[20px] py-[14px] border border-light/[0.06] rounded-bl-[4px] rounded-br-[4px] bg-dark-800;
+    }
+
+    .modal .modal-content .content-body p {
+        @apply text-light/[0.62] text-[0.913rem] mb-[32px];
+    }
+
+    .modal .modal-content .content-body form {
+        @apply w-full grid grid-cols-1 gap-[12px];
     }
 }
 
