@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('full_name', 255);
             $table->string('phone_number', 15);
             $table->string('gender', 25);
-            $table->string('department', 100);
             $table->integer('status')->default(1);
             $table->integer('is_super_admin')->default(0);
             $table->timestamps();

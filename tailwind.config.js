@@ -1,0 +1,61 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+    content: [
+        "./resources/**/*.blade.php",
+    ],
+    theme: {
+        extend: {
+            fontFamily: {
+                "xd-prime-regular": ["xd-prime-regular", "sans-serif"],
+                "xd-prime-medium": ["xd-prime-medium", "sans-serif"],
+                "xd-prime-bold": ["xd-prime-bold", "sans-serif"],
+                "xd-prime-extrabold": ["xd-prime-extrabold", "sans-serif"],
+            },
+            colors: {
+                'primary': 'rgb(29, 202, 211)',
+                'dark-900': 'rgb(2, 23, 41)',
+                'dark-800': 'rgb(3, 32, 56)',
+                'dark-700': 'rgb(5, 39, 66)',
+                'light': 'rgb(255, 255, 255)',
+                'yellow': 'rgb(246, 196, 106)',
+                'red': 'rgb(213, 80, 81)',
+            },
+            backgroundImage: {
+                'login-banner': "url('/public/assets/image/login/login-banner.jpg')",
+                'dashboard-light': "url('/public/assets/image/sidebar/dashboard-light.svg')",
+                'dashboard-dark': "url('/public/assets/image/sidebar/dashboard-dark.svg')",
+                'profile-light': "url('/public/assets/image/sidebar/profile-light.svg')",
+                'profile-dark': "url('/public/assets/image/sidebar/profile-dark.svg')",
+                'admin-light': "url('/public/assets/image/sidebar/admin-light.svg')",
+                'admin-dark': "url('/public/assets/image/sidebar/admin-dark.svg')",
+                'student-organization-light': "url('/public/assets/image/sidebar/student-organization-light.svg')",
+                'student-organization-dark': "url('/public/assets/image/sidebar/student-organization-dark.svg')",
+                'student-activity-unit-light': "url('/public/assets/image/sidebar/student-activity-unit-light.svg')",
+                'student-activity-unit-dark': "url('/public/assets/image/sidebar/student-activity-unit-dark.svg')",
+                'news-light': "url('/public/assets/image/sidebar/news-light.svg')",
+                'news-dark': "url('/public/assets/image/sidebar/news-dark.svg')",
+                'event-light': "url('/public/assets/image/sidebar/event-light.svg')",
+                'event-dark': "url('/public/assets/image/sidebar/event-dark.svg')",
+                'activity-report-light': "url('/public/assets/image/sidebar/activity-report-light.svg')",
+                'activity-report-dark': "url('/public/assets/image/sidebar/activity-report-dark.svg')",
+                'administrative-document-light': "url('/public/assets/image/sidebar/administrative-document-light.svg')",
+                'administrative-document-dark': "url('/public/assets/image/sidebar/administrative-document-dark.svg')",
+                'logout-light': "url('/public/assets/image/sidebar/logout-light.svg')",
+                'logout-dark': "url('/public/assets/image/sidebar/logout-dark.svg')",
+                'hamburger-light': "url('/public/assets/image/icon/hamburger-light.svg')",
+                'hamburger-dark': "url('/public/assets/image/icon/hamburger-dark.svg')",
+            },
+        },
+        container: {
+            padding: {
+                DEFAULT: '1rem',
+                sm: '2rem',
+                lg: '4rem',
+                xl: '4rem',
+                '2xl': '6rem',
+            },
+        },
+    },
+    plugins: [],
+}
+
