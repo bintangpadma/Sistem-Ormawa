@@ -44,6 +44,10 @@ export default {
                 'logout-dark': "url('/public/assets/image/sidebar/logout-dark.svg')",
                 'hamburger-light': "url('/public/assets/image/icon/hamburger-light.svg')",
                 'hamburger-dark': "url('/public/assets/image/icon/hamburger-dark.svg')",
+                'dashboard-student-organization-dark': "url('/public/assets/image/icon/student-organization-dark.svg')",
+                'dashboard-student-activity-unit-dark': "url('/public/assets/image/icon/student-activity-unit-dark.svg')",
+                'dashboard-event-dark': "url('/public/assets/image/icon/event-dark.svg')",
+                'dashboard-news-dark': "url('/public/assets/image/icon/news-dark.svg')",
             },
         },
         container: {

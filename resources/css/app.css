@@ -121,4 +121,26 @@
         @apply w-[16px] h-[15px] bg-cover bg-center bg-no-repeat;
     }
     /* END SIDEBAR */
+
+    /* DASHBOARD */
+    .dashboard .content-menu .menu-dashboard {
+        @apply p-[14px] bg-dark-700 rounded-[3px] flex items-center gap-[12px] lg:gap-[16px];
+    }
+
+    .dashboard .content-menu .menu-dashboard .dashboard-icon {
+        @apply w-[48px] h-[48px] rounded-[2px] bg-primary flex items-center justify-center;
+    }
+
+    .dashboard .content-menu .menu-dashboard .dashboard-icon span {
+        @apply w-[18px] h-[18px] bg-cover bg-center bg-no-repeat;
+    }
+
+    .dashboard .content-menu .menu-dashboard .dashboard-data .data-name {
+        @apply text-[0.875rem] leading-[132%];
+    }
+
+    .dashboard .content-menu .menu-dashboard .dashboard-data .data-value {
+        @apply text-[1.5rem] text-primary font-xd-prime-bold;
+    }
+    /* END DASHBOARD */
 }
