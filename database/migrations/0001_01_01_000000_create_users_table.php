@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('admins_id')->nullable()->index();
             $table->bigInteger('student_organizations_id')->nullable()->index();
-            $table->string('username', 100)->unique();
-            $table->string('email')->unique();
+            $table->string('username', 100);
+            $table->string('email');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

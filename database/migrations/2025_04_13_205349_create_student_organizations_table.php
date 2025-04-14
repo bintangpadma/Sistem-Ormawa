@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('student_organizations', function (Blueprint $table) {
             $table->id();
+            $table->text('image_path')->nullable();
             $table->string('name', 100);
             $table->string('abbreviation', 50);
             $table->text('description');

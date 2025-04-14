@@ -13,45 +13,41 @@
     <div class="content-menu p-[16px] lg:p-[20px] border border-light/[0.06] rounded-[4px]">
         <div class="menu-header flex items-center gap-[8px] lg:gap-[12px]">
             <form method="GET" class="form">
-                <input type="search" class="input" name="search" placeholder="Cari admin..." value="{{ $search }}">
+                <input type="search" class="input" name="search" placeholder="Cari ormawa..." value="{{ $search }}">
             </form>
-            @if(auth()->user()->admin->is_super_admin)
-                <a href="{{ route('admin.create') }}" class="button-primary">Tambah Admin</a>
+            @if(auth()->user()->admin)
+                <a href="{{ route('student-organization.create') }}" class="button-primary">Tambah Ormawa</a>
             @endif
         </div>
         <div class="wrapper-table">
             <table>
                 <thead>
                 <tr>
-                    <th>Nama Lengkap</th>
-                    <th>NIP</th>
-                    <th>Nomor Telepon</th>
-                    <th>Jenis Kelamin</th>
-                    <th>Status</th>
+                    <th>Nama</th>
+                    <th>Singkatan</th>
+                    <th>Description</th>
                     <th></th>
                 </tr>
                 </thead>
                 <tbody>
-                @if ($admins->count() == 0)
-                    <td colspan="6">Data admin tidak ditemukan!</td>
+                @if ($studentOrganizations->count() == 0)
+                    <td colspan="4">Data ormawa tidak ditemukan!</td>
                 @else
-                    @foreach ($admins as $admin)
+                    @foreach ($studentOrganizations as $studentOrganization)
                         <tr>
-                            <td>{{ $admin->full_name }}</td>
-                            <td>{{ $admin->lecturer_code }}</td>
-                            <td>{{ $admin->phone_number }}</td>
-                            <td>{{ $admin->gender === 'male' ? 'Laki-Laki' : 'Perempuan' }}</td>
-                            <td>{{ $admin->status ? 'Aktif' : 'Tidak Aktif' }}</td>
+                            <td>{{ $studentOrganization->name }}</td>
+                            <td>{{ $studentOrganization->abbreviation }}</td>
+                            <td>{{ Str::limit($studentOrganization->description, '40') }}</td>
                             <td>
                                 <div class="action-button flex items-center gap-[4px]">
-                                    <a href="{{ route('admin.show', $admin) }}" class="button icon-detail">
+                                    <a href="{{ route('student-organization.show', $studentOrganization) }}" class="button icon-detail">
                                         <span class="bg-detail-primary"></span>
                                     </a>
-                                    @if(auth()->user()->admin->is_super_admin)
-                                        <a href="{{ route('admin.edit', $admin) }}" class="button icon-edit">
+                                    @if(auth()->user()->admin)
+                                        <a href="{{ route('student-organization.edit', $studentOrganization) }}" class="button icon-edit">
                                             <span class="bg-edit-warning"></span>
                                         </a>
-                                        <button type="button" class="button icon-delete" data-target="deleteModal" data-id="{{ $admin->id }}">
+                                        <button type="button" class="button icon-delete" data-target="deleteModal" data-id="{{ $studentOrganization->id }}">
                                             <span class="bg-delete-danger"></span>
                                         </button>
                                     @endif
@@ -64,22 +60,22 @@
             </table>
         </div>
         <div class="wrapper-paginate">
-            {{ $admins->links() }}
+            {{ $studentOrganizations->links() }}
         </div>
     </div>
 
     <div class="modal" id="deleteModal">
         <div class="modal-content">
             <div class="content-header">
-                <p>Hapus Admin</p>
+                <p>Hapus Organisasi Mahasiswa</p>
             </div>
             <div class="content-body">
-                <p>Menghapus data admin ini dapat mempengaruhi proses lain yang sedang berlangsung. Apakah Anda yakin ingin melanjutkan?</p>
+                <p>Menghapus data organisasi mahasiswa ini dapat mempengaruhi proses lain yang sedang berlangsung. Apakah Anda yakin ingin melanjutkan?</p>
                 <div class="button-group flex justify-between items-center gap-[8px]">
-                    <form id="buttonDeleteAdmin" method="POST">
+                    <form id="buttonDeleteStudentOrganization" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button class="button-primary">Hapus Admin</button>
+                        <button class="button-primary">Hapus Organisasi Mahasiswa</button>
                     </form>
                     <button class="button-secondary" onclick="closeModal('deleteModal')">Batal Hapus</button>
                 </div>
@@ -95,7 +91,7 @@
                 const modalTarget = buttonDelete.getAttribute('data-target')
                 document.getElementById(`${modalTarget}`).classList.add('show')
                 const id = buttonDelete.getAttribute('data-id')
-                document.getElementById('buttonDeleteAdmin').setAttribute('action', '/admin/' + id)
+                document.getElementById('buttonDeleteStudentOrganization').setAttribute('action', '/student-organization/' + id)
             })
         })
 

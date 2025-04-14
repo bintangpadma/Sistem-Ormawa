@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('admins', function (Blueprint $table) {
             $table->id();
             $table->text('profile_path')->nullable();
-            $table->string('lecturer_code', 50)->unique();
+            $table->string('lecturer_code', 50);
             $table->string('full_name', 255);
             $table->string('phone_number', 15);
             $table->string('gender', 25);

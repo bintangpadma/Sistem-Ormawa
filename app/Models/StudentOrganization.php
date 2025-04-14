@@ -15,7 +15,7 @@ class StudentOrganization extends Model
 
     public function user(): HasOne
     {
-        return $this->hasOne(User::class, 'admins_id', 'id');
+        return $this->hasOne(User::class, 'student_organizations_id', 'id');
     }
 
     public function student_organization_visions(): HasMany
