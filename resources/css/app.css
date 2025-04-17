@@ -54,7 +54,7 @@
     }
 
     form.form {
-        @apply flex flex-col gap-[12px] w-full;
+        @apply grid grid-cols-1 gap-[12px] w-full;
     }
 
     h1,h2,h3,h4,h5,h6,p {
@@ -68,7 +68,7 @@
     }
 
     .form-input {
-        @apply flex flex-col gap-[6px];
+        @apply w-full flex flex-col gap-[6px];
     }
 
     label {
@@ -81,13 +81,29 @@
         @apply focus:ring-0;
     }
 
+    .input-image {
+        @apply flex items-end gap-2 mt-[8px];
+    }
+
+    .input-image .image-preview {
+        @apply w-[100px] h-[100px] object-cover aspect-square rounded-[4px];
+    }
+
+    .input-image .image-input-hidden {
+        @apply absolute opacity-0 top-0 left-0;
+    }
+
+    .input-image .image-button {
+        @apply text-[0.875rem] py-[11px] px-[20px];
+    }
+
     .text-invalid {
         @apply text-[0.813rem] text-red m-0 mt-[4px];
     }
 
     .button-primary,
     .button-secondary {
-        @apply w-fit px-[20px] py-[14px] text-[0.875rem] text-light bg-primary rounded-[3px] text-nowrap;
+        @apply w-fit px-[20px] py-[14px] text-[0.875rem] text-light bg-primary rounded-[3px] text-nowrap cursor-pointer;
         @apply hover:brightness-90;
     }
 
@@ -204,6 +220,10 @@
     .modal .modal-content .content-body form {
         @apply w-full grid grid-cols-1 gap-[12px];
     }
+
+    .button-group {
+        @apply flex items-center gap-[8px] lg:gap-[12px] lg:col-span-2;
+    }
 }
 
 @layer utilities {
@@ -271,6 +291,10 @@
 
     .dashboard .content-menu.content-dashboard .dashboard-menu .menu-data .data-value {
         @apply text-[1.5rem] text-primary font-xd-prime-bold;
+    }
+
+    .dashboard .content-menu.content-table {
+        @apply p-[16px] lg:p-[20px] border border-light/[0.06] rounded-[4px];
     }
     /* END DASHBOARD */
 }
