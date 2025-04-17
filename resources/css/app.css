@@ -4,6 +4,26 @@
 
 /* FONTFACE */
 @font-face {
+    font-family: "urbanist-regular";
+    src: url("../../public/assets/font/urbanist/Urbanist-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "urbanist-medium";
+    src: url("../../public/assets/font/urbanist/Urbanist-Medium.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "urbanist-semibold";
+    src: url("../../public/assets/font/urbanist/Urbanist-SemiBold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "urbanist-bold";
+    src: url("../../public/assets/font/urbanist/Urbanist-Bold.ttf") format("truetype");
+}
+
+@font-face {
     font-family: "xd-prime-regular";
     src: url("../../public/assets/font/xd-prime/XDPrime-Regular.otf") format("truetype");
 }
@@ -26,7 +46,7 @@
 
 @layer base {
     * {
-        @apply text-light font-xd-prime-regular duration-300;
+        @apply text-light font-urbanist-medium duration-300;
     }
 
     html {
@@ -52,7 +72,7 @@
     }
 
     label {
-        @apply text-[0.913rem] text-light;
+        @apply text-[0.875rem] text-light/[0.62];
     }
 
     .input {
@@ -76,7 +96,7 @@
     }
 
     .alert {
-        @apply text-[0.875rem] py-[13px] px-[16px] rounded-[3px];
+        @apply text-[0.875rem] py-[13px] px-[16px] rounded-[3px] w-full mb-3;
     }
 
     .alert.alert-success {
@@ -198,6 +218,10 @@
 
     .authenticate .authenticate-content {
         @apply px-[16px] md:px-[42px] lg:px-[62px];
+    }
+
+    .authenticate .authenticate-content .title {
+        @apply mb-[20px] lg:mb-[24px];
     }
     /* END AUTHENTICATE */
 

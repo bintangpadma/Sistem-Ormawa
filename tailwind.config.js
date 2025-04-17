@@ -10,6 +10,10 @@ export default {
                 "xd-prime-medium": ["xd-prime-medium", "sans-serif"],
                 "xd-prime-bold": ["xd-prime-bold", "sans-serif"],
                 "xd-prime-extrabold": ["xd-prime-extrabold", "sans-serif"],
+                "urbanist-regular": ["urbanist-regular", "sans-serif"],
+                "urbanist-medium": ["urbanist-medium", "sans-serif"],
+                "urbanist-semibold": ["urbanist-semibold", "sans-serif"],
+                "urbanist-bold": ["urbanist-bold", "sans-serif"],
             },
             colors: {
                 'primary': 'rgb(29, 202, 211)',

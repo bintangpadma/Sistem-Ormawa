@@ -4,15 +4,15 @@
     <div class="authenticate-banner login"></div>
     <div class="authenticate-content">
         @if (session()->has('success'))
-            <div class="alert alert-success w-full mb-3" role="alert">
+            <div class="alert alert-success" role="alert">
                 {{ session('success') }}
             </div>
         @elseif(session()->has('failed'))
-            <div class="alert alert-danger w-full mb-3" role="alert">
+            <div class="alert alert-danger" role="alert">
                 {{ session('failed') }}
             </div>
         @endif
-        <h2 class="title mb-[20px] lg:mb-[24px]">Masukkan Akun Ormawa/ Admin Anda Sekarang</h2>
+        <h2 class="title">Masukkan Akun Ormawa/ Admin Anda Sekarang</h2>
         <form action="{{ route('user.store') }}" method="POST" class="form">
             @csrf
             <div class="form-input">
