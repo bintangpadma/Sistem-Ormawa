@@ -29,7 +29,16 @@ class StudentOrganizationController extends Controller
 
     public function show(StudentOrganization $studentOrganization)
     {
-        $studentOrganization->load(['user', 'student_organization_visions', 'student_organization_missions', 'student_organization_programs', 'student_organization_structures', 'student_organization_achievements', 'newses', 'events']);
+        $studentOrganization->load([
+            'user',
+            'student_organization_visions',
+            'student_organization_missions',
+            'student_organization_programs',
+            'student_organization_structures',
+            'student_organization_achievements',
+            'newses',
+            'events'
+        ]);
 
         return view('dashboard.student-organization.detail', [
             'page' => 'Halaman Detail Organisasi Mahasiswa',

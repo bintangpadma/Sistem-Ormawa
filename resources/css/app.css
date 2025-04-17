@@ -97,6 +97,23 @@
         @apply text-[0.875rem] py-[11px] px-[20px];
     }
 
+    hr.style-gap {
+        @apply w-full border-light/[0.12];
+    }
+
+    .input-wrapper,
+    .input-wrapper .input {
+        @apply relative;
+    }
+
+    .input-wrapper .button-redirect {
+        @apply absolute top-1/2 right-[8px] -translate-y-1/2 w-[33px] h-[33px] aspect-square rounded-[2px] flex items-center justify-center border border-light/[0.06] bg-dark-800 hover:brightness-90;
+    }
+
+    .input-wrapper .button-redirect span {
+        @apply w-[12px] h-[12px] bg-cover bg-center bg-no-repeat opacity-[0.62];
+    }
+
     .text-invalid {
         @apply text-[0.813rem] text-red m-0 mt-[4px];
     }

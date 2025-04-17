@@ -56,6 +56,7 @@ export default {
                 'detail-primary': "url('/public/assets/image/icon/detail-primary.svg')",
                 'edit-warning': "url('/public/assets/image/icon/edit-warning.svg')",
                 'delete-danger': "url('/public/assets/image/icon/delete-danger.svg')",
+                'link-move-light': "url('/public/assets/image/icon/link-move-light.svg')",
             },
         },
         container: {
