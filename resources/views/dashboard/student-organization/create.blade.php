@@ -11,7 +11,7 @@
             @csrf
             <div class="form-input lg:col-span-2">
                 <label>
-                    Foto Admin
+                    Foto Ormawa
                     <span class="input-image">
                         <img src="https://placehold.co/100?text=Image+Not+Found" alt="Image Not Found" class="image-preview">
                         <input type="file" class="image-input-hidden" id="image_path" name="image_path">

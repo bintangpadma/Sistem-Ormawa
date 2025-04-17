@@ -1,18 +1,18 @@
 @extends('template.dashboard')
 
 @section('content')
-    <div class="content-menu p-[16px] lg:p-[20px] border border-light/[0.06] rounded-[4px]">
-        <form action="{{ route('student-organization.update', $studentOrganization) }}" method="POST" class="grid grid-cols-1 lg:grid-cols-2 gap-[12px] w-full" enctype="multipart/form-data">
+    <div class="content-menu content-table">
+        <form action="{{ route('student-organization.update', $studentOrganization) }}" method="POST" class="form lg:!grid-cols-2" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="form-input lg:col-span-2">
-                <label for="image_path">
+                <label>
                     Foto Ormawa
-                    <div class="wrapper flex items-end gap-2 mt-[8px]">
+                    <span class="input-image">
                         <img src="{{ $studentOrganization->image_path ? asset('assets/image/student-organization/' . $studentOrganization->image_path) : 'https://placehold.co/100?text=Image+Not+Found' }}" alt="Image Not Found" class="img-preview w-[100px] h-[100px] object-cover aspect-square rounded-[4px]">
-                        <input type="file" class="absolute opacity-0 top-0 left-0 input-file" id="image_path" name="image_path">
-                        <div class="button-secondary cursor-pointer text-[0.875rem] py-[12px] px-[16px]">Pilih foto</div>
-                    </div>
+                        <input type="file" class="image-input-hidden" id="image_path" name="image_path">
+                        <div class="button-secondary image-button">Pilih foto</div>
+                    </span>
                 </label>
                 @error('image_path')
                 <p class="text-invalid">{{ $message }}</p>
@@ -41,7 +41,7 @@
             </div>
             <div class="form-input">
                 <label for="password">Password</label>
-                <input type="password" class="input" name="password" placeholder="Masukkan password ormawa...">
+                <input type="password" class="input" name="password" placeholder="Ganti password ormawa...">
                 @error('password')
                 <p class="text-invalid">{{ $message }}</p>
                 @enderror
@@ -60,7 +60,7 @@
                 <p class="text-invalid">{{ $message }}</p>
                 @enderror
             </div>
-            <div class="button-group flex items-center gap-[8px] lg:gap-[12px] lg:col-span-2">
+            <div class="button-group">
                 <button type="submit" class="button-primary">Simpan Perubahan</button>
                 <a href="{{ route('student-organization.index') }}" class="button-secondary">Batal Edit</a>
             </div>
@@ -68,11 +68,11 @@
     </div>
 
     <script>
-        const tagImage = document.querySelector('.img-preview');
-        const inputImage = document.querySelector('.input-file');
+        const imagePreview = document.querySelector('.image-preview');
+        const imageInput = document.querySelector('.image-input-hidden');
 
-        inputImage.addEventListener('change', function() {
-            tagImage.src = URL.createObjectURL(inputImage.files[0]);
+        imageInput.addEventListener('change', function() {
+            imagePreview.src = URL.createObjectURL(imageInput.files[0]);
         });
     </script>
 @endsection
