@@ -13,7 +13,8 @@ class StudentOrganizationController extends Controller
     public function index(Request $request)
     {
         $search = $request->input('search');
-        $studentOrganizations = StudentOrganization::when($search, function ($query, $search) {
+        $studentOrganizations = StudentOrganization::with(['student_organization_programs', 'student_organization_achievements'])
+            ->when($search, function ($query, $search) {
                 $query->where('name', 'LIKE', '%' . $search . '%')
                     ->orWhere('abbreviation', 'LIKE', '%' . $search . '%')
                     ->orWhere('description', 'LIKE', '%' . $search . '%');
