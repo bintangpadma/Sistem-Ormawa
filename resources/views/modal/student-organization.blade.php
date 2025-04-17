@@ -9,7 +9,7 @@
                 <form id="buttonDeleteStudentOrganization" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button class="button-primary">Hapus Organisasi Mahasiswa</button>
+                    <button class="button-primary">Hapus Ormawa</button>
                 </form>
                 <button onclick="closeModal('deleteModal')" class="button-secondary">Batal Hapus</button>
             </div>

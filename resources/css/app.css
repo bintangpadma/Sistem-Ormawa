@@ -103,7 +103,7 @@
 
     .button-primary,
     .button-secondary {
-        @apply w-fit px-[20px] py-[14px] text-[0.875rem] text-light bg-primary rounded-[3px] text-nowrap cursor-pointer;
+        @apply w-fit px-[20px] py-[14px] text-[0.85rem] text-light bg-primary rounded-[3px] text-nowrap cursor-pointer;
         @apply hover:brightness-75;
     }
 
