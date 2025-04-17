@@ -249,23 +249,27 @@
     /* END SIDEBAR */
 
     /* DASHBOARD */
-    .dashboard .content-menu .menu-dashboard {
+    .dashboard .content-menu.content-dashboard {
+        @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[12px] md:gap-[16px] lg:gap-[20px];
+    }
+
+    .dashboard .content-menu.content-dashboard .dashboard-menu {
         @apply p-[14px] bg-dark-700 rounded-[3px] flex items-center gap-[12px] lg:gap-[16px];
     }
 
-    .dashboard .content-menu .menu-dashboard .dashboard-icon {
+    .dashboard .content-menu.content-dashboard .dashboard-menu .menu-icon {
         @apply w-[48px] h-[48px] rounded-[2px] bg-primary flex items-center justify-center;
     }
 
-    .dashboard .content-menu .menu-dashboard .dashboard-icon span {
+    .dashboard .content-menu.content-dashboard .dashboard-menu .menu-icon span {
         @apply w-[18px] h-[18px] bg-cover bg-center bg-no-repeat;
     }
 
-    .dashboard .content-menu .menu-dashboard .dashboard-data .data-name {
-        @apply text-[0.875rem] leading-[132%];
+    .dashboard .content-menu.content-dashboard .dashboard-menu .menu-data .data-name {
+        @apply text-[0.813rem] leading-[132%] text-light/[0.62];
     }
 
-    .dashboard .content-menu .menu-dashboard .dashboard-data .data-value {
+    .dashboard .content-menu.content-dashboard .dashboard-menu .menu-data .data-value {
         @apply text-[1.5rem] text-primary font-xd-prime-bold;
     }
     /* END DASHBOARD */
