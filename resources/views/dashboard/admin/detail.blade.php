@@ -1,14 +1,14 @@
 @extends('template.dashboard')
 
 @section('content')
-    <div class="content-menu p-[16px] lg:p-[20px] border border-light/[0.06] rounded-[4px]">
-        <form class="grid grid-cols-1 lg:grid-cols-2 gap-[12px] w-full" enctype="multipart/form-data">
+    <div class="content-menu content-table">
+        <form class="form lg:!grid-cols-2" enctype="multipart/form-data">
             <div class="form-input lg:col-span-2">
-                <label for="profile_path">
+                <label>
                     Foto Admin
-                    <div class="wrapper flex items-end gap-2 mt-[8px]">
-                        <img src="{{ $admin->profile_path ? asset('assets/image/admin/' . $admin->profile_path) : 'https://placehold.co/100?text=Image+Not+Found' }}" alt="Image Not Found" class="img-preview w-[100px] h-[100px] object-cover aspect-square rounded-[4px]">
-                    </div>
+                    <span class="input-image">
+                        <img src="{{ $admin->profile_path ? asset('assets/image/admin/' . $admin->profile_path) : 'https://placehold.co/100?text=Image+Not+Found' }}" alt="Image Not Found" class="image-preview">
+                    </span>
                 </label>
             </div>
             <div class="form-input">
@@ -43,18 +43,9 @@
                 <label for="is_super_admin">Super Admin</label>
                 <input type="text" class="input" name="is_super_admin" value="{{ $admin->is_super_admin ? 'Iya' : 'Tidak' }}" readonly>
             </div>
-            <div class="button-group flex items-center gap-[8px] lg:gap-[12px] lg:col-span-2">
+            <div class="button-group">
                 <a href="{{ route('admin.index') }}" class="button-secondary">Kembali ke Halaman Admin</a>
             </div>
         </form>
     </div>
-
-    <script>
-        const tagImage = document.querySelector('.img-preview');
-        const inputImage = document.querySelector('.input-file');
-
-        inputImage.addEventListener('change', function() {
-            tagImage.src = URL.createObjectURL(inputImage.files[0]);
-        });
-    </script>
 @endsection
