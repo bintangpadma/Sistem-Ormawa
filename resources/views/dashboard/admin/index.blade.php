@@ -10,8 +10,8 @@
             {{ session('failed') }}
         </div>
     @endif
-    <div class="content-menu p-[16px] lg:p-[20px] border border-light/[0.06] rounded-[4px]">
-        <div class="menu-header flex items-center gap-[8px] lg:gap-[12px]">
+    <div class="content-menu content-table">
+        <div class="table-header">
             <form method="GET" class="form">
                 <input type="search" class="input" name="search" placeholder="Cari admin..." value="{{ $search }}">
             </form>
@@ -19,7 +19,7 @@
                 <a href="{{ route('admin.create') }}" class="button-primary">Tambah Admin</a>
             @endif
         </div>
-        <div class="wrapper-table">
+        <div class="table-group">
             <table>
                 <thead>
                 <tr>
@@ -43,7 +43,7 @@
                             <td>{{ $admin->gender === 'male' ? 'Laki-Laki' : 'Perempuan' }}</td>
                             <td>{{ $admin->status ? 'Aktif' : 'Tidak Aktif' }}</td>
                             <td>
-                                <div class="action-button flex items-center gap-[4px]">
+                                <div class="action-button">
                                     <a href="{{ route('admin.show', $admin) }}" class="button icon-detail">
                                         <span class="bg-detail-primary"></span>
                                     </a>
@@ -51,7 +51,7 @@
                                         <a href="{{ route('admin.edit', $admin) }}" class="button icon-edit">
                                             <span class="bg-edit-warning"></span>
                                         </a>
-                                        <button type="button" class="button icon-delete" data-target="deleteModal" data-id="{{ $admin->id }}">
+                                        <button class="button icon-delete" data-target="deleteModal" data-id="{{ $admin->id }}" onclick="openModal(this)">
                                             <span class="bg-delete-danger"></span>
                                         </button>
                                     @endif
@@ -63,41 +63,21 @@
                 </tbody>
             </table>
         </div>
-        <div class="wrapper-paginate">
+        <div class="table-paginate">
             {{ $admins->links() }}
         </div>
     </div>
-
-    <div class="modal" id="deleteModal">
-        <div class="modal-content">
-            <div class="content-header">
-                <p>Hapus Admin</p>
-            </div>
-            <div class="content-body">
-                <p>Menghapus data admin ini dapat mempengaruhi proses lain yang sedang berlangsung. Apakah Anda yakin ingin melanjutkan?</p>
-                <div class="button-group flex justify-between items-center gap-[8px]">
-                    <form id="buttonDeleteAdmin" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button class="button-primary">Hapus Admin</button>
-                    </form>
-                    <button class="button-secondary" onclick="closeModal('deleteModal')">Batal Hapus</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    @include('modal.admin')
 
     <script>
-        const buttonDeletes = document.querySelectorAll('[data-target="deleteModal"]');
-
-        buttonDeletes.forEach(buttonDelete => {
-            buttonDelete.addEventListener('click', function() {
-                const modalTarget = buttonDelete.getAttribute('data-target')
-                document.getElementById(`${modalTarget}`).classList.add('show')
-                const id = buttonDelete.getAttribute('data-id')
-                document.getElementById('buttonDeleteAdmin').setAttribute('action', '/admin/' + id)
-            })
-        })
+        function openModal(element) {
+            const modalTarget = element.getAttribute('data-target')
+            const modalId = element.getAttribute('data-id')
+            document.getElementById(`${modalTarget}`).classList.add('show')
+            if (modalTarget.includes('delete')) {
+                document.getElementById('buttonDeleteAdmin').setAttribute('action', '/admin/' + modalId)
+            }
+        }
 
         function closeModal(modalTarget) {
             document.getElementById(`${modalTarget}`).classList.remove('show')

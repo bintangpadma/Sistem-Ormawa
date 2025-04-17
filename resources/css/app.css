@@ -104,11 +104,12 @@
     .button-primary,
     .button-secondary {
         @apply w-fit px-[20px] py-[14px] text-[0.875rem] text-light bg-primary rounded-[3px] text-nowrap cursor-pointer;
-        @apply hover:brightness-90;
+        @apply hover:brightness-75;
     }
 
     .button-secondary {
         @apply bg-dark-700;
+        @apply hover:brightness-95;
     }
 
     .alert {
@@ -123,70 +124,82 @@
         @apply text-red bg-red/[0.24] border border-red/[0.24];
     }
 
-    .wrapper-table {
+    .table-group {
         @apply overflow-x-auto mt-4;
     }
 
-    .wrapper-table table {
+    .table-group table {
         @apply w-full overflow-hidden rounded-[4px];
     }
 
-    .wrapper-table table tr,
-    .wrapper-table table th,
-    .wrapper-table table td {
+    .table-group table tr,
+    .table-group table th,
+    .table-group table td {
         @apply px-[16px] py-[12px] border-t border-b border-light/[0.06] first:border-l last:border-r text-nowrap;
     }
 
-    .wrapper-table table th,
-    .wrapper-table table td {
+    .table-group table th,
+    .table-group table td {
         @apply text-[0.85rem] text-light/[0.62];
     }
 
-    .wrapper-table table th {
+    .table-group table th {
         @apply text-start font-medium bg-light/[0.04] text-light/[0.42];
     }
 
-    .wrapper-table table td .action-button {
-        @apply justify-end;
+    .table-group table td .action-button {
+        @apply flex items-center gap-[4px] justify-end;
     }
 
-    .wrapper-table table td .action-button .button {
+    .table-group table td .action-button .button {
         @apply w-[32px] h-[32px] rounded-[3px] flex items-center justify-center;
     }
 
-    .wrapper-table table td .action-button .button span {
+    .table-group table td .action-button .button span {
         @apply w-[16px] h-[16px] bg-cover bg-center bg-no-repeat;
     }
 
-    .wrapper-table table td .action-button .button.icon-detail {
+    .table-group table td .action-button .button.icon-detail {
         @apply bg-primary/[0.12] hover:bg-primary/[0.24];
     }
 
-    .wrapper-table table td .action-button .button.icon-edit {
+    .table-group table td .action-button .button.icon-edit {
         @apply bg-yellow/[0.20] hover:bg-yellow/[0.32];
     }
 
-    .wrapper-table table td .action-button .button.icon-delete {
+    .table-group table td .action-button .button.icon-delete {
         @apply bg-red/[0.20] hover:bg-red/[0.32];
     }
 
-    .wrapper-paginate {
+    .table-paginate {
         @apply w-full flex justify-center mt-4;
     }
 
-    .wrapper-paginate .page-link,
-    .wrapper-paginate .page-link:hover {
-        @apply text-primary;
+    .table-paginate > nav > :last-child {
+        @apply gap-[12px];
     }
 
-    .wrapper-paginate .active > .page-link,
-    .wrapper-paginate .page-link.active {
-        @apply bg-primary border-primary;
+    .table-paginate > nav > :last-child > :first-child > p {
+        @apply text-[0.813rem] text-light/[0.42];
     }
 
-    .wrapper-paginate .active > .page-link,
-    .wrapper-paginate .page-link.active:hover {
-        @apply text-primary;
+    .table-paginate > nav > :last-child > :first-child > p span {
+        @apply text-light;
+    }
+
+    .table-paginate nav :last-child :last-child span a,
+    .table-paginate nav :last-child :last-child span span {
+        @apply !bg-dark-800 !border-light/[0.12] w-[36px] h-[36px] aspect-square p-0 flex items-center justify-center focus:ring-2 focus:ring-light/[0.12];
+    }
+
+    .table-paginate nav :last-child :last-child span a:first-child,
+    .table-paginate nav :last-child :last-child span span:first-child {
+        @apply rounded-s-[2px];
+    }
+
+    .table-paginate nav :last-child :last-child span a:last-child,
+    .table-paginate nav :last-child :last-child span span:last-child {
+        @apply rounded-e-[2px];
     }
 
     .modal {
@@ -295,6 +308,10 @@
 
     .dashboard .content-menu.content-table {
         @apply p-[16px] lg:p-[20px] border border-light/[0.06] rounded-[4px];
+    }
+
+    .dashboard .content-menu.content-table .table-header {
+        @apply flex items-center gap-[8px] lg:gap-[12px];
     }
     /* END DASHBOARD */
 }
