@@ -41,6 +41,7 @@ class EventDivisionController extends Controller
             ]);
             $validatedData['events_id'] = $event->id;
             EventDivision::create($validatedData);
+
             return redirect()->back()->with('success', 'Berhasil menambahkan divisi baru!');
         } catch (\Exception $e) {
             logger($e->getMessage());
@@ -55,6 +56,7 @@ class EventDivisionController extends Controller
                 'name' => 'required|string|max:150',
             ]);
             $eventDivision->update($validatedData);
+
             return redirect()->back()->with('success', 'Berhasil mengedit divisi!');
         } catch (\Exception $e) {
             logger($e->getMessage());
@@ -66,6 +68,7 @@ class EventDivisionController extends Controller
     {
         try {
             $eventDivision->delete();
+
             return redirect()->back()->with('success', 'Berhasil menghapus divisi!');
         } catch (\Exception $e) {
             logger($e->getMessage());
