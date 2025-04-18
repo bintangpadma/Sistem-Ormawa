@@ -160,6 +160,20 @@
         @apply text-[0.85rem] text-light/[0.62];
     }
 
+    .table-group table td .status-pending,
+    .table-group table td .status-accepted,
+    .table-group table td .status-rejected {
+        @apply capitalize w-fit text-[0.813rem] py-[5px] px-[10px] rounded-[2px] bg-yellow/[0.20] text-yellow;
+    }
+
+    .table-group table td .status-accepted {
+        @apply bg-primary/[0.12] text-primary;
+    }
+
+    .table-group table td .status-rejected {
+        @apply bg-red/[0.20] text-red;
+    }
+
     .table-group table th {
         @apply text-start font-medium bg-light/[0.04] text-light/[0.42];
     }

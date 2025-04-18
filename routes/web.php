@@ -60,8 +60,12 @@ Route::middleware('auth')->group(function () {
     });
     Route::controller(\App\Http\Controllers\EventRecruitmentController::class)->group(function () {
         Route::get('/event/{event}/recruitment', 'index')->name('event-recruitment.index');
+        Route::get('/event/{event}/recruitment/create', 'create')->name('event-recruitment.create');
         Route::get('/event/{event}/recruitment/{eventRecruitment}', 'show')->name('event-recruitment.show');
+        Route::post('/event/{event}/recruitment', 'store')->name('event-recruitment.store');
+        Route::get('/event/{event}/recruitment/{eventRecruitment}/edit', 'edit')->name('event-recruitment.edit');
         Route::match(['put', 'patch'], '/event/{event}/recruitment/{eventRecruitment}', 'update')->name('event-recruitment.update');
+        Route::delete('/event/{event}/recruitment/{eventRecruitment}', 'destroy')->name('event-recruitment.destroy');
     });
     Route::resources(['activity-report' => \App\Http\Controllers\ActivityReportController::class]);
     Route::resources(['administrative-document' => \App\Http\Controllers\AdministrativeDocumentController::class]);
