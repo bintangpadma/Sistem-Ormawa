@@ -67,7 +67,7 @@
             <div class="form-input lg:col-span-2">
                 <label for="gender">Jenis Kelamin</label>
                 <select class="input" name="gender" id="gender">
-                    <option value="">Masukkan nomor telepon admin...</option>
+                    <option value="">Pilih jenis kelamin admin...</option>
                     <option value="male">Laki-Laki</option>
                     <option value="female">Perempuan</option>
                 </select>

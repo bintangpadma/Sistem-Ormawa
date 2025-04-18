@@ -9,8 +9,8 @@
                 @method('DELETE')
                 <p>Menghapus data admin ini dapat mempengaruhi proses lain yang sedang berlangsung. Apakah Anda yakin ingin melanjutkan?</p>
                 <div class="button-group">
-                    <button class="button-primary">Hapus Admin</button>
-                    <button onclick="closeModal('deleteModal')" class="button-secondary">Batal Hapus</button>
+                    <button type="submit" class="button-primary">Hapus Admin</button>
+                    <button type="button" onclick="closeModal('deleteModal')" class="button-secondary">Batal Hapus</button>
                 </div>
             </form>
         </div>

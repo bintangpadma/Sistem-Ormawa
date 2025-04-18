@@ -20,21 +20,21 @@
             </div>
             <div class="form-input">
                 <label for="username">Username</label>
-                <input type="text" class="input" name="username" value="{{ $admin->user->username }}">
+                <input type="text" class="input" name="username" placeholder="Masukkan username admin..." value="{{ $admin->user->username }}">
                 @error('username')
                 <p class="text-invalid">{{ $message }}</p>
                 @enderror
             </div>
             <div class="form-input">
                 <label for="full_name">Nama Lengkap</label>
-                <input type="text" class="input" name="full_name" value="{{ $admin->full_name }}">
+                <input type="text" class="input" name="full_name" placeholder="Masukkan nama lengkap admin..." value="{{ $admin->full_name }}">
                 @error('full_name')
                 <p class="text-invalid">{{ $message }}</p>
                 @enderror
             </div>
             <div class="form-input">
                 <label for="email">Email</label>
-                <input type="email" class="input" name="email" value="{{ $admin->user->email }}">
+                <input type="email" class="input" name="email" placeholder="Masukkan email admin..." value="{{ $admin->user->email }}">
                 @error('email')
                 <p class="text-invalid">{{ $message }}</p>
                 @enderror
@@ -48,14 +48,14 @@
             </div>
             <div class="form-input">
                 <label for="lecturer_code">NIP/NIM</label>
-                <input type="text" class="input" name="lecturer_code" value="{{ $admin->lecturer_code }}">
+                <input type="text" class="input" name="lecturer_code" placeholder="Masukkan nip/nim admin..." value="{{ $admin->lecturer_code }}">
                 @error('lecturer_code')
                 <p class="text-invalid">{{ $message }}</p>
                 @enderror
             </div>
             <div class="form-input">
                 <label for="phone_number">Nomor Telepon</label>
-                <input type="text" class="input" name="phone_number" value="{{ $admin->phone_number }}">
+                <input type="text" class="input" name="phone_number" placeholder="Masukkan nomor telepon admin..." value="{{ $admin->phone_number }}">
                 @error('phone_number')
                 <p class="text-invalid">{{ $message }}</p>
                 @enderror

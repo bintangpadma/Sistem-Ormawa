@@ -13,14 +13,16 @@
             <span class="group-hover:bg-profile-dark group-hover:opacity-100 {{ Route::is('profile*') ? 'bg-profile-dark opacity-100' : 'bg-profile-light opacity-[0.62]' }}"></span>
             Profile
         </a>
-        <a href="{{ route('admin.index') }}" class="content-item group {{ Route::is('admin*') ? 'active' : '' }}">
-            <span class="group-hover:bg-admin-dark group-hover:opacity-100 {{ Route::is('admin*') ? 'bg-admin-dark opacity-100' : 'bg-admin-light opacity-[0.62]' }}"></span>
-            Admin
-        </a>
-        <a href="{{ route('student-organization.index') }}" class="content-item group {{ Route::is('student-organization*') ? 'active' : '' }}">
-            <span class="group-hover:bg-student-organization-dark group-hover:opacity-100 {{ Route::is('student-organization*') ? 'bg-student-organization-dark opacity-100' : 'bg-student-organization-light opacity-[0.62]' }}"></span>
-            Ormawa
-        </a>
+        @if(auth()->user()->admin)
+            <a href="{{ route('admin.index') }}" class="content-item group {{ Route::is('admin*') ? 'active' : '' }}">
+                <span class="group-hover:bg-admin-dark group-hover:opacity-100 {{ Route::is('admin*') ? 'bg-admin-dark opacity-100' : 'bg-admin-light opacity-[0.62]' }}"></span>
+                Admin
+            </a>
+            <a href="{{ route('student-organization.index') }}" class="content-item group {{ Route::is('student-organization*') ? 'active' : '' }}">
+                <span class="group-hover:bg-student-organization-dark group-hover:opacity-100 {{ Route::is('student-organization*') ? 'bg-student-organization-dark opacity-100' : 'bg-student-organization-light opacity-[0.62]' }}"></span>
+                Ormawa
+            </a>
+        @endif
         <a href="{{ route('student-activity-unit.index') }}" class="content-item group {{ Route::is('student-activity-unit*') ? 'active' : '' }}">
             <span class="group-hover:bg-student-activity-unit-dark group-hover:opacity-100 {{ Route::is('student-activity-unit*') ? 'bg-student-activity-unit-dark opacity-100' : 'bg-student-activity-unit-light opacity-[0.62]' }}"></span>
             UKM
@@ -37,10 +39,12 @@
             <span class="group-hover:bg-activity-report-dark group-hover:opacity-100 {{ Route::is('activity-report*') ? 'bg-activity-report-dark opacity-100' : 'bg-activity-report-light opacity-[0.62]' }}"></span>
             LPJ
         </a>
-        <a href="{{ route('administrative-document.index') }}" class="content-item group {{ Route::is('administrative-document*') ? 'active' : '' }}">
-            <span class="group-hover:bg-administrative-document-dark group-hover:opacity-100 {{ Route::is('administrative-document*') ? 'bg-administrative-document-dark opacity-100' : 'bg-administrative-document-light opacity-[0.62]' }}"></span>
-            File Administrasi
-        </a>
+        @if(auth()->user()->admin)
+            <a href="{{ route('administrative-document.index') }}" class="content-item group {{ Route::is('administrative-document*') ? 'active' : '' }}">
+                <span class="group-hover:bg-administrative-document-dark group-hover:opacity-100 {{ Route::is('administrative-document*') ? 'bg-administrative-document-dark opacity-100' : 'bg-administrative-document-light opacity-[0.62]' }}"></span>
+                File Administrasi
+            </a>
+        @endif
         <form action="{{ route('user.delete') }}" method="POST">
             @csrf
             <button class="content-item w-full group">
