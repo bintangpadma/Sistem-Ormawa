@@ -17,36 +17,36 @@ Route::middleware('auth')->group(function () {
         Route::get('/student-organization/{studentOrganization}/vision', 'index')->name('student-organization-vision.index');
         Route::get('/student-organization/{studentOrganization}/vision/{studentOrganizationVision}', 'show')->name('student-organization-vision.show');
         Route::post('/student-organization/{studentOrganization}/vision', 'store')->name('student-organization-vision.store');
-        Route::match(['put', 'patch'], '/student-organization/{studentOrganization}/vision/edit', 'update')->name('student-organization-vision.update');
-        Route::delete('/student-organization/{studentOrganization}/vision', 'destroy')->name('student-organization-vision.destroy');
+        Route::match(['put', 'patch'], '/student-organization/{studentOrganization}/vision/{studentOrganizationVision}', 'update')->name('student-organization-vision.update');
+        Route::delete('/student-organization/{studentOrganization}/vision/{studentOrganizationVision}', 'destroy')->name('student-organization-vision.destroy');
     });
     Route::controller(\App\Http\Controllers\StudentOrganizationMissionController::class)->group(function () {
         Route::get('/student-organization/{studentOrganization}/mission', 'index')->name('student-organization-mission.index');
         Route::get('/student-organization/{studentOrganization}/mission/{studentOrganizationMission}', 'show')->name('student-organization-mission.show');
         Route::post('/student-organization/{studentOrganization}/mission', 'store')->name('student-organization-mission.store');
-        Route::match(['put', 'patch'], '/student-organization/{studentOrganization}/mission/edit', 'update')->name('student-organization-mission.update');
-        Route::delete('/student-organization/{studentOrganization}/mission', 'destroy')->name('student-organization-mission.destroy');
+        Route::match(['put', 'patch'], '/student-organization/{studentOrganization}/mission/{studentOrganizationMission}', 'update')->name('student-organization-mission.update');
+        Route::delete('/student-organization/{studentOrganization}/mission/{studentOrganizationMission}', 'destroy')->name('student-organization-mission.destroy');
     });
     Route::controller(\App\Http\Controllers\StudentOrganizationProgramController::class)->group(function () {
         Route::get('/student-organization/{studentOrganization}/program', 'index')->name('student-organization-program.index');
         Route::get('/student-organization/{studentOrganization}/program/{studentOrganizationProgram}', 'show')->name('student-organization-program.show');
         Route::post('/student-organization/{studentOrganization}/program', 'store')->name('student-organization-program.store');
-        Route::match(['put', 'patch'], '/student-organization/{studentOrganization}/program/edit', 'update')->name('student-organization-program.update');
-        Route::delete('/student-organization/{studentOrganization}/program', 'destroy')->name('student-organization-program.destroy');
+        Route::match(['put', 'patch'], '/student-organization/{studentOrganization}/program/{studentOrganizationProgram}', 'update')->name('student-organization-program.update');
+        Route::delete('/student-organization/{studentOrganization}/program/{studentOrganizationProgram}', 'destroy')->name('student-organization-program.destroy');
     });
     Route::controller(\App\Http\Controllers\StudentOrganizationStructureController::class)->group(function () {
         Route::get('/student-organization/{studentOrganization}/structure', 'index')->name('student-organization-structure.index');
         Route::get('/student-organization/{studentOrganization}/structure/{studentOrganizationStructure}', 'show')->name('student-organization-structure.show');
         Route::post('/student-organization/{studentOrganization}/structure', 'store')->name('student-organization-structure.store');
-        Route::match(['put', 'patch'], '/student-organization/{studentOrganization}/structure/edit', 'update')->name('student-organization-structure.update');
-        Route::delete('/student-organization/{studentOrganization}/structure', 'destroy')->name('student-organization-structure.destroy');
+        Route::match(['put', 'patch'], '/student-organization/{studentOrganization}/structure/{studentOrganizationStructure}', 'update')->name('student-organization-structure.update');
+        Route::delete('/student-organization/{studentOrganization}/structure/{studentOrganizationStructure}', 'destroy')->name('student-organization-structure.destroy');
     });
     Route::controller(\App\Http\Controllers\StudentOrganizationAchievementController::class)->group(function () {
         Route::get('/student-organization/{studentOrganization}/achievement', 'index')->name('student-organization-achievement.index');
         Route::get('/student-organization/{studentOrganization}/achievement/{studentOrganizationAchievement}', 'show')->name('student-organization-achievement.show');
         Route::post('/student-organization/{studentOrganization}/achievement', 'store')->name('student-organization-achievement.store');
-        Route::match(['put', 'patch'], '/student-organization/{studentOrganization}/achievement/edit', 'update')->name('student-organization-achievement.update');
-        Route::delete('/student-organization/{studentOrganization}/achievement', 'destroy')->name('student-organization-achievement.destroy');
+        Route::match(['put', 'patch'], '/student-organization/{studentOrganization}/achievement/{studentOrganizationAchievement}', 'update')->name('student-organization-achievement.update');
+        Route::delete('/student-organization/{studentOrganization}/achievement/{studentOrganizationAchievement}', 'destroy')->name('student-organization-achievement.destroy');
     });
     Route::resources(['student-activity-unit' => \App\Http\Controllers\StudentActivityUnitController::class]);
     Route::resources(['news' => \App\Http\Controllers\NewsController::class]);

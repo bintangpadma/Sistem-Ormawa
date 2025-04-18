@@ -236,7 +236,7 @@
     }
 
     .modal .modal-content .content-header p {
-        @apply text-light/[0.62] text-nowrap;
+        @apply text-light/[0.42] text-nowrap text-[0.913rem];
     }
 
     .modal .modal-content .content-body {
@@ -244,7 +244,7 @@
     }
 
     .modal .modal-content .content-body p {
-        @apply text-light/[0.62] text-[0.913rem] mb-[32px];
+        @apply text-light/[0.62] text-[0.913rem] mb-[20px];
     }
 
     .modal .modal-content .content-body form {
