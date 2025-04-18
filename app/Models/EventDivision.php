@@ -18,8 +18,8 @@ class EventDivision extends Model
         return $this->belongsTo(Event::class, 'events_id', 'id');
     }
 
-    public function event_reqruitments(): HasMany
+    public function event_recruitments(): HasMany
     {
-        return $this->hasMany(EventReqruitment::class, 'event_divisions_id', 'id');
+        return $this->hasMany(EventRecruitment::class, 'event_divisions_id', 'id');
     }
 }

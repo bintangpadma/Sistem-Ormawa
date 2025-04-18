@@ -51,6 +51,18 @@ Route::middleware('auth')->group(function () {
     Route::resources(['student-activity-unit' => \App\Http\Controllers\StudentActivityUnitController::class]);
     Route::resources(['news' => \App\Http\Controllers\NewsController::class]);
     Route::resources(['event' => \App\Http\Controllers\EventController::class]);
+    Route::controller(\App\Http\Controllers\EventDivisionController::class)->group(function () {
+        Route::get('/event/{event}/division', 'index')->name('event-division.index');
+        Route::get('/event/{event}/division/{eventDivision}', 'show')->name('event-division.show');
+        Route::post('/event/{event}/division', 'store')->name('event-division.store');
+        Route::match(['put', 'patch'], '/event/{event}/division/{eventDivision}', 'update')->name('event-division.update');
+        Route::delete('/event/{event}/division/{eventDivision}', 'destroy')->name('event-division.destroy');
+    });
+    Route::controller(\App\Http\Controllers\EventRecruitmentController::class)->group(function () {
+        Route::get('/event/{event}/recruitment', 'index')->name('event-recruitment.index');
+        Route::get('/event/{event}/recruitment/{eventRecruitment}', 'show')->name('event-recruitment.show');
+        Route::match(['put', 'patch'], '/event/{event}/recruitment/{eventRecruitment}', 'update')->name('event-recruitment.update');
+    });
     Route::resources(['activity-report' => \App\Http\Controllers\ActivityReportController::class]);
     Route::resources(['administrative-document' => \App\Http\Controllers\AdministrativeDocumentController::class]);
     Route::post('/logout', [UserController::class, 'delete'])->name('user.delete');

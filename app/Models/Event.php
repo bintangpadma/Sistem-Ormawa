@@ -23,8 +23,8 @@ class Event extends Model
         return $this->hasMany(EventDivision::class, 'events_id', 'id');
     }
 
-    public function event_reqruitments(): HasMany
+    public function event_recruitments(): HasMany
     {
-        return $this->hasMany(EventReqruitment::class, 'events_id', 'id');
+        return $this->hasMany(EventRecruitment::class, 'events_id', 'id');
     }
 }

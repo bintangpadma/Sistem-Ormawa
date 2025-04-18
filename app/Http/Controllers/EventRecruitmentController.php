@@ -3,33 +3,33 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
-use App\Models\EventDivision;
+use App\Models\EventRecruitment;
 use Illuminate\Http\Request;
 
-class EventDivisionController extends Controller
+class EventRecruitmentController extends Controller
 {
     public function index(Event $event, Request $request)
     {
         $search = $request->input('search');
-        $eventDivisions = EventDivision::where('events_id', $event->id)
+        $eventRecruitments = EventRecruitment::where('events_id', $event->id)
             ->when($search, function ($query, $search) {
                 $query->where('name', 'LIKE', '%' . $search . '%');
             })->latest()->paginate(10);
 
         return view('dashboard.event-division.index', [
             'page' => 'Halaman Divisi',
-            'eventDivisions' => $eventDivisions,
+            'eventDivisions' => $eventRecruitments,
             'event' => $event,
             'search' => $search,
         ]);
     }
 
-    public function show(Event $event, EventDivision $eventDivision)
+    public function show(Event $event, EventRecruitment $eventRecruitment)
     {
         return response()->json([
             'status_code' => 200,
             'event' => $event,
-            'event_division' => $eventDivision,
+            'event_division' => $eventRecruitment,
         ]);
     }
 
@@ -40,7 +40,7 @@ class EventDivisionController extends Controller
                 'name' => 'required|string|max:150',
             ]);
             $validatedData['events_id'] = $event->id;
-            EventDivision::create($validatedData);
+            EventRecruitment::create($validatedData);
             return redirect()->back()->with('success', 'Berhasil menambahkan divisi baru!');
         } catch (\Exception $e) {
             logger($e->getMessage());
@@ -48,13 +48,13 @@ class EventDivisionController extends Controller
         }
     }
 
-    public function update(Event $event, EventDivision $eventDivision, Request $request)
+    public function update(Event $event, EventRecruitment $eventRecruitment, Request $request)
     {
         try {
             $validatedData = $request->validate([
                 'name' => 'required|string|max:150',
             ]);
-            $eventDivision->update($validatedData);
+            $eventRecruitment->update($validatedData);
             return redirect()->back()->with('success', 'Berhasil mengedit divisi!');
         } catch (\Exception $e) {
             logger($e->getMessage());
@@ -62,10 +62,10 @@ class EventDivisionController extends Controller
         }
     }
 
-    public function destroy(Event $event, EventDivision $eventDivision)
+    public function destroy(Event $event, EventRecruitment $eventRecruitment)
     {
         try {
-            $eventDivision->delete();
+            $eventRecruitment->delete();
             return redirect()->back()->with('success', 'Berhasil menghapus divisi!');
         } catch (\Exception $e) {
             logger($e->getMessage());

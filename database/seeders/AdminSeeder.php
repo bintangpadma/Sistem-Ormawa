@@ -15,7 +15,7 @@ class AdminSeeder extends Seeder
     {
         Admin::create([
             'lecturer_code' => '856363465765',
-            'full_name' => 'Aditya Prayatna',
+            'full_name' => 'Admin 1',
             'phone_number' => '08123456789',
             'gender' => 'male',
             'is_super_admin' => 1,

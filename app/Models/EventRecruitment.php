@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class EventReqruitment extends Model
+class EventRecruitment extends Model
 {
     use SoftDeletes;
 
@@ -25,6 +25,6 @@ class EventReqruitment extends Model
 
     public function evaluations(): HasMany
     {
-        return $this->hasMany(Evaluation::class, 'event_reqruitments_id', 'id');
+        return $this->hasMany(Evaluation::class, 'event_recruitments_id', 'id');
     }
 }

@@ -12,8 +12,8 @@ class Evaluation extends Model
 
     protected $guarded = ['id'];
 
-    public function event_reqruitment(): BelongsTo
+    public function event_recruitment(): BelongsTo
     {
-        return $this->belongsTo(EventReqruitment::class, 'event_reqruitments_id', 'id');
+        return $this->belongsTo(EventRecruitment::class, 'event_recruitments_id', 'id');
     }
 }

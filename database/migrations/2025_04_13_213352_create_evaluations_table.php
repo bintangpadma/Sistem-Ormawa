@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('evaluations', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('event_reqruitments_id')->index();
+            $table->bigInteger('event_recruitments_id')->index();
             $table->enum('assessment', ['excellent', 'good', 'poor', 'very_poor']);
             $table->text('criticism');
             $table->text('suggestion');
