@@ -70,6 +70,7 @@ Route::middleware('auth')->group(function () {
     Route::resources(['evaluation' => \App\Http\Controllers\EvaluationController::class]);
     Route::get('/evaluation/{eventRecruitment}/create', [\App\Http\Controllers\EvaluationController::class, 'create'])->name('evaluation.create-form');
     Route::resources(['activity-report' => \App\Http\Controllers\ActivityReportController::class]);
+    Route::get('/activity-report/{activityReport}/download', [\App\Http\Controllers\ActivityReportController::class, 'download'])->name('activity-report.download');
     Route::resources(['administrative-document' => \App\Http\Controllers\AdministrativeDocumentController::class]);
     Route::post('/logout', [UserController::class, 'delete'])->name('user.delete');
 });

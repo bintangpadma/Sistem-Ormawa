@@ -97,6 +97,10 @@
         @apply text-[0.875rem] py-[11px] px-[20px];
     }
 
+    .input-image .image-name {
+        @apply text-[0.85rem] text-light/[0.42];
+    }
+
     hr.style-gap {
         @apply w-full border-light/[0.12];
     }
@@ -190,6 +194,7 @@
         @apply w-[16px] h-[16px] bg-cover bg-center bg-no-repeat;
     }
 
+    .table-group table td .action-button .button.icon-download,
     .table-group table td .action-button .button.icon-detail {
         @apply bg-primary/[0.12] hover:bg-primary/[0.24];
     }
