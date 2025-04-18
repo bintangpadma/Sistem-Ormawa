@@ -81,6 +81,7 @@
         @apply focus:ring-0;
     }
 
+    .input-file,
     .input-image {
         @apply flex items-end gap-2 mt-[8px];
     }
@@ -89,15 +90,17 @@
         @apply w-[100px] h-[100px] object-cover aspect-square rounded-[4px];
     }
 
+    .input-file .file-input-hidden,
     .input-image .image-input-hidden {
         @apply absolute opacity-0 top-0 left-0;
     }
 
+    .input-file .file-button,
     .input-image .image-button {
         @apply text-[0.875rem] py-[11px] px-[20px];
     }
 
-    .input-image .image-name {
+    .input-file .file-name {
         @apply text-[0.85rem] text-light/[0.42];
     }
 

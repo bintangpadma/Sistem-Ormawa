@@ -25,17 +25,27 @@
                 <tr>
                     <th>Nama</th>
                     <th>Deskripsi</th>
+                    <th>Status</th>
                     <th></th>
                 </tr>
                 </thead>
                 <tbody>
                 @if ($activityReports->count() == 0)
-                    <td colspan="3">Data lpj tidak ditemukan!</td>
+                    <td colspan="4">Data lpj tidak ditemukan!</td>
                 @else
                     @foreach ($activityReports as $activityReport)
                         <tr>
                             <td>{{ $activityReport->name }}</td>
                             <td>{{ \Illuminate\Support\Str::limit($activityReport->description, 40) }}</td>
+                            <td>
+                                @if($activityReport->status === 'pending')
+                                    <p class="status-pending">Tertunda</p>
+                                @elseif($activityReport->status === 'accepted')
+                                    <p class="status-accepted">Diterima</p>
+                                @elseif($activityReport->status === 'rejected')
+                                    <p class="status-rejected">Tidak Diterima</p>
+                                @endif
+                            </td>
                             <td>
                                 <div class="action-button">
                                     <a href="{{ route('activity-report.download', $activityReport) }}" class="button icon-download">

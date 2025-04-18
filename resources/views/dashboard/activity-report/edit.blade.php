@@ -8,10 +8,10 @@
             <div class="form-input lg:col-span-2">
                 <label>
                     File LPJ
-                    <span class="input-image">
-                        <input type="file" class="image-input-hidden" id="file_path" name="file_path">
+                    <span class="input-file">
+                        <input type="file" class="file-input-hidden" id="file_path" name="file_path">
                         <div class="button-secondary file-button">Pilih File</div>
-                        <span id="file-name" class="image-name">Sudah ada file</span>
+                        <span id="file-name" class="file-name">Sudah ada file</span>
                     </span>
                 </label>
                 @error('file_path')
