@@ -102,6 +102,7 @@ class ActivityReportController extends Controller
                 'file_path' => 'nullable|file|mimes:pdf,doc,docx,xls,xlsx|max:10240',
                 'name' => 'required|string|max:100',
                 'description' => 'required|string|max:255',
+                'status' => 'nullable|string|max:50',
             ]);
 
             if ($request->hasFile('file_path')) {

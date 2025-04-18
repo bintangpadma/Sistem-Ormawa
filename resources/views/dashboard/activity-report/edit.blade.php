@@ -25,6 +25,19 @@
                 <p class="text-invalid">{{ $message }}</p>
                 @enderror
             </div>
+            @if(auth()->user()->admin)
+                <div class="form-input lg:col-span-2">
+                    <label for="status">Status</label>
+                    <select class="input" name="status">
+                        <option value="pending" {{ $activityReport->status === 'pending' ? 'selected' : '' }}>Tertunda</option>
+                        <option value="accepted" {{ $activityReport->status === 'accepted' ? 'selected' : '' }}>Lolos</option>
+                        <option value="rejected" {{ $activityReport->status === 'rejected' ? 'selected' : '' }}>Tidak Lolos</option>
+                    </select>
+                    @error('status')
+                    <p class="text-invalid">{{ $message }}</p>
+                    @enderror
+                </div>
+            @endif
             <div class="form-input lg:col-span-2">
                 <label for="description">Deskripsi</label>
                 <textarea rows="4" class="input" name="description" placeholder="Masukkan description lpj...">{{ $activityReport->description }}</textarea>
