@@ -9,8 +9,8 @@
             <span class="group-hover:bg-dashboard-dark group-hover:opacity-100 {{ Route::is('dashboard*') ? 'bg-dashboard-dark opacity-100' : 'bg-dashboard-light opacity-[0.62]' }}"></span>
             Dashboard
         </a>
-        <a href="{{ route('profile.index') }}" class="!flex lg:!hidden content-item group {{ Route::is('profile*') ? 'active' : '' }}">
-            <span class="group-hover:bg-profile-dark group-hover:opacity-100 {{ Route::is('profile*') ? 'bg-profile-dark opacity-100' : 'bg-profile-light opacity-[0.62]' }}"></span>
+        <a href="{{ route('profile.index') }}" class="!flex lg:!hidden content-item group {{ Route::is('profile-admin*') ? 'active' : '' }}">
+            <span class="group-hover:bg-profile-dark group-hover:opacity-100 {{ Route::is('profile-admin*') ? 'bg-profile-admin-dark opacity-100' : 'bg-profile-admin-light opacity-[0.62]' }}"></span>
             Profile
         </a>
         @if(auth()->user()->admin)

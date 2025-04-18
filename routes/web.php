@@ -9,7 +9,11 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::resources(['profile' => \App\Http\Controllers\ProfileController::class]);
+    Route::controller(\App\Http\Controllers\ProfileController::class)->group(function () {
+        Route::get('/profile', 'index')->name('profile.index');
+        Route::get('/profile/edit', 'edit')->name('profile.edit');
+        Route::match(['put', 'patch'], '/profile/edit', 'update')->name('profile.update');
+    });
     Route::resources(['dashboard' => \App\Http\Controllers\DashboardController::class]);
     Route::resources(['admin' => \App\Http\Controllers\AdminController::class]);
     Route::resources(['student-organization' => \App\Http\Controllers\StudentOrganizationController::class]);
