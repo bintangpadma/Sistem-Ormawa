@@ -8,6 +8,10 @@
                 <input type="text" class="input" name="name" value="{{ $activityReport->name }}" readonly>
             </div>
             <div class="form-input lg:col-span-2">
+                <label for="status">Status</label>
+                <input type="text" class="input capitalize" name="status" value="{{ $activityReport->status === 'pending' ? 'Tertunda' : ($activityReport->status === 'accepted' ? 'Diterima' : 'Tidak Diterima') }}" readonly>
+            </div>
+            <div class="form-input lg:col-span-2">
                 <label for="description">Deskripsi</label>
                 <textarea class="input" name="description" rows="4" readonly>{{ $activityReport->description }}</textarea>
             </div>

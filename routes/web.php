@@ -72,5 +72,6 @@ Route::middleware('auth')->group(function () {
     Route::resources(['activity-report' => \App\Http\Controllers\ActivityReportController::class]);
     Route::get('/activity-report/{activityReport}/download', [\App\Http\Controllers\ActivityReportController::class, 'download'])->name('activity-report.download');
     Route::resources(['administrative-document' => \App\Http\Controllers\AdministrativeDocumentController::class]);
+    Route::get('/administrative-document/{administrativeDocument}/download', [\App\Http\Controllers\AdministrativeDocumentController::class, 'download'])->name('administrative-document.download');
     Route::post('/logout', [UserController::class, 'delete'])->name('user.delete');
 });

@@ -45,9 +45,9 @@
                                 @if($eventRecruitment->status === 'pending')
                                     <p class="status-pending">Tertunda</p>
                                 @elseif($eventRecruitment->status === 'accepted')
-                                    <p class="status-accepted">Lolos</p>
+                                    <p class="status-accepted">Diterima</p>
                                 @elseif($eventRecruitment->status === 'rejected')
-                                    <p class="status-rejected">Tidak Lolos</p>
+                                    <p class="status-rejected">Tidak Diterima</p>
                                 @endif
                             </td>
                             <td>

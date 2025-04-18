@@ -26,7 +26,7 @@
             </div>
             <div class="form-input">
                 <label for="status">Status</label>
-                <input type="text" class="input capitalize" name="status" value="{{ $eventRecruitment->status }}" readonly>
+                <input type="text" class="input capitalize" name="status" value="{{ $eventRecruitment->status === 'pending' ? 'Tertunda' : ($eventRecruitment->status === 'accepted' ? 'Diterima' : 'Tidak Diterima') }}" readonly>
             </div>
             <div class="form-input lg:col-span-2">
                 <label for="reason">Motivasi/ Alasan Mengikuti Kepanitiaan</label>

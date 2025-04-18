@@ -53,8 +53,8 @@
                 <label for="status">Status</label>
                 <select class="input" name="status">
                     <option value="pending" {{ $eventRecruitment->status === 'pending' ? 'selected' : '' }}>Tertunda</option>
-                    <option value="accepted" {{ $eventRecruitment->status === 'accepted' ? 'selected' : '' }}>Lolos</option>
-                    <option value="rejected" {{ $eventRecruitment->status === 'rejected' ? 'selected' : '' }}>Tidak Lolos</option>
+                    <option value="accepted" {{ $eventRecruitment->status === 'accepted' ? 'selected' : '' }}>Diterima</option>
+                    <option value="rejected" {{ $eventRecruitment->status === 'rejected' ? 'selected' : '' }}>Tidak Diterima</option>
                 </select>
                 @error('status')
                 <p class="text-invalid">{{ $message }}</p>
