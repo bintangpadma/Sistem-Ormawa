@@ -12,7 +12,7 @@
     @endif
     <form class="content-menu content-profile">
         <div class="menu-profile">
-            <img src="{{ auth()->user()->admin ? (auth()->user()->admin->profile_path ? asset('assets/image/admin/' . auth()->user()->admin->profile_path) : 'https://placehold.co/100?text=Image+Not+Found') : (auth()->user()->student_organization->profile_path ? asset('assets/image/student-organization/' . auth()->user()->student_organization->profile_path) : 'https://placehold.co/100?text=Image+Not+Found') }}" alt="Profile Image" class="profile-image">
+            <img src="{{ auth()->user()->admin->profile_path ? asset('assets/image/admin/' . auth()->user()->admin->profile_path) : 'https://placehold.co/100?text=Image+Not+Found' }}" alt="Profile Image" class="profile-image">
         </div>
         <div class="menu-profile">
             <h4 class="profile-title">Data Profil</h4>

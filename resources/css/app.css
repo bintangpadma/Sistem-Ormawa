@@ -363,7 +363,7 @@
     }
 
     .dashboard .content-menu.content-profile .menu-profile .profile-image {
-        @apply w-full rounded-[3px];
+        @apply w-full aspect-square object-cover rounded-[3px];
     }
 
     .dashboard .content-menu.content-profile .menu-profile .profile-title {

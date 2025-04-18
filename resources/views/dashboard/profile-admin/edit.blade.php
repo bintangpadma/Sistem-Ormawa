@@ -10,7 +10,7 @@
         @csrf
         @method('PUT')
         <label class="menu-profile flex flex-col gap-[6px] lg:gap-[8px] input-image">
-            <img src="{{ auth()->user()->admin ? (auth()->user()->admin->profile_path ? asset('assets/image/admin/' . auth()->user()->admin->profile_path) : 'https://placehold.co/100?text=Image+Not+Found') : (auth()->user()->student_organization->profile_path ? asset('assets/image/student-organization/' . auth()->user()->student_organization->profile_path) : 'https://placehold.co/100?text=Image+Not+Found') }}" alt="Profile Image" class="profile-image">
+            <img src="{{ auth()->user()->admin->profile_path ? asset('assets/image/admin/' . auth()->user()->admin->profile_path) : 'https://placehold.co/100?text=Image+Not+Found' }}" alt="Profile Image" class="profile-image">
             <input type="file" class="image-input-hidden" id="profile_path" name="profile_path">
             <div class="button-secondary image-button w-full text-center">Pilih foto</div>
             @error('profile_path')

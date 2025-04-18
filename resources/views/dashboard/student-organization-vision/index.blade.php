@@ -15,9 +15,7 @@
             <form method="GET" class="form">
                 <input type="search" class="input" name="search" placeholder="Cari visi..." value="{{ $search }}">
             </form>
-            @if(auth()->user()->admin)
-                <button class="button-primary" data-target="createModal" onclick="openModal(this)">Tambah Visi</button>
-            @endif
+            <button class="button-primary" data-target="createModal" onclick="openModal(this)">Tambah Visi</button>
         </div>
         <div class="table-group">
             <table>
@@ -39,14 +37,12 @@
                                     <button class="button icon-detail" data-target="detailModal" data-id="{{ $studentOrganizationVision->id }}" onclick="openModal(this)">
                                         <span class="bg-detail-primary"></span>
                                     </button>
-                                    @if(auth()->user()->admin)
-                                        <button class="button icon-edit" data-target="editModal" data-id="{{ $studentOrganizationVision->id }}" onclick="openModal(this)">
-                                            <span class="bg-edit-warning"></span>
-                                        </button>
-                                        <button class="button icon-delete" data-target="deleteModal" data-id="{{ $studentOrganizationVision->id }}" onclick="openModal(this)">
-                                            <span class="bg-delete-danger"></span>
-                                        </button>
-                                    @endif
+                                    <button class="button icon-edit" data-target="editModal" data-id="{{ $studentOrganizationVision->id }}" onclick="openModal(this)">
+                                        <span class="bg-edit-warning"></span>
+                                    </button>
+                                    <button class="button icon-delete" data-target="deleteModal" data-id="{{ $studentOrganizationVision->id }}" onclick="openModal(this)">
+                                        <span class="bg-delete-danger"></span>
+                                    </button>
                                 </div>
                             </td>
                         </tr>

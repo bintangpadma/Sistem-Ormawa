@@ -11,29 +11,25 @@ class ProfileController extends Controller
 {
     public function index()
     {
-        return view('dashboard.profile-admin.index', [
+        $view = auth()->user()->admin ? 'dashboard.profile-admin.index' : 'dashboard.profile-student-organization.index';
+
+        return view($view, [
             'page' => 'Halaman Profil'
         ]);
     }
 
     public function edit()
     {
-        return view('dashboard.profile-admin.edit', [
-            'page' => 'Halaman Profil',
+        $view = auth()->user()->admin ? 'dashboard.profile-admin.edit' : 'dashboard.profile-student-organization.edit';
+
+        return view($view, [
+            'page' => 'Halaman Edit Profil',
         ]);
     }
 
     public function update(Request $request)
     {
         try {
-            $validatedDataAdmin = $request->validate([
-                'profile_path' => 'nullable|file|image|mimes:png,jpg,jpeg,gif,webp,svg|max:2048',
-                'lecturer_code' => 'required|string|max:50',
-                'full_name' => 'required|string|max:255',
-                'phone_number' => 'required|max:15',
-                'gender' => 'required|max:25',
-            ]);
-
             $validatedDataUser = $request->validate([
                 'username' => 'required|string|max:100',
                 'email' => 'required|string|max:255',
@@ -41,16 +37,49 @@ class ProfileController extends Controller
                 'new_password' => 'nullable|string',
             ]);
 
-            if ($request->hasFile('profile_path')) {
-                $imageFile = $request->file('profile_path');
-                $imageName = time() . '.' . $imageFile->getClientOriginalExtension();
-                if (auth()->user()->admin->profile_path && File::exists(public_path('assets/image/admin/' . auth()->user()->admin->profile_path))) {
-                    File::delete(public_path('assets/image/admin/' . auth()->user()->admin->profile_path));
+            if (auth()->user()->admin) {
+                $validatedDataAdmin = $request->validate([
+                    'profile_path' => 'nullable|file|image|mimes:png,jpg,jpeg,gif,webp,svg|max:2048',
+                    'lecturer_code' => 'required|string|max:50',
+                    'full_name' => 'required|string|max:255',
+                    'phone_number' => 'required|max:15',
+                    'gender' => 'required|max:25',
+                ]);
+
+                if ($request->hasFile('profile_path')) {
+                    $imageFile = $request->file('profile_path');
+                    $imageName = time() . '.' . $imageFile->getClientOriginalExtension();
+                    if (auth()->user()->admin->profile_path && File::exists(public_path('assets/image/admin/' . auth()->user()->admin->profile_path))) {
+                        File::delete(public_path('assets/image/admin/' . auth()->user()->admin->profile_path));
+                    }
+                    $imageFile->move(public_path('assets/image/admin'), $imageName);
+                    $validatedDataAdmin['profile_path'] = $imageName;
+                } else {
+                    $validatedDataAdmin['profile_path'] = auth()->user()->admin->profile_path;
                 }
-                $imageFile->move(public_path('assets/image/admin'), $imageName);
-                $validatedDataAdmin['profile_path'] = $imageName;
-            } else {
-                $validatedDataAdmin['profile_path'] = auth()->user()->admin->profile_path;
+
+                auth()->user()->admin->update($validatedDataAdmin);
+            } else if (auth()->user()->student_organization) {
+                $validatedDataStudentOrganization = $request->validate([
+                    'image_path' => 'nullable|file|image|mimes:png,jpg,jpeg,gif,webp,svg|max:2048',
+                    'name' => 'required|string|max:100',
+                    'abbreviation' => 'required|string|max:50',
+                    'description' => 'required|string',
+                ]);
+
+                if ($request->hasFile('image_path')) {
+                    $imageFile = $request->file('image_path');
+                    $imageName = time() . '.' . $imageFile->getClientOriginalExtension();
+                    if (auth()->user()->student_organization->image_path && File::exists(public_path('assets/image/student-organization/' . auth()->user()->student_organization->image_path))) {
+                        File::delete(public_path('assets/image/student-organization/' . auth()->user()->student_organization->image_path));
+                    }
+                    $imageFile->move(public_path('assets/image/student-organization'), $imageName);
+                    $validatedDataStudentOrganization['image_path'] = $imageName;
+                } else {
+                    $validatedDataStudentOrganization['image_path'] = auth()->user()->student_organization->image_path;
+                }
+
+                auth()->user()->student_organization->update($validatedDataStudentOrganization);
             }
 
             if (!empty($validatedDataUser['old_password']) && !empty($validatedDataUser['new_password'])) {
@@ -60,7 +89,6 @@ class ProfileController extends Controller
                 $validatedDataUser['password'] = Hash::make($validatedDataUser['new_password']);
             }
 
-            auth()->user()->admin->update($validatedDataAdmin);
             auth()->user()->update($validatedDataUser);
 
             return redirect()->route('profile.index')->with('success', 'Berhasil mengedit profil!');
