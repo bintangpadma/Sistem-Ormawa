@@ -35,6 +35,10 @@
             <span class="group-hover:bg-event-dark group-hover:opacity-100 {{ Route::is('event*') ? 'bg-event-dark opacity-100' : 'bg-event-light opacity-[0.62]' }}"></span>
             Event
         </a>
+        <a href="{{ route('evaluation.index') }}" class="content-item group {{ Route::is('evaluation*') ? 'active' : '' }}">
+            <span class="group-hover:bg-evaluation-dark group-hover:opacity-100 {{ Route::is('evaluation*') ? 'bg-evaluation-dark opacity-100' : 'bg-evaluation-light opacity-[0.62]' }}"></span>
+            Evaluasi
+        </a>
         <a href="{{ route('activity-report.index') }}" class="content-item group {{ Route::is('activity-report*') ? 'active' : '' }}">
             <span class="group-hover:bg-activity-report-dark group-hover:opacity-100 {{ Route::is('activity-report*') ? 'bg-activity-report-dark opacity-100' : 'bg-activity-report-light opacity-[0.62]' }}"></span>
             LPJ

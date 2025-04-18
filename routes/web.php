@@ -67,6 +67,8 @@ Route::middleware('auth')->group(function () {
         Route::match(['put', 'patch'], '/event/{event}/recruitment/{eventRecruitment}', 'update')->name('event-recruitment.update');
         Route::delete('/event/{event}/recruitment/{eventRecruitment}', 'destroy')->name('event-recruitment.destroy');
     });
+    Route::resources(['evaluation' => \App\Http\Controllers\EvaluationController::class]);
+    Route::get('/evaluation/{eventRecruitment}/create', [\App\Http\Controllers\EvaluationController::class, 'create'])->name('evaluation.create-form');
     Route::resources(['activity-report' => \App\Http\Controllers\ActivityReportController::class]);
     Route::resources(['administrative-document' => \App\Http\Controllers\AdministrativeDocumentController::class]);
     Route::post('/logout', [UserController::class, 'delete'])->name('user.delete');

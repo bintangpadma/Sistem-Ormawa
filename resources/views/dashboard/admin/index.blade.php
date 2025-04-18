@@ -73,7 +73,8 @@
         function openModal(element) {
             const modalTarget = element.getAttribute('data-target')
             const modalId = element.getAttribute('data-id')
-            document.getElementById(`${modalTarget}`).classList.add('show')
+            const modal = document.getElementById(`${modalTarget}`)
+            modal.classList.add('show')
             if (modalTarget.includes('delete')) {
                 document.getElementById('buttonDeleteAdmin').setAttribute('action', '/admin/' + modalId)
             }

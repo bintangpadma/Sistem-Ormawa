@@ -24,7 +24,7 @@
                     <th>Divisi</th>
                     <th>Nama Mahasiswa</th>
                     <th>NIM</th>
-                    <th>Number Phone</th>
+                    <th>Nomor Telepon</th>
                     <th>Program Studi</th>
                     <th>Status</th>
                     <th></th>

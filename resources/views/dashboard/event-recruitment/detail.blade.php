@@ -32,8 +32,11 @@
                 <label for="reason">Motivasi/ Alasan Mengikuti Kepanitiaan</label>
                 <textarea rows="4" class="input" name="reason" readonly>{{ $eventRecruitment->reason }}</textarea>
             </div>
-            <div class="button-group">
+            <div class="button-group justify-between">
                 <a href="{{ route('event-recruitment.index', $event) }}" class="button-secondary">Kembali ke Halaman Perekrut</a>
+                @if($eventRecruitment->status === 'accepted')
+                    <a href="{{ route('evaluation.create-form', $eventRecruitment) }}" class="button-primary">Buat Evaluasi</a>
+                @endif
             </div>
         </form>
     </div>

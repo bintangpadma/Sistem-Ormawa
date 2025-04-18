@@ -41,6 +41,8 @@ export default {
                 'news-dark': "url('/public/assets/image/sidebar/news-dark.svg')",
                 'event-light': "url('/public/assets/image/sidebar/event-light.svg')",
                 'event-dark': "url('/public/assets/image/sidebar/event-dark.svg')",
+                'evaluation-light': "url('/public/assets/image/sidebar/evaluation-light.svg')",
+                'evaluation-dark': "url('/public/assets/image/sidebar/evaluation-dark.svg')",
                 'activity-report-light': "url('/public/assets/image/sidebar/activity-report-light.svg')",
                 'activity-report-dark': "url('/public/assets/image/sidebar/activity-report-dark.svg')",
                 'administrative-document-light': "url('/public/assets/image/sidebar/administrative-document-light.svg')",
