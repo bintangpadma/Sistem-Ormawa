@@ -24,6 +24,12 @@ class UserController extends Controller
 
             if (Auth::attempt($validatedData)) {
                 $request->session()->regenerate();
+                if (!auth()->user()->admin->status) {
+                    Auth::logout();
+                    $request->session()->invalidate();
+                    $request->session()->regenerateToken();
+                    return redirect()->back()->with('failed', 'Akun admin ini sudah tidak aktif!');
+                }
                 return redirect()->route('dashboard.index')->with('success', 'Berhasil login akun!');
             }
 

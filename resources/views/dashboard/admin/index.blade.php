@@ -44,16 +44,18 @@
                             <td>{{ $admin->status ? 'Aktif' : 'Tidak Aktif' }}</td>
                             <td>
                                 <div class="action-button">
-                                    <a href="{{ route('admin.show', $admin) }}" class="button icon-detail">
-                                        <span class="bg-detail-primary"></span>
-                                    </a>
-                                    @if(auth()->user()->admin->is_super_admin)
-                                        <a href="{{ route('admin.edit', $admin) }}" class="button icon-edit">
-                                            <span class="bg-edit-warning"></span>
+                                    @if(auth()->user()->admin->id !== $admin->id)
+                                        <a href="{{ route('admin.show', $admin) }}" class="button icon-detail">
+                                            <span class="bg-detail-primary"></span>
                                         </a>
-                                        <button class="button icon-delete" data-target="deleteModal" data-id="{{ $admin->id }}" onclick="openModal(this)">
-                                            <span class="bg-delete-danger"></span>
-                                        </button>
+                                        @if(auth()->user()->admin->is_super_admin)
+                                            <a href="{{ route('admin.edit', $admin) }}" class="button icon-edit">
+                                                <span class="bg-edit-warning"></span>
+                                            </a>
+                                            <button class="button icon-delete" data-target="deleteModal" data-id="{{ $admin->id }}" onclick="openModal(this)">
+                                                <span class="bg-delete-danger"></span>
+                                            </button>
+                                        @endif
                                     @endif
                                 </div>
                             </td>
