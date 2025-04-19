@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('student_organization_structures', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('student_organizations_id')->index();
+            $table->text('profile_path')->nullable();
             $table->string('student_name', 255);
             $table->string('student_code', 50);
             $table->string('role', 100);

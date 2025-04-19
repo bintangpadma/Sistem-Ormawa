@@ -25,6 +25,14 @@
                 <input type="text" class="input" name="study_program" value="{{ $eventRecruitment->study_program }}" readonly>
             </div>
             <div class="form-input">
+                <label for="class">Kelas</label>
+                <input type="text" class="input" name="class" value="{{ $eventRecruitment->class }}" readonly>
+            </div>
+            <div class="form-input">
+                <label for="year_appointment">Tahun Angkatan</label>
+                <input type="text" class="input" name="year_appointment" value="{{ $eventRecruitment->year_appointment }}" readonly>
+            </div>
+            <div class="form-input">
                 <label for="status">Status</label>
                 <input type="text" class="input capitalize" name="status" value="{{ $eventRecruitment->status === 'pending' ? 'Tertunda' : ($eventRecruitment->status === 'accepted' ? 'Diterima' : 'Tidak Diterima') }}" readonly>
             </div>

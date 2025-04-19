@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('student_organization_programs', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('student_organizations_id')->index();
+            $table->text('image_path')->nullable();
             $table->string('name', 150);
             $table->text('description')->nullable();
             $table->timestamps();

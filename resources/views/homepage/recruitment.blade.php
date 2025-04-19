@@ -58,6 +58,20 @@
                     <p class="text-invalid">{{ $message }}</p>
                     @enderror
                 </div>
+                <div class="form-input">
+                    <label for="class">Kelas</label>
+                    <input type="text" class="input" name="class" placeholder="Masukkan kelas anda...">
+                    @error('class')
+                    <p class="text-invalid">{{ $message }}</p>
+                    @enderror
+                </div>
+                <div class="form-input">
+                    <label for="year_appointment">Tahun Angkatan</label>
+                    <input type="text" class="input" name="year_appointment" placeholder="Masukkan tahun angkatan anda...">
+                    @error('year_appointment')
+                    <p class="text-invalid">{{ $message }}</p>
+                    @enderror
+                </div>
                 <div class="form-input lg:col-span-2">
                     <label for="reason">Motivasi/ Alasan Mengikuti Kepanitiaan</label>
                     <textarea rows="4" class="input" name="reason" placeholder="Masukkan motivasi/ alasan mengikuti kepanitiaan anda..."></textarea>

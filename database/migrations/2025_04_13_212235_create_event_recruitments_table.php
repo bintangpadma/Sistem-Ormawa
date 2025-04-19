@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('student_code', 50);
             $table->string('number_phone', 15);
             $table->string('study_program', 50);
+            $table->string('class', 25);
+            $table->string('year_appointment', 4);
             $table->text('reason');
             $table->enum('status', ['pending', 'accepted', 'rejected'])->default('pending');
             $table->timestamps();

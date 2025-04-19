@@ -19,6 +19,8 @@ class EventRecruitmentController extends Controller
                         ->orWhere('student_code', 'LIKE', '%' . $search . '%')
                         ->orWhere('number_phone', 'LIKE', '%' . $search . '%')
                         ->orWhere('study_program', 'LIKE', '%' . $search . '%')
+                        ->orWhere('class', 'LIKE', '%' . $search . '%')
+                        ->orWhere('year_appointment', 'LIKE', '%' . $search . '%')
                         ->orWhere('reason', 'LIKE', '%' . $search . '%')
                         ->orWhere('status', 'LIKE', '%' . $search . '%')
                         ->orWhereHas('event_division', function ($q) use ($search) {
@@ -65,6 +67,8 @@ class EventRecruitmentController extends Controller
                 'student_code' => 'required|string|max:50',
                 'number_phone' => 'required|string|max:15',
                 'study_program' => 'required|string|max:50',
+                'class' => 'required|string|max:25',
+                'year_appointment' => 'required|string',
                 'reason' => 'required|string',
             ]);
             $validatedData['events_id'] = $event->id;
@@ -100,6 +104,8 @@ class EventRecruitmentController extends Controller
                 'student_code' => 'required|string|max:50',
                 'number_phone' => 'required|string|max:15',
                 'study_program' => 'required|string|max:50',
+                'class' => 'required|string|max:25',
+                'year_appointment' => 'required|string',
                 'reason' => 'required|string',
                 'status' => 'required|string',
             ]);

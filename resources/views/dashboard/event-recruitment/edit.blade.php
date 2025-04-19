@@ -50,6 +50,20 @@
                 @enderror
             </div>
             <div class="form-input">
+                <label for="class">Kelas</label>
+                <input type="text" class="input" name="class" placeholder="Masukkan kelas perekrut..." value="{{ $eventRecruitment->class }}">
+                @error('class')
+                <p class="text-invalid">{{ $message }}</p>
+                @enderror
+            </div>
+            <div class="form-input">
+                <label for="year_appointment">Tahun Angkatan</label>
+                <input type="text" class="input" name="year_appointment" placeholder="Masukkan tahun angkatan perekrut..." value="{{ $eventRecruitment->year_appointment }}">
+                @error('year_appointment')
+                <p class="text-invalid">{{ $message }}</p>
+                @enderror
+            </div>
+            <div class="form-input">
                 <label for="status">Status</label>
                 <select class="input" name="status">
                     <option value="pending" {{ $eventRecruitment->status === 'pending' ? 'selected' : '' }}>Tertunda</option>
