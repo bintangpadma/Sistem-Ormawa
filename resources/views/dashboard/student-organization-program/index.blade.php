@@ -61,6 +61,10 @@
 
     <script>
         const studentOrganizationId = @json($studentOrganization->id);
+        const imagePreviewCreate = document.querySelector('.image-preview-create');
+        const imageInputCreate = document.querySelector('.image-input-hidden-create');
+        const imagePreviewEdit = document.querySelector('.image-preview-edit');
+        const imageInputEdit = document.querySelector('.image-input-hidden-edit');
 
         function fetchProgram(modal, programId) {
             fetch('/student-organization/' + studentOrganizationId + '/program/' + programId, {
@@ -71,6 +75,11 @@
                     if (data.status_code === 200) {
                         modal.querySelector('input[name="name"]').value = data.student_organization_program.name;
                         modal.querySelector('textarea[name="description"]').value = data.student_organization_program.description;
+                        if (modal.getAttribute('id').includes('detail')) {
+                            modal.querySelector('img.image-preview-detail').setAttribute('src', '/assets/image/program/' + data.student_organization_program.image_path);
+                        } else if(modal.getAttribute('id').includes('edit')) {
+                            modal.querySelector('img.image-preview-edit').setAttribute('src', '/assets/image/program/' + data.student_organization_program.image_path);
+                        }
                     } else {
                         console.log('Data student organization program not found!');
                     }
@@ -100,5 +109,13 @@
         function closeModal(modalTarget) {
             document.getElementById(`${modalTarget}`).classList.remove('show')
         }
+
+        imageInputCreate.addEventListener('change', function() {
+            imagePreviewCreate.src = URL.createObjectURL(imageInputCreate.files[0]);
+        });
+
+        imageInputEdit.addEventListener('change', function() {
+            imagePreviewEdit.src = URL.createObjectURL(imageInputEdit.files[0]);
+        });
     </script>
 @endsection

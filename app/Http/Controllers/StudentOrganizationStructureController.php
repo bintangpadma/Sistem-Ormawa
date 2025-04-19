@@ -95,6 +95,9 @@ class StudentOrganizationStructureController extends Controller
     public function destroy(StudentOrganization $studentOrganization, StudentOrganizationStructure $studentOrganizationStructure)
     {
         try {
+            if ($studentOrganizationStructure->profile_path && File::exists(public_path('assets/image/structure/' . $studentOrganizationStructure->profile_path))) {
+                File::delete(public_path('assets/image/structure/' . $studentOrganizationStructure->profile_path));
+            }
             $studentOrganizationStructure->delete();
             return redirect()->back()->with('success', 'Berhasil menghapus struktur!');
         } catch (\Exception $e) {
