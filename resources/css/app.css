@@ -576,5 +576,9 @@
     section.form-recruitment .recruitment-form {
         @apply w-full;
     }
+
+    section.detail-ormawa .title {
+        @apply mb-[12px] lg:mb-[16px];
+    }
     /* END HOMEPAGE */
 }

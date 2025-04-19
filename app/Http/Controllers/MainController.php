@@ -29,4 +29,19 @@ class MainController extends Controller
             'event' => $event->load(['student_organization', 'event_divisions']),
         ]);
     }
+
+    public function showOrmawa(StudentOrganization $studentOrganization)
+    {
+        return view('homepage.detail-ormawa', [
+            'page' => 'Halaman Detail Organisasi Mahasiswa',
+            'studentOrganization' => $studentOrganization->load([
+                'user',
+                'student_organization_visions',
+                'student_organization_missions',
+                'student_organization_programs',
+                'student_organization_structures',
+                'student_organization_achievements',
+            ]),
+        ]);
+    }
 }
