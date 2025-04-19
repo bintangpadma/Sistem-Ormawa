@@ -10,6 +10,16 @@ Route::controller(\App\Http\Controllers\MainController::class)->group(function (
     Route::get('/{studentOrganization}/ormawa', 'showOrmawa')->name('main.show-ormawa');
 });
 
+Route::controller(\App\Http\Controllers\EventRecruitmentController::class)->group(function () {
+    Route::get('/event/{event}/recruitment', 'index')->name('event-recruitment.index');
+    Route::get('/event/{event}/recruitment/create', 'create')->name('event-recruitment.create');
+    Route::get('/event/{event}/recruitment/{eventRecruitment}', 'show')->name('event-recruitment.show');
+    Route::post('/event/{event}/recruitment', 'store')->name('event-recruitment.store');
+    Route::get('/event/{event}/recruitment/{eventRecruitment}/edit', 'edit')->name('event-recruitment.edit');
+    Route::match(['put', 'patch'], '/event/{event}/recruitment/{eventRecruitment}', 'update')->name('event-recruitment.update');
+    Route::delete('/event/{event}/recruitment/{eventRecruitment}', 'destroy')->name('event-recruitment.destroy');
+});
+
 Route::middleware('guest')->group(function () {
     Route::get('/login', [UserController::class, 'index'])->name('user.index');
     Route::post('/login', [UserController::class, 'store'])->name('user.store');
@@ -68,15 +78,6 @@ Route::middleware('auth')->group(function () {
         Route::post('/event/{event}/division', 'store')->name('event-division.store');
         Route::match(['put', 'patch'], '/event/{event}/division/{eventDivision}', 'update')->name('event-division.update');
         Route::delete('/event/{event}/division/{eventDivision}', 'destroy')->name('event-division.destroy');
-    });
-    Route::controller(\App\Http\Controllers\EventRecruitmentController::class)->group(function () {
-        Route::get('/event/{event}/recruitment', 'index')->name('event-recruitment.index');
-        Route::get('/event/{event}/recruitment/create', 'create')->name('event-recruitment.create');
-        Route::get('/event/{event}/recruitment/{eventRecruitment}', 'show')->name('event-recruitment.show');
-        Route::post('/event/{event}/recruitment', 'store')->name('event-recruitment.store');
-        Route::get('/event/{event}/recruitment/{eventRecruitment}/edit', 'edit')->name('event-recruitment.edit');
-        Route::match(['put', 'patch'], '/event/{event}/recruitment/{eventRecruitment}', 'update')->name('event-recruitment.update');
-        Route::delete('/event/{event}/recruitment/{eventRecruitment}', 'destroy')->name('event-recruitment.destroy');
     });
     Route::resources(['evaluation' => \App\Http\Controllers\EvaluationController::class]);
     Route::get('/evaluation/{eventRecruitment}/create', [\App\Http\Controllers\EvaluationController::class, 'create'])->name('evaluation.create-form');

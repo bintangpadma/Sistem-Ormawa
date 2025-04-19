@@ -560,5 +560,21 @@
     footer.footer .copyright {
         @apply text-[0.875rem] text-light/[0.42];
     }
+
+    section.form-recruitment {
+        @apply grid grid-cols-1 lg:grid-cols-[400px_auto] xl:grid-cols-[500px_auto] gap-[42px] lg:gap-[52px] xl:gap-[56px] 2xl:gap-[62px];
+    }
+
+    section.form-recruitment .recruitment-banner {
+        @apply hidden lg:inline-block h-full;
+    }
+
+    section.form-recruitment .recruitment-banner .banner-image {
+        @apply w-full h-full rounded-[4px] object-cover;
+    }
+
+    section.form-recruitment .recruitment-form {
+        @apply w-full;
+    }
     /* END HOMEPAGE */
 }

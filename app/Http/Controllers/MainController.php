@@ -21,4 +21,12 @@ class MainController extends Controller
             'events' => Event::latest()->get(),
         ]);
     }
+
+    public function showRecruitment(Event $event)
+    {
+        return view('homepage.recruitment', [
+            'page' => 'Halaman Daftar Event',
+            'event' => $event->load(['student_organization', 'event_divisions']),
+        ]);
+    }
 }

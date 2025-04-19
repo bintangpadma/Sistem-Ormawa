@@ -69,7 +69,11 @@ class EventRecruitmentController extends Controller
             ]);
             $validatedData['events_id'] = $event->id;
             EventRecruitment::create($validatedData);
-            return redirect()->route('event-recruitment.index', $event)->with('success', 'Berhasil mendaftar panitia event!');
+            if (auth()->check()) {
+                return redirect()->route('event-recruitment.index', $event)->with('success', 'Berhasil mendaftar panitia event!');
+            } else {
+                return redirect()->back()->with('success', 'Berhasil mendaftar panitia event!');
+            }
         } catch (\Exception $e) {
             logger($e->getMessage());
             return redirect()->back()->with('failed', 'Gagal mendaftar panitia event!');
