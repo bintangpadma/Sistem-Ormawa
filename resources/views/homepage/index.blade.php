@@ -94,9 +94,11 @@
             <div class="section-content content-gap">
                 @foreach($events as $event)
                     <div class="card-event">
-                        <img src="{{ asset('assets/image/event/' . $event->image_path) }}" alt="Event Image" class="event-image">
+                        <a href="{{ route('main.show-event', $event) }}" class="inline-block">
+                            <img src="{{ asset('assets/image/event/' . $event->image_path) }}" alt="Event Image" class="event-image">
+                        </a>
                         <div class="event-content">
-                            <h5 class="content-title">{{ $event->name }}</h5>
+                            <a href="{{ route('main.show-event', $event) }}" class="content-title">{{ $event->name }}</a>
                             <a href="{{ route('main.show-recruitment', $event) }}" class="button-primary px-[18px] py-[12px] text-[0.913rem] font-xd-prime-regular">Daftar Sekarang</a>
                         </div>
                     </div>

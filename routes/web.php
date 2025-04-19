@@ -6,8 +6,9 @@ use Illuminate\Support\Facades\Route;
 Route::controller(\App\Http\Controllers\MainController::class)->group(function () {
     Route::get('/', 'index')->name('main.index');
     Route::get('/{event}/recruitment', 'showRecruitment')->name('main.show-recruitment');
-    Route::get('/{news}/news', 'showNews')->name('main.show-news');
     Route::get('/{studentOrganization}/ormawa', 'showOrmawa')->name('main.show-ormawa');
+    Route::get('/{event}/event', 'showEvent')->name('main.show-event');
+    Route::get('/{news}/news', 'showNews')->name('main.show-news');
 });
 
 Route::controller(\App\Http\Controllers\EventRecruitmentController::class)->group(function () {

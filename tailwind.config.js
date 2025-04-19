@@ -62,6 +62,7 @@ export default {
                 'link-move-light': "url('/public/assets/image/icon/link-move-light.svg')",
                 'arrow-down-primary': "url('/public/assets/image/icon/arrow-down-primary.svg')",
                 'arrow-right-dark': "url('/public/assets/image/icon/arrow-right-dark.svg')",
+                'search-dark': "url('/public/assets/image/icon/search-dark.svg')",
             },
         },
         container: {

@@ -545,7 +545,7 @@
 
     .homepage-content section.structure .section-content .card-structure,
     .homepage-content section.recruitment .section-content .card-event .event-content {
-        @apply p-[16px] lg:p-[20px];
+        @apply p-[16px] lg:p-[20px] flex flex-col;
     }
 
     .homepage-content section.structure .section-content .card-structure .structure-title,

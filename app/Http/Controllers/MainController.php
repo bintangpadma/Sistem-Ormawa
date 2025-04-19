@@ -44,4 +44,34 @@ class MainController extends Controller
             ]),
         ]);
     }
+
+    public function showEvent(Event $event, Request $request)
+    {
+        $search = $request->input('search');
+        return view('homepage.detail-event', [
+            'page' => 'Halaman Detail Event',
+            'event' => $event->load([
+                'student_organization',
+                'event_divisions',
+                'event_recruitments' => function ($query) {
+                    $query->where('status', 'accepted');
+                },
+            ]),
+            'otherEvents' => Event::where('id', '!=', $event->id)->with([
+                'student_organization',
+                'event_divisions',
+                'event_recruitments' => fn($query) => $query->where('status', 'accepted'),
+            ])->when($search, function ($query, $search) {
+                $query->where(function ($q) use ($search) {
+                    $q->where('name', 'LIKE', '%' . $search . '%')
+                        ->orWhere('description', 'LIKE', '%' . $search . '%')
+                        ->orWhereHas('student_organization', function ($q) use ($search) {
+                            $q->where('name', 'LIKE', '%' . $search . '%')
+                                ->orWhere('abbreviation', 'LIKE', '%' . $search . '%');
+                        });
+                });
+            })->latest()->get(),
+            'search' => $search,
+        ]);
+    }
 }
