@@ -107,6 +107,24 @@
         </section>
     </div>
     <div class="container">
+        <section class="recruitment" id="recruitment">
+            <div class="section-header">
+                <h2 class="title">Berita Saat Ini</h2>
+            </div>
+            <div class="section-content content-gap">
+                @foreach($newses as $news)
+                    <a href="{{ route('main.show-news', $news) }}" class="card-event">
+                        <img src="{{ asset('assets/image/news/' . $news->image_path) }}" alt="Berita Image" class="event-image">
+                        <div class="event-content">
+                            <p class="content-title">{{ $news->name }}</p>
+                            <button type="button" class="button-primary px-[18px] py-[12px] text-[0.913rem] font-xd-prime-regular">Lihat Detail</button>
+                        </div>
+                    </a>
+                @endforeach
+            </div>
+        </section>
+    </div>
+    <div class="container">
         <section class="structure" id="structure">
             <div class="section-header">
                 <h2 class="title">Struktur Organisasi Mahasiswa</h2>

@@ -12,7 +12,11 @@
             <a href="#ormawa" class="button-link hidden lg:inline-block">Ormawa</a>
             <a href="#ukm" class="button-link hidden lg:inline-block">UKM</a>
             <a href="#news" class="button-link hidden lg:inline-block">News</a>
-            <a href="{{ route('user.index') }}" class="button-primary">Masuk</a>
+            @if(!auth()->check())
+                <a href="{{ route('user.index') }}" class="button-primary">Masuk</a>
+            @else
+                <a href="{{ route('dashboard.index') }}" class="button-primary">Dashboard</a>
+            @endif
         </div>
     </nav>
 </div>

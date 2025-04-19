@@ -19,6 +19,7 @@ class MainController extends Controller
             'studentActivityUnits' => StudentActivityUnit::latest()->get(),
             'studentOrganizationPrograms' => StudentOrganizationProgram::with('student_organization')->latest()->get(),
             'events' => Event::latest()->get(),
+            'newses' => News::latest()->get(),
         ]);
     }
 
@@ -69,6 +70,27 @@ class MainController extends Controller
                             $q->where('name', 'LIKE', '%' . $search . '%')
                                 ->orWhere('abbreviation', 'LIKE', '%' . $search . '%');
                         });
+                });
+            })->latest()->get(),
+            'search' => $search,
+        ]);
+    }
+
+    public function showNews(News $news, Request $request)
+    {
+        $search = $request->input('search');
+        return view('homepage.detail-news', [
+            'page' => 'Halaman Detail Berita',
+            'news' => $news->load(['student_organization']),
+            'otherNewses' => News::where('id', '!=', $news->id)->with(['student_organization'])
+                ->when($search, function ($query, $search) {
+                    $query->where(function ($q) use ($search) {
+                        $q->where('name', 'LIKE', '%' . $search . '%')
+                            ->orWhere('description', 'LIKE', '%' . $search . '%')
+                            ->orWhereHas('student_organization', function ($q) use ($search) {
+                                $q->where('name', 'LIKE', '%' . $search . '%')
+                                    ->orWhere('abbreviation', 'LIKE', '%' . $search . '%');
+                            });
                 });
             })->latest()->get(),
             'search' => $search,
