@@ -1,4 +1,4 @@
-<div class="topbar w-full h-[76px] bg-dark-700 px-[16px] md:px-[32px] lg:px-[36px] xl:px-[42px] flex items-center justify-between">
+<div class="w-full h-[76px] bg-dark-700 px-[16px] md:px-[32px] lg:px-[36px] xl:px-[42px] flex items-center justify-between">
     <h4 class="topbar-title text-[1.5rem] font-xd-prime-medium">{{ $page }}</h4>
     <a href="{{ route('profile.index') }}" class="topbar-profile hidden lg:flex items-center gap-[16px] ps-[20px] border-s border-light/[0.12]">
         <div class="profile-data text-end">

@@ -60,6 +60,8 @@ export default {
                 'edit-warning': "url('/public/assets/image/icon/edit-warning.svg')",
                 'delete-danger': "url('/public/assets/image/icon/delete-danger.svg')",
                 'link-move-light': "url('/public/assets/image/icon/link-move-light.svg')",
+                'arrow-down-primary': "url('/public/assets/image/icon/arrow-down-primary.svg')",
+                'arrow-right-dark': "url('/public/assets/image/icon/arrow-right-dark.svg')",
             },
         },
         container: {

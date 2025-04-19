@@ -3,6 +3,13 @@
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
+Route::controller(\App\Http\Controllers\MainController::class)->group(function () {
+    Route::get('/', 'index')->name('main.index');
+    Route::get('/{event}/recruitment', 'showRecruitment')->name('main.show-recruitment');
+    Route::get('/{news}/news', 'showNews')->name('main.show-news');
+    Route::get('/{studentOrganization}/ormawa', 'showOrmawa')->name('main.show-ormawa');
+});
+
 Route::middleware('guest')->group(function () {
     Route::get('/login', [UserController::class, 'index'])->name('user.index');
     Route::post('/login', [UserController::class, 'store'])->name('user.store');
