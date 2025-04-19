@@ -14,8 +14,12 @@ class DashboardController extends Controller
     {
         $studentOrganizationCount = StudentOrganization::all()->count();
         $studentActivityUnitCount = StudentActivityUnit::all()->count();
-        $newsCount = News::all()->count();
-        $eventCount = Event::all()->count();
+        $newsCount = News::when(auth()->user()->student_organization, function ($query) {
+            $query->where('student_organizations_id', auth()->user()->student_organization->id);
+        })->get()->count();
+        $eventCount = Event::when(auth()->user()->student_organization, function ($query) {
+            $query->where('student_organizations_id', auth()->user()->student_organization->id);
+        })->get()->count();
         return view('dashboard.index', [
             'page' => 'Halaman Dashboard',
             'studentOrganizationCount' => $studentOrganizationCount,
