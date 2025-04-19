@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\StudentOrganization;
 use App\Models\StudentOrganizationStructure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class StudentOrganizationStructureController extends Controller
 {
@@ -39,10 +40,19 @@ class StudentOrganizationStructureController extends Controller
     {
         try {
             $validatedData = $request->validate([
+                'profile_path' => 'required|file|image|mimes:png,jpg,jpeg,gif,webp,svg|max:2048',
                 'student_name' => 'required|string|max:255',
                 'student_code' => 'required|string|max:50',
                 'role' => 'required|string|max:100',
             ]);
+
+            if ($request->hasFile('profile_path')) {
+                $imageFile = $request->file('profile_path');
+                $imageName = time() . '.' . $imageFile->getClientOriginalExtension();
+                $imageFile->move(public_path('assets/image/structure'), $imageName);
+                $validatedData['profile_path'] = $imageName;
+            }
+
             $validatedData['student_organizations_id'] = $studentOrganization->id;
             StudentOrganizationStructure::create($validatedData);
             return redirect()->back()->with('success', 'Berhasil menambahkan struktur baru!');
@@ -56,10 +66,24 @@ class StudentOrganizationStructureController extends Controller
     {
         try {
             $validatedData = $request->validate([
+                'profile_path' => 'nullable|file|image|mimes:png,jpg,jpeg,gif,webp,svg|max:2048',
                 'student_name' => 'required|string|max:255',
                 'student_code' => 'required|string|max:50',
                 'role' => 'required|string|max:100',
             ]);
+
+            if ($request->hasFile('profile_path')) {
+                $imageFile = $request->file('profile_path');
+                $imageName = time() . '.' . $imageFile->getClientOriginalExtension();
+                if ($studentOrganizationStructure->profile_path && File::exists(public_path('assets/image/structure/' . $studentOrganizationStructure->profile_path))) {
+                    File::delete(public_path('assets/image/structure/' . $studentOrganizationStructure->profile_path));
+                }
+                $imageFile->move(public_path('assets/image/structure'), $imageName);
+                $validatedData['profile_path'] = $imageName;
+            } else {
+                $validatedData['profile_path'] = $studentOrganizationStructure->profile_path;
+            }
+
             $studentOrganizationStructure->update($validatedData);
             return redirect()->back()->with('success', 'Berhasil mengedit struktur!');
         } catch (\Exception $e) {

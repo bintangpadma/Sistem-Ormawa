@@ -63,6 +63,10 @@
 
     <script>
         const studentOrganizationId = @json($studentOrganization->id);
+        const imagePreviewCreate = document.querySelector('.image-preview-create');
+        const imageInputCreate = document.querySelector('.image-input-hidden-create');
+        const imagePreviewEdit = document.querySelector('.image-preview-edit');
+        const imageInputEdit = document.querySelector('.image-input-hidden-edit');
 
         function fetchStructure(modal, structureId) {
             fetch('/student-organization/' + studentOrganizationId + '/structure/' + structureId, {
@@ -74,6 +78,11 @@
                         modal.querySelector('input[name="student_name"]').value = data.student_organization_structure.student_name;
                         modal.querySelector('input[name="student_code"]').value = data.student_organization_structure.student_code;
                         modal.querySelector('input[name="role"]').value = data.student_organization_structure.role;
+                        if (modal.getAttribute('id').includes('detail')) {
+                            modal.querySelector('img.image-preview-detail').setAttribute('src', '/assets/image/structure/' + data.student_organization_structure.profile_path);
+                        } else if(modal.getAttribute('id').includes('edit')) {
+                            modal.querySelector('img.image-preview-edit').setAttribute('src', '/assets/image/structure/' + data.student_organization_structure.profile_path);
+                        }
                     } else {
                         console.log('Data student organization structure not found!');
                     }
@@ -103,5 +112,13 @@
         function closeModal(modalTarget) {
             document.getElementById(`${modalTarget}`).classList.remove('show')
         }
+
+        imageInputCreate.addEventListener('change', function() {
+            imagePreviewCreate.src = URL.createObjectURL(imageInputCreate.files[0]);
+        });
+
+        imageInputEdit.addEventListener('change', function() {
+            imagePreviewEdit.src = URL.createObjectURL(imageInputEdit.files[0]);
+        });
     </script>
 @endsection
