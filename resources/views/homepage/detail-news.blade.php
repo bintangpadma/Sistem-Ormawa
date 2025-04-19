@@ -22,7 +22,7 @@
             <div class="event-list flex flex-col gap-[12px] lg:gap-[16px]">
                 @if(count($otherNewses) > 0)
                     @foreach($otherNewses as $otherNews)
-                        <a href="{{ route('main.show-event', $otherNews) }}" class="card-other bg-dark-700 overflow-hidden rounded-[3px] flex items-center gap-[12px] lg:gap-[16px]">
+                        <a href="{{ route('main.show-news', $otherNews) }}" class="card-other bg-dark-700 overflow-hidden rounded-[3px] flex items-center gap-[12px] lg:gap-[16px]">
                             <img src="{{ asset('assets/image/news/' . $otherNews->image_path) }}" alt="Berita Image" class="aspect-square object-cover w-[120px]">
                             <div class="flex flex-col gap-[4px]">
                                 <h6 class="text-[0.913rem] font-xd-prime-regular line-clamp-1">{{ $otherNews->name }}</h6>

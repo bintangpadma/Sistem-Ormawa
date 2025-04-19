@@ -45,13 +45,13 @@
                                     @if($evaluation->assessment === 'excellent')
                                         <p class="status-accepted">Sangat Baik</p>
                                     @elseif($evaluation->assessment === 'good')
-                                        <p class="status-accepted">Baik</p>
+                                        <p class="status-accepted">Bagus</p>
                                     @endif
                                 @elseif($evaluation->assessment === 'poor' || $evaluation->assessment === 'very_poor')
                                     @if($evaluation->assessment === 'poor')
-                                        <p class="status-rejected">Sangat Baik</p>
+                                        <p class="status-rejected">Buruk</p>
                                     @elseif($evaluation->assessment === 'very_poor')
-                                        <p class="status-rejected">Baik</p>
+                                        <p class="status-rejected">Sangat Buruk</p>
                                     @endif
                                 @endif
                             </td>

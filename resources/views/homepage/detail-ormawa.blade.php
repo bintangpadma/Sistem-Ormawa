@@ -22,7 +22,7 @@
                     <div class="card-structure bg-dark-700 rounded-[3px] overflow-hidden flex flex-col">
                         <img src="https://placehold.co/48x48?text=Image+Not+Found" alt="Image Ormawa" class="structure-image w-full aspect-video object-cover">
                         <div class="structure-content p-[16px] lg:p-[20px]">
-                            <h4 class="content-title text-[0.913rem] lg:text-[1rem] font-xd-prime-medium leading-[112%] mb-[4px]">{{ $StudentOrganizationStructure->name }}</h4>
+                            <h4 class="content-title text-[0.913rem] lg:text-[1rem] font-xd-prime-medium leading-[112%] mb-[4px]">{{ $StudentOrganizationStructure->student_name }}</h4>
                             <p class="content-description text-[0.813rem] text-light/[0.62]">{{ $StudentOrganizationStructure->role }}</p>
                         </div>
                     </div>
