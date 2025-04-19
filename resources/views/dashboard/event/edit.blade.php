@@ -18,18 +18,22 @@
                 <p class="text-invalid">{{ $message }}</p>
                 @enderror
             </div>
-            <div class="form-input">
-                <label for="student_organizations_id">Organisasi Mahasiswa</label>
-                <select class="input" name="student_organizations_id" id="student_organizations_id">
-                    @foreach($studentOrganizations as $studentOrganization)
-                        <option value="{{ $studentOrganization->id }}" {{ $event->student_organizations_id === $studentOrganization->id ? 'selected' : '' }}>{{ $studentOrganization->name }}</option>
-                    @endforeach
-                </select>
-                @error('student_organizations_id')
-                <p class="text-invalid">{{ $message }}</p>
-                @enderror
-            </div>
-            <div class="form-input">
+            @if(auth()->user()->admin)
+                <div class="form-input">
+                    <label for="student_organizations_id">Organisasi Mahasiswa</label>
+                    <select class="input" name="student_organizations_id" id="student_organizations_id">
+                        @foreach($studentOrganizations as $studentOrganization)
+                            <option value="{{ $studentOrganization->id }}" {{ $event->student_organizations_id === $studentOrganization->id ? 'selected' : '' }}>{{ $studentOrganization->name }}</option>
+                        @endforeach
+                    </select>
+                    @error('student_organizations_id')
+                    <p class="text-invalid">{{ $message }}</p>
+                    @enderror
+                </div>
+            @elseif(auth()->user()->student_organization)
+                <input type="hidden" name="student_organizations_id" value="{{ auth()->user()->student_organization->id }}">
+            @endif
+            <div class="form-input {{ auth()->user()->student_organization ? 'lg:col-span-2' : '' }}">
                 <label for="name">Nama Event</label>
                 <input type="text" class="input" name="name" placeholder="Masukkan nama event..." value="{{ $event->name }}">
                 @error('name')
