@@ -37,7 +37,7 @@
         <div class="content-body">
             <form class="form">
                 <div class="form-input lg:col-span-2">
-                    <label for="name">Info Panitia Divisi</label>
+                    <label for="name">Nama Divisi</label>
                     <input type="text" class="input" name="name" placeholder="Masukkan nama divisi..." readonly>
                 </div>
                 <div class="form-input lg:col-span-2">
@@ -62,7 +62,7 @@
                 @csrf
                 @method('PUT')
                 <div class="form-input lg:col-span-2">
-                    <label for="name">Info Panitia Divisi</label>
+                    <label for="name">Nama Divisi</label>
                     <input type="text" class="input" name="name" placeholder="Masukkan nama divisi...">
                     @error('name')
                     <p class="text-invalid">{{ $message }}</p>
