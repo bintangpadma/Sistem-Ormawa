@@ -4,7 +4,7 @@
             <img src="{{ asset('assets/image/brand/brand-logo.svg') }}" alt="Brand Logo" height="42">
         </a>
     </div>
-    <div class="sidebar-content px-[16px] lg:px-[20px] flex flex-col gap-[6px]">
+    <div class="sidebar-content px-[16px] lg:px-[20px] pb-[16px] lg:pb-[20px] flex flex-col gap-[6px]">
         <a href="{{ route('dashboard.index') }}" class="content-item group {{ Route::is('dashboard*') ? 'active' : '' }}">
             <span class="group-hover:bg-dashboard-dark group-hover:opacity-100 {{ Route::is('dashboard*') ? 'bg-dashboard-dark opacity-100' : 'bg-dashboard-light opacity-[0.62]' }}"></span>
             Dashboard

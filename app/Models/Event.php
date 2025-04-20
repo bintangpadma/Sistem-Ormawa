@@ -27,4 +27,9 @@ class Event extends Model
     {
         return $this->hasMany(EventRecruitment::class, 'events_id', 'id');
     }
+
+    public function event_track_records(): HasMany
+    {
+        return $this->hasMany(EventTrackRecord::class, 'events_id', 'id');
+    }
 }

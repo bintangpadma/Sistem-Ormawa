@@ -42,6 +42,15 @@
                     </a>
                 </div>
             </div>
+            <div class="form-input lg:col-span-2">
+                <label for="track-record">Total Rekam Jejak</label>
+                <div class="input-wrapper">
+                    <input type="text" class="input" name="track-record" value="{{ count($event->event_track_records) }}" readonly>
+                    <a href="{{ route('event-track-record.index', $event) }}" class="button-redirect group">
+                        <span class="bg-link-move-light group-hover:opacity-100"></span>
+                    </a>
+                </div>
+            </div>
             <div class="button-group">
                 <a href="{{ route('event.index') }}" class="button-secondary">Kembali ke Halaman Event</a>
             </div>

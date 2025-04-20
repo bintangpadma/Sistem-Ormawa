@@ -80,6 +80,13 @@ Route::middleware('auth')->group(function () {
         Route::match(['put', 'patch'], '/event/{event}/division/{eventDivision}', 'update')->name('event-division.update');
         Route::delete('/event/{event}/division/{eventDivision}', 'destroy')->name('event-division.destroy');
     });
+    Route::controller(\App\Http\Controllers\EventTrackRecordController::class)->group(function () {
+        Route::get('/event/{event}/track-record', 'index')->name('event-track-record.index');
+        Route::get('/event/{event}/track-record/{eventTrackRecord}', 'show')->name('event-track-record.show');
+        Route::post('/event/{event}/track-record', 'store')->name('event-track-record.store');
+        Route::match(['put', 'patch'], '/event/{event}/track-record/{eventTrackRecord}', 'update')->name('event-track-record.update');
+        Route::delete('/event/{event}/track-record/{eventTrackRecord}', 'destroy')->name('event-track-record.destroy');
+    });
     Route::resources(['evaluation' => \App\Http\Controllers\EvaluationController::class]);
     Route::get('/evaluation/{eventRecruitment}/create', [\App\Http\Controllers\EvaluationController::class, 'create'])->name('evaluation.create-form');
     Route::resources(['activity-report' => \App\Http\Controllers\ActivityReportController::class]);
