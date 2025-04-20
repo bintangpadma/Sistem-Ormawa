@@ -83,6 +83,14 @@ Route::middleware('auth')->group(function () {
     Route::resources(['evaluation' => \App\Http\Controllers\EvaluationController::class]);
     Route::get('/evaluation/{eventRecruitment}/create', [\App\Http\Controllers\EvaluationController::class, 'create'])->name('evaluation.create-form');
     Route::resources(['activity-report' => \App\Http\Controllers\ActivityReportController::class]);
+    Route::resources(['info-committee' => \App\Http\Controllers\InfoCommitteeController::class]);
+    Route::controller(\App\Http\Controllers\InfoCommitteeDivisionController::class)->group(function () {
+        Route::get('/info-committee/{infoCommittee}/division', 'index')->name('info-committee-division.index');
+        Route::get('/info-committee/{infoCommittee}/division/{infoCommitteeDivision}', 'show')->name('info-committee-division.show');
+        Route::post('/info-committee/{infoCommittee}/division', 'store')->name('info-committee-division.store');
+        Route::match(['put', 'patch'], '/info-committee/{infoCommittee}/division/{infoCommitteeDivision}', 'update')->name('info-committee-division.update');
+        Route::delete('/info-committee/{infoCommittee}/division/{infoCommitteeDivision}', 'destroy')->name('info-committee-division.destroy');
+    });
     Route::get('/activity-report/{activityReport}/download', [\App\Http\Controllers\ActivityReportController::class, 'download'])->name('activity-report.download');
     Route::resources(['administrative-document' => \App\Http\Controllers\AdministrativeDocumentController::class]);
     Route::get('/administrative-document/{administrativeDocument}/download', [\App\Http\Controllers\AdministrativeDocumentController::class, 'download'])->name('administrative-document.download');

@@ -65,9 +65,11 @@
                 </tbody>
             </table>
         </div>
-        <div class="table-paginate">
-            {{ $admins->links() }}
-        </div>
+        @if(count($admins) > 10)
+            <div class="table-paginate">
+                {{ $admins->links() }}
+            </div>
+        @endif
     </div>
     @include('modal.admin')
 

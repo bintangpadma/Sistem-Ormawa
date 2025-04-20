@@ -69,9 +69,11 @@
                 </tbody>
             </table>
         </div>
-        <div class="table-paginate">
-            {{ $eventRecruitments->links() }}
-        </div>
+        @if(count($eventRecruitments) > 10)
+            <div class="table-paginate">
+                {{ $eventRecruitments->links() }}
+            </div>
+        @endif
     </div>
     @include('modal.event-recruitment')
 

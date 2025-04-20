@@ -68,9 +68,11 @@
                 </tbody>
             </table>
         </div>
-        <div class="table-paginate">
-            {{ $activityReports->links() }}
-        </div>
+        @if(count($activityReports) > 10)
+            <div class="table-paginate">
+                {{ $activityReports->links() }}
+            </div>
+        @endif
     </div>
     @include('modal.activity-report')
 

@@ -43,6 +43,8 @@ export default {
                 'event-dark': "url('/public/assets/image/sidebar/event-dark.svg')",
                 'evaluation-light': "url('/public/assets/image/sidebar/evaluation-light.svg')",
                 'evaluation-dark': "url('/public/assets/image/sidebar/evaluation-dark.svg')",
+                'info-committee-light': "url('/public/assets/image/sidebar/info-committee-light.svg')",
+                'info-committee-dark': "url('/public/assets/image/sidebar/info-committee-dark.svg')",
                 'activity-report-light': "url('/public/assets/image/sidebar/activity-report-light.svg')",
                 'activity-report-dark': "url('/public/assets/image/sidebar/activity-report-dark.svg')",
                 'administrative-document-light': "url('/public/assets/image/sidebar/administrative-document-light.svg')",
@@ -63,6 +65,8 @@ export default {
                 'arrow-down-primary': "url('/public/assets/image/icon/arrow-down-primary.svg')",
                 'arrow-right-dark': "url('/public/assets/image/icon/arrow-right-dark.svg')",
                 'search-dark': "url('/public/assets/image/icon/search-dark.svg')",
+                'minus-light': "url('/public/assets/image/icon/minus-light.svg')",
+                'plus-light': "url('/public/assets/image/icon/plus-light.svg')",
             },
         },
         container: {

@@ -39,6 +39,12 @@
             <span class="group-hover:bg-evaluation-dark group-hover:opacity-100 {{ Route::is('evaluation*') ? 'bg-evaluation-dark opacity-100' : 'bg-evaluation-light opacity-[0.62]' }}"></span>
             Evaluasi
         </a>
+        @if(auth()->user()->admin)
+            <a href="{{ route('info-committee.index') }}" class="content-item group {{ Route::is('info-committee*') ? 'active' : '' }}">
+                <span class="group-hover:bg-info-committee-dark group-hover:opacity-100 {{ Route::is('info-committee*') ? 'bg-info-committee-dark opacity-100' : 'bg-info-committee-light opacity-[0.62]' }}"></span>
+                Info Panitia
+            </a>
+        @endif
         <a href="{{ route('activity-report.index') }}" class="content-item group {{ Route::is('activity-report*') ? 'active' : '' }}">
             <span class="group-hover:bg-activity-report-dark group-hover:opacity-100 {{ Route::is('activity-report*') ? 'bg-activity-report-dark opacity-100' : 'bg-activity-report-light opacity-[0.62]' }}"></span>
             LPJ
