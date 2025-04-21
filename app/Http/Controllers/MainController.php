@@ -100,16 +100,9 @@ class MainController extends Controller
 
     public function showInfo(Request $request)
     {
-        $search = $request->input('search');
         return view('homepage.detail-info', [
             'page' => 'Halaman Detail Berita',
-            'infoCommittee' => InfoCommittee::with('info_committee_divisions')
-                ->when($search, function ($query, $search) {
-                    $query->whereHas('info_committee_divisions', function ($query) use ($search) {
-                        $query->where('name', 'LIKE', '%' . $search . '%');
-                    });
-                })->latest()->first(),
-            'search' => $search,
+            'infoCommittee' => InfoCommittee::with('info_committee_divisions.info_committee_division_tasks')->latest()->first(),
         ]);
     }
 }

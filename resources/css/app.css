@@ -401,7 +401,7 @@
     }
 
     .homepage-content {
-        @apply flex flex-col gap-[100px] md:gap-[110px] lg:gap-[120px];
+        @apply flex flex-col justify-between gap-[100px] md:gap-[110px] lg:gap-[120px];
     }
 
     .homepage-content section.hero {

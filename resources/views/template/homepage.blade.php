@@ -11,7 +11,7 @@
     {{-- END STYLE CSS --}}
 </head>
 <body>
-<main class="homepage w-full">
+<main class="homepage w-full flex flex-col min-h-dvh md:min-h-screen">
     @include('component.navbar')
     <div class="homepage-content w-full">
         @yield('content')
