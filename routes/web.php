@@ -71,6 +71,20 @@ Route::middleware('auth')->group(function () {
         Route::match(['put', 'patch'], '/student-organization/{studentOrganization}/achievement/{studentOrganizationAchievement}', 'update')->name('student-organization-achievement.update');
         Route::delete('/student-organization/{studentOrganization}/achievement/{studentOrganizationAchievement}', 'destroy')->name('student-organization-achievement.destroy');
     });
+    Route::controller(\App\Http\Controllers\StudentOrganizationDivisionController::class)->group(function () {
+        Route::get('/student-organization/{studentOrganization}/division', 'index')->name('student-organization-division.index');
+        Route::get('/student-organization/{studentOrganization}/division/{studentOrganizationDivision}', 'show')->name('student-organization-division.show');
+        Route::post('/student-organization/{studentOrganization}/division', 'store')->name('student-organization-division.store');
+        Route::match(['put', 'patch'], '/student-organization/{studentOrganization}/division/{studentOrganizationDivision}', 'update')->name('student-organization-division.update');
+        Route::delete('/student-organization/{studentOrganization}/division/{studentOrganizationDivision}', 'destroy')->name('student-organization-division.destroy');
+    });
+    Route::controller(\App\Http\Controllers\StudentOrganizationDivisionTaskController::class)->group(function () {
+        Route::get('/student-organization/{studentOrganization}/division/{studentOrganizationDivision}/task', 'index')->name('student-organization-division-task.index');
+        Route::get('/student-organization/{studentOrganization}/division/{studentOrganizationDivision}/task/{studentOrganizationDivisionTask}', 'show')->name('student-organization-division-task.show');
+        Route::post('/student-organization/{studentOrganization}/division/{studentOrganizationDivision}/task', 'store')->name('student-organization-division-task.store');
+        Route::match(['put', 'patch'], '/student-organization/{studentOrganization}/division/{studentOrganizationDivision}/task/{studentOrganizationDivisionTask}', 'update')->name('student-organization-division-task.update');
+        Route::delete('/student-organization/{studentOrganization}/division/{studentOrganizationDivision}/task/{studentOrganizationDivisionTask}', 'destroy')->name('student-organization-division-task.destroy');
+    });
     Route::resources(['student-activity-unit' => \App\Http\Controllers\StudentActivityUnitController::class]);
     Route::resources(['news' => \App\Http\Controllers\NewsController::class]);
     Route::resources(['event' => \App\Http\Controllers\EventController::class]);

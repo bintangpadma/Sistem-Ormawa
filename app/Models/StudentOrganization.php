@@ -43,6 +43,11 @@ class StudentOrganization extends Model
         return $this->hasMany(StudentOrganizationAchievement::class, 'student_organizations_id', 'id');
     }
 
+    public function student_organization_divisions(): HasMany
+    {
+        return $this->hasMany(StudentOrganizationDivision::class, 'student_organizations_id', 'id');
+    }
+
     public function newses(): HasMany
     {
         return $this->hasMany(News::class, 'student_organizations_id', 'id');
