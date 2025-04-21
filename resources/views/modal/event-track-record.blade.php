@@ -55,6 +55,16 @@
                     <label for="description">Deskripsi</label>
                     <textarea class="input" name="description" placeholder="Masukkan deskripsi rekam jejak event..." readonly rows="4"></textarea>
                 </div>
+                <hr class="style-gap lg:col-span-2">
+                <div class="form-input lg:col-span-2">
+                    <label for="task">Total Tugas</label>
+                    <div class="input-wrapper">
+                        <input type="text" class="input" name="task" readonly>
+                        <a href="" class="button-redirect group">
+                            <span class="bg-link-move-light group-hover:opacity-100"></span>
+                        </a>
+                    </div>
+                </div>
                 <div class="button-group">
                     <button type="button" onclick="closeModal('detailModal')" class="button-secondary">Tutup Modal</button>
                 </div>
