@@ -17,4 +17,9 @@ class InfoCommitteeDivision extends Model
     {
         return $this->belongsTo(InfoCommittee::class, 'info_committees_id', 'id');
     }
+
+    public function info_committee_division_tasks(): HasMany
+    {
+        return $this->hasMany(InfoCommitteeDivisionTask::class, 'info_committee_divisions_id', 'id');
+    }
 }

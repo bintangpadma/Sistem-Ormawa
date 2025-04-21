@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('event_track_record_tasks', function (Blueprint $table) {
+        Schema::create('info_committee_division_tasks', function (Blueprint $table) {
             $table->id();
-            $table->biginteger('event_track_records_id')->index();
+            $table->biginteger('info_committee_divisions_id')->index();
             $table->string('name', 150);
             $table->timestamps();
             $table->softDeletes();
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('event_track_record_tasks');
+        Schema::dropIfExists('info_committee_division_tasks');
     }
 };

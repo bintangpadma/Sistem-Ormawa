@@ -9,6 +9,7 @@ Route::controller(\App\Http\Controllers\MainController::class)->group(function (
     Route::get('/{studentOrganization}/ormawa', 'showOrmawa')->name('main.show-ormawa');
     Route::get('/{event}/event', 'showEvent')->name('main.show-event');
     Route::get('/{news}/news', 'showNews')->name('main.show-news');
+    Route::get('/info-panitia', 'showInfo')->name('main.show-info');
 });
 
 Route::controller(\App\Http\Controllers\EventRecruitmentController::class)->group(function () {
@@ -87,13 +88,6 @@ Route::middleware('auth')->group(function () {
         Route::match(['put', 'patch'], '/event/{event}/track-record/{eventTrackRecord}', 'update')->name('event-track-record.update');
         Route::delete('/event/{event}/track-record/{eventTrackRecord}', 'destroy')->name('event-track-record.destroy');
     });
-    Route::controller(\App\Http\Controllers\EventTrackRecordTaskController::class)->group(function () {
-        Route::get('/event/{event}/track-record/{eventTrackRecord}/task', 'index')->name('event-track-record-task.index');
-        Route::get('/event/{event}/track-record/{eventTrackRecord}/task/{eventTrackRecordTask}', 'show')->name('event-track-record-task.show');
-        Route::post('/event/{event}/track-record/{eventTrackRecord}/task', 'store')->name('event-track-record-task.store');
-        Route::match(['put', 'patch'], '/event/{event}/track-record/{eventTrackRecord}/task/{eventTrackRecordTask}', 'update')->name('event-track-record-task.update');
-        Route::delete('/event/{event}/track-record/{eventTrackRecord}/task/{eventTrackRecordTask}', 'destroy')->name('event-track-record-task.destroy');
-    });
     Route::resources(['evaluation' => \App\Http\Controllers\EvaluationController::class]);
     Route::get('/evaluation/{eventRecruitment}/create', [\App\Http\Controllers\EvaluationController::class, 'create'])->name('evaluation.create-form');
     Route::resources(['activity-report' => \App\Http\Controllers\ActivityReportController::class]);
@@ -104,6 +98,13 @@ Route::middleware('auth')->group(function () {
         Route::post('/info-committee/{infoCommittee}/division', 'store')->name('info-committee-division.store');
         Route::match(['put', 'patch'], '/info-committee/{infoCommittee}/division/{infoCommitteeDivision}', 'update')->name('info-committee-division.update');
         Route::delete('/info-committee/{infoCommittee}/division/{infoCommitteeDivision}', 'destroy')->name('info-committee-division.destroy');
+    });
+    Route::controller(\App\Http\Controllers\InfoCommitteeDivisionTaskController::class)->group(function () {
+        Route::get('/info-committee/{infoCommittee}/division/{infoCommitteeDivision}/task', 'index')->name('info-committee-division-task.index');
+        Route::get('/info-committee/{infoCommittee}/division/{infoCommitteeDivision}/task/{infoCommitteeDivisionTask}', 'show')->name('info-committee-division-task.show');
+        Route::post('/info-committee/{infoCommittee}/division/{infoCommitteeDivision}/task', 'store')->name('info-committee-division-task.store');
+        Route::match(['put', 'patch'], '/info-committee/{infoCommittee}/division/{infoCommitteeDivision}/task/{infoCommitteeDivisionTask}', 'update')->name('info-committee-division-task.update');
+        Route::delete('/info-committee/{infoCommittee}/division/{infoCommitteeDivision}/task/{infoCommitteeDivisionTask}', 'destroy')->name('info-committee-division-task.destroy');
     });
     Route::get('/activity-report/{activityReport}/download', [\App\Http\Controllers\ActivityReportController::class, 'download'])->name('activity-report.download');
     Route::resources(['administrative-document' => \App\Http\Controllers\AdministrativeDocumentController::class]);

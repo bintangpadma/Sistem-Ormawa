@@ -12,11 +12,14 @@
             <a href="#ormawa" class="button-link hidden lg:inline-block">Ormawa</a>
             <a href="#ukm" class="button-link hidden lg:inline-block">UKM</a>
             <a href="#news" class="button-link hidden lg:inline-block">News</a>
-            @if(!auth()->check())
-                <a href="{{ route('user.index') }}" class="button-primary">Masuk</a>
-            @else
-                <a href="{{ route('dashboard.index') }}" class="button-primary">Dashboard</a>
-            @endif
+            <div class="button-group flex items-center gap-[6px] lg:gap-[8px]">
+                <a href="{{ route('main.show-info') }}" class="button-secondary">Info Panitia</a>
+                @if(!auth()->check())
+                    <a href="{{ route('user.index') }}" class="button-primary">Masuk</a>
+                @else
+                    <a href="{{ route('dashboard.index') }}" class="button-primary">Dashboard</a>
+                @endif
+            </div>
         </div>
     </nav>
 </div>

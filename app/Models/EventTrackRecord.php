@@ -17,9 +17,4 @@ class EventTrackRecord extends Model
     {
         return $this->belongsTo(Event::class, 'events_id', 'id');
     }
-
-    public function event_track_record_tasks(): HasMany
-    {
-        return $this->hasMany(EventTrackRecordTask::class, 'event_track_records_id', 'id');
-    }
 }

@@ -13,7 +13,8 @@
     <div class="content-menu content-table">
         <div class="table-header">
             <form method="GET" class="form">
-                <input type="search" class="input" name="search" placeholder="Cari tugas rekam jejak event..." value="{{ $search }}">
+                <input type="search" class="input" name="search" placeholder="Cari tugas divisi panitia..."
+                       value="{{ $search }}">
             </form>
             <button class="button-primary" data-target="createModal" onclick="openModal(this)">Tambah Tugas</button>
         </div>
@@ -26,21 +27,24 @@
                 </tr>
                 </thead>
                 <tbody>
-                @if ($eventTrackRecordTasks->count() == 0)
-                    <td colspan="2">Data tugas rekam jejak event tidak ditemukan!</td>
+                @if ($infoCommitteeDivisionTasks->count() == 0)
+                    <td colspan="2">Data tugas divisi panitia tidak ditemukan!</td>
                 @else
-                    @foreach ($eventTrackRecordTasks as $eventTrackRecordTask)
+                    @foreach ($infoCommitteeDivisionTasks as $infoCommitteeDivisionTask)
                         <tr>
-                            <td>{{ $eventTrackRecordTask->name }}</td>
+                            <td>{{ $infoCommitteeDivisionTask->name }}</td>
                             <td>
                                 <div class="action-button">
-                                    <button class="button icon-detail" data-target="detailModal" data-id="{{ $eventTrackRecordTask->id }}" onclick="openModal(this)">
+                                    <button class="button icon-detail" data-target="detailModal"
+                                            data-id="{{ $infoCommitteeDivisionTask->id }}" onclick="openModal(this)">
                                         <span class="bg-detail-primary"></span>
                                     </button>
-                                    <button class="button icon-edit" data-target="editModal" data-id="{{ $eventTrackRecordTask->id }}" onclick="openModal(this)">
+                                    <button class="button icon-edit" data-target="editModal"
+                                            data-id="{{ $infoCommitteeDivisionTask->id }}" onclick="openModal(this)">
                                         <span class="bg-edit-warning"></span>
                                     </button>
-                                    <button class="button icon-delete" data-target="deleteModal" data-id="{{ $eventTrackRecordTask->id }}" onclick="openModal(this)">
+                                    <button class="button icon-delete" data-target="deleteModal"
+                                            data-id="{{ $infoCommitteeDivisionTask->id }}" onclick="openModal(this)">
                                         <span class="bg-delete-danger"></span>
                                     </button>
                                 </div>
@@ -51,28 +55,28 @@
                 </tbody>
             </table>
         </div>
-        @if(count($eventTrackRecordTasks) > 10)
+        @if(count($infoCommitteeDivisionTasks) > 10)
             <div class="table-paginate">
-                {{ $eventTrackRecordTasks->links() }}
+                {{ $infoCommitteeDivisionTasks->links() }}
             </div>
         @endif
     </div>
-    @include('modal.event-track-record-task')
+    @include('modal.info-committee-division-task')
 
     <script>
-        const eventId = @json($event->id);
-        const eventTrackRecordId = @json($eventTrackRecord->id);
+        const infoCommitteeId = @json($infoCommittee->id);
+        const infoCommitteeDivisionId = @json($infoCommitteeDivision->id);
 
-        function fetchTrackRecordTask(modal, trackRecordTaskId) {
-            fetch('/event/' + eventId + '/track-record/' + eventTrackRecordId + '/task/' + trackRecordTaskId, {
+        function fetchInfoCommitteeDivisionTask(modal, infoCommitteeDivisionTaskId) {
+            fetch('/info-committee/' + infoCommitteeId + '/division/' + infoCommitteeDivisionId + '/task/' + infoCommitteeDivisionTaskId, {
                 method: 'GET',
             })
                 .then(response => response.json())
                 .then(data => {
                     if (data.status_code === 200) {
-                        modal.querySelector('input[name="name"]').value = data.event_track_record_task.name;
+                        modal.querySelector('input[name="name"]').value = data.info_committee_division_task.name;
                     } else {
-                        console.log('Data event track record task not found!');
+                        console.log('Data info committee division task not found!');
                     }
                 })
                 .catch(error => {
@@ -86,14 +90,14 @@
             const modal = document.getElementById(`${modalTarget}`)
             modal.classList.add('show')
             if (modalTarget.includes('create')) {
-                document.getElementById('buttonCreateEventTrackRecordTask').setAttribute('action', '/event/' + eventId + '/track-record/' + eventTrackRecordId + '/task')
+                document.getElementById('buttonCreateInfoCommitteeDivisionTask').setAttribute('action', '/info-committee/' + infoCommitteeId + '/division/' + infoCommitteeDivisionId + '/task')
             } else if (modalTarget.includes('detail')) {
-                await fetchTrackRecordTask(modal, modalId)
+                await fetchInfoCommitteeDivisionTask(modal, modalId)
             } else if (modalTarget.includes('edit')) {
-                await fetchTrackRecordTask(modal, modalId)
-                document.getElementById('buttonEditEventTrackRecordTask').setAttribute('action', '/event/' + eventId + '/track-record/' + eventTrackRecordId + '/task/' + modalId)
+                await fetchInfoCommitteeDivisionTask(modal, modalId)
+                document.getElementById('buttonEditInfoCommitteeDivisionTask').setAttribute('action', '/info-committee/' + infoCommitteeId + '/division/' + infoCommitteeDivisionId + '/task/' + modalId)
             } else if (modalTarget.includes('delete')) {
-                document.getElementById('buttonDeleteEventTrackRecordTask').setAttribute('action', '/event/' + eventId + '/track-record/' + eventTrackRecordId + '/task/' + modalId)
+                document.getElementById('buttonDeleteInfoCommitteeDivisionTask').setAttribute('action', '/info-committee/' + infoCommitteeId + '/division/' + infoCommitteeDivisionId + '/task/' + modalId)
             }
         }
 

@@ -73,6 +73,10 @@
                     if (data.status_code === 200) {
                         modal.querySelector('input[name="name"]').value = data.info_committee_division.name;
                         modal.querySelector('textarea[name="definition"]').value = data.info_committee_division.definition;
+                        if (modal.getAttribute('id').includes('detail')) {
+                            modal.querySelector('input[name="task"]').value = data.info_committee_division_tasks;
+                            modal.querySelector('a.button-redirect').setAttribute('href', '/info-committee/' + data.info_committee.id + '/division/' + data.info_committee_division.id + '/task');
+                        }
                     } else {
                         console.log('Data info committee division not found!');
                     }

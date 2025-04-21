@@ -6,14 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class EventTrackRecordTask extends Model
+class InfoCommitteeDivisionTask extends Model
 {
     use SoftDeletes;
 
     protected $guarded = ['id'];
 
-    public function event_track_record(): BelongsTo
+    public function info_committee_division(): BelongsTo
     {
-        return $this->belongsTo(EventTrackRecord::class, 'event_track_records_id', 'id');
+        return $this->belongsTo(InfoCommitteeDivision::class, 'info_committee_divisions_id', 'id');
     }
 }

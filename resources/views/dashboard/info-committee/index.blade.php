@@ -69,8 +69,8 @@
                 .then(data => {
                     if (data.status_code === 200) {
                         modal.querySelector('textarea[name="committee_definition"]').value = data.info_committee.committee_definition;
-                        modal.querySelector('input[name="total_division"]').value = data.total_division;
                         if (modal.getAttribute('id').includes('detail')) {
+                            modal.querySelector('input[name="total_division"]').value = data.total_division;
                             modal.querySelector('a.button-redirect').setAttribute('href', '/info-committee/' + data.info_committee.id + '/division');
                         }
                     } else {

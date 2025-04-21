@@ -1,20 +1,20 @@
 <div class="modal" id="createModal">
     <div class="modal-content">
         <div class="content-header">
-            <p>Tambah Tugas Rekam Jejak Event</p>
+            <p>Tambah Tugas Divisi Panitia</p>
         </div>
         <div class="content-body">
-            <form id="buttonCreateEventTrackRecordTask" class="form" method="POST">
+            <form id="buttonCreateInfoCommitteeDivisionTask" class="form" method="POST">
                 @csrf
                 <div class="form-input lg:col-span-2">
                     <label for="name">Nama Tugas</label>
-                    <input type="text" class="input" name="name" placeholder="Masukkan nama tugas rekam jejak event...">
+                    <input type="text" class="input" name="name" placeholder="Masukkan nama tugas divisi panitia...">
                     @error('name')
                     <p class="text-invalid">{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="button-group">
-                    <button type="submit" class="button-primary">Tambah Tugas Rekam Jejak Event</button>
+                    <button type="submit" class="button-primary">Tambah Tugas Divisi Panitia</button>
                     <button type="button" onclick="closeModal('createModal')" class="button-secondary">Batal Tambah</button>
                 </div>
             </form>
@@ -25,13 +25,13 @@
 <div class="modal" id="detailModal">
     <div class="modal-content">
         <div class="content-header">
-            <p>Detail Tugas Rekam Jejak Event</p>
+            <p>Detail Tugas Divisi Panitia</p>
         </div>
         <div class="content-body">
             <form class="form">
                 <div class="form-input lg:col-span-2">
                     <label for="name">Nama Tugas</label>
-                    <input type="text" class="input" name="name" placeholder="Masukkan nama tugas rekam jejak event..." readonly>
+                    <input type="text" class="input" name="name" placeholder="Masukkan nama tugas divisi panitia..." readonly>
                 </div>
                 <div class="button-group">
                     <button type="button" onclick="closeModal('detailModal')" class="button-secondary">Tutup Modal</button>
@@ -44,15 +44,15 @@
 <div class="modal" id="editModal">
     <div class="modal-content">
         <div class="content-header">
-            <p>Edit Tugas Rekam Jejak Event</p>
+            <p>Edit Tugas Divisi Panitia</p>
         </div>
         <div class="content-body">
-            <form id="buttonEditEventTrackRecordTask" class="form" method="POST">
+            <form id="buttonEditInfoCommitteeDivisionTask" class="form" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="form-input lg:col-span-2">
                     <label for="name">Nama Tugas</label>
-                    <input type="text" class="input" name="name" placeholder="Masukkan nama tugas rekam jejak event...">
+                    <input type="text" class="input" name="name" placeholder="Masukkan nama tugas divisi panitia...">
                     @error('name')
                     <p class="text-invalid">{{ $message }}</p>
                     @enderror
@@ -69,15 +69,15 @@
 <div class="modal" id="deleteModal">
     <div class="modal-content">
         <div class="content-header">
-            <p>Hapus Tugas Rekam Jejak Event</p>
+            <p>Hapus Tugas Divisi Panitia</p>
         </div>
         <div class="content-body">
-            <form id="buttonDeleteEventTrackRecordTask" class="form" method="POST">
+            <form id="buttonDeleteInfoCommitteeDivisionTask" class="form" method="POST">
                 @csrf
                 @method('DELETE')
-                <p>Menghapus data tugas rekam jejak event ini dapat mempengaruhi proses lain yang sedang berlangsung. Apakah Anda yakin ingin melanjutkan?</p>
+                <p>Menghapus data tugas divisi panitia ini dapat mempengaruhi proses lain yang sedang berlangsung. Apakah Anda yakin ingin melanjutkan?</p>
                 <div class="button-group">
-                    <button type="submit" class="button-primary">Hapus Tugas Rekam Jejak Event</button>
+                    <button type="submit" class="button-primary">Hapus Tugas Divisi Panitia</button>
                     <button type="button" onclick="closeModal('deleteModal')" class="button-secondary">Batal Hapus</button>
                 </div>
             </form>

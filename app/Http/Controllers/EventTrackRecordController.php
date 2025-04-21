@@ -32,7 +32,6 @@ class EventTrackRecordController extends Controller
             'status_code' => 200,
             'event' => $event,
             'event_track_record' => $eventTrackRecord,
-            'event_track_record_task' => $eventTrackRecord->load('event_track_record_tasks')->event_track_record_tasks()->count(),
         ]);
     }
 

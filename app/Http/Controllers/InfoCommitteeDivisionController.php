@@ -31,6 +31,7 @@ class InfoCommitteeDivisionController extends Controller
             'status_code' => 200,
             'info_committee' => $infoCommittee,
             'info_committee_division' => $infoCommitteeDivision,
+            'info_committee_division_tasks' => $infoCommitteeDivision->load('info_committee_division_tasks')->info_committee_division_tasks()->count(),
         ]);
     }
 

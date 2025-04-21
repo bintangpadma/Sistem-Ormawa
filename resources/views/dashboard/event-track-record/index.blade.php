@@ -73,14 +73,9 @@
                 .then(response => response.json())
                 .then(data => {
                     if (data.status_code === 200) {
-                        console.log(data)
                         modal.querySelector('input[name="title"]').value = data.event_track_record.title;
                         modal.querySelector('input[name="year"]').value = data.event_track_record.year;
                         modal.querySelector('textarea[name="description"]').value = data.event_track_record.description;
-                        modal.querySelector('input[name="task"]').value = data.event_track_record_task;
-                        if (modal.getAttribute('id').includes('detail')) {
-                            modal.querySelector('a.button-redirect').setAttribute('href', '/event/' + data.event.id + '/track-record/' + data.event_track_record.id + '/task');
-                        }
                     } else {
                         console.log('Data event track record not found!');
                     }

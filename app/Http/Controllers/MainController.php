@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\InfoCommittee;
 use App\Models\News;
 use App\Models\StudentActivityUnit;
 use App\Models\StudentOrganization;
@@ -93,6 +94,21 @@ class MainController extends Controller
                             });
                 });
             })->latest()->get(),
+            'search' => $search,
+        ]);
+    }
+
+    public function showInfo(Request $request)
+    {
+        $search = $request->input('search');
+        return view('homepage.detail-info', [
+            'page' => 'Halaman Detail Berita',
+            'infoCommittee' => InfoCommittee::with('info_committee_divisions')
+                ->when($search, function ($query, $search) {
+                    $query->whereHas('info_committee_divisions', function ($query) use ($search) {
+                        $query->where('name', 'LIKE', '%' . $search . '%');
+                    });
+                })->latest()->first(),
             'search' => $search,
         ]);
     }
