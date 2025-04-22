@@ -33,7 +33,7 @@
                     @foreach ($infoCommitteeDivisions as $infoCommitteeDivision)
                         <tr>
                             <td>{{ $infoCommitteeDivision->name }}</td>
-                            <td>{{ $infoCommitteeDivision->definition }}</td>
+                            <td>{{ \Illuminate\Support\Str::limit($infoCommitteeDivision->definition, 40) }}</td>
                             <td>
                                 <div class="action-button">
                                     <button class="button icon-detail" data-target="detailModal" data-id="{{ $infoCommitteeDivision->id }}" onclick="openModal(this)">

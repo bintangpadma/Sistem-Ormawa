@@ -33,7 +33,7 @@
                     @foreach ($studentOrganizationDivisions as $studentOrganizationDivision)
                         <tr>
                             <td>{{ $studentOrganizationDivision->name }}</td>
-                            <td>{{ $studentOrganizationDivision->definition }}</td>
+                            <td>{{ \Illuminate\Support\Str::limit($studentOrganizationDivision->definition, 40) }}</td>
                             <td>
                                 <div class="action-button">
                                     <button class="button icon-detail" data-target="detailModal" data-id="{{ $studentOrganizationDivision->id }}" onclick="openModal(this)">

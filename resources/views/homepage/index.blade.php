@@ -30,7 +30,7 @@
         </div>
     </section>
     <div class="container">
-        <section class="ormawa" id="ormawa ukm">
+        <section class="ormawa" id="ormawa">
             <div class="section-header">
                 <h2 class="title"><span>ORMAWA & UKM</span></h2>
                 <p class="description opacity-[0.62]">Ada {{ count($studentOrganizations) }} ORMAWA dan {{ count($studentActivityUnits) }} UKM di Primakara University</p>
@@ -107,7 +107,7 @@
         </section>
     </div>
     <div class="container">
-        <section class="recruitment" id="recruitment">
+        <section class="recruitment" id="news">
             <div class="section-header">
                 <h2 class="title">Berita Saat Ini</h2>
             </div>
