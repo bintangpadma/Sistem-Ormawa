@@ -15,9 +15,9 @@
     @include('component.navbar')
     <div class="homepage-content w-full">
         @yield('content')
-        <footer class="footer container">
-            <p class="copyright">Copyright © 2025 Ivan Verdyansyah</p>
-        </footer>
+{{--        <footer class="footer container">--}}
+{{--            <p class="copyright">Copyright © 2025 Ivan Verdyansyah</p>--}}
+{{--        </footer>--}}
     </div>
 </main>
 </body>
