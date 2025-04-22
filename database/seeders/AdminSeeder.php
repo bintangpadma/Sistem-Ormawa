@@ -20,5 +20,12 @@ class AdminSeeder extends Seeder
             'gender' => 'male',
             'is_super_admin' => 1,
         ]);
+
+        Admin::create([
+            'lecturer_code' => '5586797897643',
+            'full_name' => 'Admin 2',
+            'phone_number' => '08123456789',
+            'gender' => 'female',
+        ]);
     }
 }
