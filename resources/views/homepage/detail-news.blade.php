@@ -6,7 +6,7 @@
             <p class="text-[0.875rem] text-light/[0.42] mb-[8px] lg:mb-[12px]">Ormawa > {{ $news->student_organization->abbreviation }} > <span class="text-primary">Berita</span></p>
             <h2 class="title">{{ $news->name }}</h2>
             <p class="text-light/[0.42] text-[0.875rem] mb-[20px] lg:mb-[28px]">{{ \Carbon\Carbon::parse($news->created_at)->translatedFormat('j F Y, g.i A') }}</p>
-            <img src="{{ asset('assets/image/news/' . $news->image_path) }}" alt="Berita Image" class="w-full rounded-[4px] aspect-[16/6] object-cover border border-light/[0.12] mb-[24px] lg:mb-[42px]">
+            <img src="{{ asset('assets/image/news/' . $news->image_path) }}" alt="Berita Image" class="w-full rounded-[4px] aspect-video object-cover border border-light/[0.12] mb-[24px] lg:mb-[42px]">
             <p class="description">{{ $news->description }}</p>
         </div>
         <div class="event-aside hidden lg:inline-block lg:w-[460px]">

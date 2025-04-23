@@ -540,7 +540,7 @@
     }
 
     .homepage-content section.recruitment .section-content .card-event .event-image {
-        @apply w-full aspect-video object-cover;
+        @apply w-full aspect-square object-cover;
     }
 
     .homepage-content section.structure .section-content .card-structure,
