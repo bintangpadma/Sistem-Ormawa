@@ -46,7 +46,7 @@
 
 @layer base {
     * {
-        @apply text-light font-urbanist-medium duration-300;
+        @apply text-light font-xd-prime-medium duration-300;
     }
 
     html {
