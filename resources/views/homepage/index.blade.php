@@ -72,7 +72,7 @@
                     @foreach($studentOrganizationPrograms as $studentOrganizationProgram)
                         <div class="swiper-slide">
                             <div class="card-program">
-                                <img src="{{ $studentOrganizationProgram->image_path ? asset('assets/image/student-organization/' . $studentOrganizationProgram->image_path) : 'https://placehold.co/48x48?text=Image+Not+Found' }}" alt="Image Ormawa" class="program-image">
+                                <img src="{{ $studentOrganizationProgram->image_path ? asset('assets/image/program/' . $studentOrganizationProgram->image_path) : 'https://placehold.co/48x48?text=Image+Not+Found' }}" alt="Image Ormawa" class="program-image">
                                 <div class="program-content">
                                     <h4 class="content-title">{{ $studentOrganizationProgram->name }}</h4>
                                     <h6 class="content-author">{{ $studentOrganizationProgram->student_organization->abbreviation }}</h6>

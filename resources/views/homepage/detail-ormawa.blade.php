@@ -9,7 +9,7 @@
             <span class="w-[6px] h-[6px] aspect-square rounded-full bg-light/[0.42]"></span>
             <p class="text-light/[0.42] text-[0.875rem]">{{ \Carbon\Carbon::parse($studentOrganization->created_at)->translatedFormat('j F Y, g.i A') }}</p>
         </div>
-        <img src="{{ asset('assets/image/student-organization/' . $studentOrganization->image_path) }}" alt="Ormawa Image" class="w-full rounded-[4px] aspect-[16/6] object-cover border border-light/[0.12] mb-[24px] lg:mb-[42px]">
+        <img src="{{ asset('assets/image/student-organization/' . $studentOrganization->image_path) }}" alt="Ormawa Image" class="w-full rounded-[4px] aspect-square object-cover border border-light/[0.12] mb-[24px] lg:mb-[42px]">
         <p class="description">{{ $studentOrganization->description }}</p>
     </section>
     <div class="gap-[100px] md:gap-[110px] lg:gap-[120px] flex flex-col py-[100px] md:py-[110px] lg:py-[120px] bg-dark-900">
@@ -20,7 +20,7 @@
             <div class="section-content content-gap grid grid-cols-2 lg:grid-cols-4 gap-[16px] lg:gap-[20px]">
                 @foreach($studentOrganization->student_organization_structures as $StudentOrganizationStructure)
                     <div class="card-structure bg-dark-700 rounded-[3px] overflow-hidden flex flex-col">
-                        <img src="https://placehold.co/48x48?text=Image+Not+Found" alt="Image Ormawa" class="structure-image w-full aspect-video object-cover">
+                        <img src="{{ $StudentOrganizationStructure->profile_path ? asset('assets/image/structure/' . $StudentOrganizationStructure->profile_path) : 'https://placehold.co/48x48?text=Image+Not+Found' }}" alt="Image Ormawa" class="structure-image w-full aspect-video object-cover">
                         <div class="structure-content p-[16px] lg:p-[20px]">
                             <h4 class="content-title text-[0.913rem] lg:text-[1rem] font-xd-prime-medium leading-[112%] mb-[4px]">{{ $StudentOrganizationStructure->student_name }}</h4>
                             <p class="content-description text-[0.813rem] text-light/[0.62]">{{ $StudentOrganizationStructure->role }}</p>
