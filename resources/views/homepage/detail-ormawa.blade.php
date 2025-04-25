@@ -1,16 +1,22 @@
 @extends('template.homepage')
 
 @section('content')
-    <section class="detail-ormawa container mt-[44px] lg:mt-[56px]">
-        <h6 class="subtitle">Profile Ormawa</h6>
-        <h2 class="title">Tentang {{ $studentOrganization->name }}</h2>
-        <div class="data-detail flex items-center gap-[8px] mb-[20px] lg:mb-[42px]">
-            <p class="text-[0.875rem] text-primary">Dari {{ $studentOrganization->name }}</p>
-            <span class="w-[6px] h-[6px] aspect-square rounded-full bg-light/[0.42]"></span>
-            <p class="text-light/[0.42] text-[0.875rem]">{{ \Carbon\Carbon::parse($studentOrganization->created_at)->translatedFormat('j F Y, g.i A') }}</p>
+    <section class="detail-ormawa container mt-[44px] lg:mt-[56px] flex flex-col md:flex-row gap-[20px] lg:gap-[32px]">
+        <img
+            src="{{ asset('assets/image/student-organization/' . $studentOrganization->image_path) }}"
+             alt="Ormawa Image"
+             class="w-[60%] md:w-[200px] md:h-[200px] lg:w-[240px] lg:h-[240px] xl:w-[300px] xl:h-[300px] rounded-[4px] aspect-square object-cover border border-light/[0.12]"
+        >
+        <div class="ormawa-detail w-full">
+            <h6 class="subtitle">Profile Ormawa</h6>
+            <h2 class="title">Tentang {{ $studentOrganization->name }}</h2>
+            <div class="data-detail flex items-center gap-[8px] mb-[16px] lg:mb-[24px]">
+                <p class="text-[0.875rem] text-primary">Dari {{ $studentOrganization->name }}</p>
+                <span class="w-[6px] h-[6px] aspect-square rounded-full bg-light/[0.42]"></span>
+                <p class="text-light/[0.42] text-[0.875rem]">{{ \Carbon\Carbon::parse($studentOrganization->created_at)->translatedFormat('j F Y, g.i A') }}</p>
+            </div>
+            <p class="description">{{ $studentOrganization->description }}</p>
         </div>
-        <img src="{{ asset('assets/image/student-organization/' . $studentOrganization->image_path) }}" alt="Ormawa Image" class="w-full rounded-[4px] aspect-square object-cover border border-light/[0.12] mb-[24px] lg:mb-[42px]">
-        <p class="description">{{ $studentOrganization->description }}</p>
     </section>
     <div class="gap-[100px] md:gap-[110px] lg:gap-[120px] flex flex-col py-[100px] md:py-[110px] lg:py-[120px] bg-dark-900">
         <section class="structure-ormawa container">
