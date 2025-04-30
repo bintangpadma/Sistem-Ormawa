@@ -40,7 +40,7 @@ class StudentOrganizationDivisionTaskController extends Controller
     {
         try {
             $validatedData = $request->validate([
-                'name' => 'required|string|max:150',
+                'name' => 'required|string',
             ]);
             $validatedData['divisions_id'] = $studentOrganizationDivision->id;
             StudentOrganizationDivisionTask::create($validatedData);
@@ -55,7 +55,7 @@ class StudentOrganizationDivisionTaskController extends Controller
     {
         try {
             $validatedData = $request->validate([
-                'name' => 'required|string|max:150',
+                'name' => 'required|string',
             ]);
             $studentOrganizationDivisionTask->update($validatedData);
             return redirect()->back()->with('success', 'Berhasil mengedit tugas divisi organisasi mahasiswa!');

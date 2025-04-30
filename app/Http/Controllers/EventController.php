@@ -63,7 +63,7 @@ class EventController extends Controller
             $validatedData = $request->validate([
                 'image_path' => 'required|file|image|mimes:png,jpg,jpeg,gif,webp,svg|max:2048',
                 'student_organizations_id' => 'required',
-                'name' => 'required|string|max:150',
+                'name' => 'required|string',
                 'description' => 'required|string',
             ]);
 
@@ -101,7 +101,7 @@ class EventController extends Controller
             $validatedData = $request->validate([
                 'image_path' => 'nullable|file|image|mimes:png,jpg,jpeg,gif,webp,svg|max:2048',
                 'student_organizations_id' => 'required',
-                'name' => 'required|string|max:150',
+                'name' => 'required|string',
                 'description' => 'required|string',
             ]);
 

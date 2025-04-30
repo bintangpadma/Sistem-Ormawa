@@ -37,7 +37,7 @@ class EventDivisionController extends Controller
     {
         try {
             $validatedData = $request->validate([
-                'name' => 'required|string|max:150',
+                'name' => 'required|string',
             ]);
             $validatedData['events_id'] = $event->id;
             EventDivision::create($validatedData);
@@ -53,7 +53,7 @@ class EventDivisionController extends Controller
     {
         try {
             $validatedData = $request->validate([
-                'name' => 'required|string|max:150',
+                'name' => 'required|string',
             ]);
             $eventDivision->update($validatedData);
 

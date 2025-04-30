@@ -40,7 +40,7 @@ class EventTrackRecordController extends Controller
         try {
             $validatedData = $request->validate([
                 'year' => 'required|integer',
-                'title' => 'required|string|max:150',
+                'title' => 'required|string',
                 'description' => 'required|string',
             ]);
             $validatedData['events_id'] = $event->id;
@@ -57,7 +57,7 @@ class EventTrackRecordController extends Controller
         try {
             $validatedData = $request->validate([
                 'year' => 'required|integer',
-                'title' => 'required|string|max:150',
+                'title' => 'required|string',
                 'description' => 'required|string',
             ]);
             $eventTrackRecord->update($validatedData);

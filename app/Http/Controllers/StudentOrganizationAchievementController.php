@@ -38,7 +38,7 @@ class StudentOrganizationAchievementController extends Controller
     {
         try {
             $validatedData = $request->validate([
-                'name' => 'required|string|max:150',
+                'name' => 'required|string',
                 'description' => 'required|string',
             ]);
             $validatedData['student_organizations_id'] = $studentOrganization->id;
@@ -54,7 +54,7 @@ class StudentOrganizationAchievementController extends Controller
     {
         try {
             $validatedData = $request->validate([
-                'name' => 'required|string|max:150',
+                'name' => 'required|string',
                 'description' => 'required|string',
             ]);
             $studentOrganizationAchievement->update($validatedData);

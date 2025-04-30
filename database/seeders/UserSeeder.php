@@ -26,5 +26,19 @@ class UserSeeder extends Seeder
             'email' => 'admin2@gmail.com',
             'password' => bcrypt('admin2'),
         ]);
+
+        User::create([
+            'student_organizations_id' => 1,
+            'username' => 'ormawa1',
+            'email' => 'ormawa1@gmail.com',
+            'password' => bcrypt('ormawa1'),
+        ]);
+
+        User::create([
+            'student_activity_units_id' => 1,
+            'username' => 'ukm1',
+            'email' => 'ukm1@gmail.com',
+            'password' => bcrypt('ukm1'),
+        ]);
     }
 }

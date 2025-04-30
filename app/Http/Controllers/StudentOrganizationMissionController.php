@@ -37,7 +37,7 @@ class StudentOrganizationMissionController extends Controller
     {
         try {
             $validatedData = $request->validate([
-                'name' => 'required|string|max:150',
+                'name' => 'required|string',
             ]);
             $validatedData['student_organizations_id'] = $studentOrganization->id;
             StudentOrganizationMission::create($validatedData);
@@ -52,7 +52,7 @@ class StudentOrganizationMissionController extends Controller
     {
         try {
             $validatedData = $request->validate([
-                'name' => 'required|string|max:150',
+                'name' => 'required|string',
             ]);
             $studentOrganizationMission->update($validatedData);
             return redirect()->back()->with('success', 'Berhasil mengedit misi!');

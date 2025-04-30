@@ -40,7 +40,7 @@ class InfoCommitteeDivisionTaskController extends Controller
     {
         try {
             $validatedData = $request->validate([
-                'name' => 'required|string|max:150',
+                'name' => 'required|string',
             ]);
             $validatedData['info_committee_divisions_id'] = $infoCommitteeDivision->id;
             InfoCommitteeDivisionTask::create($validatedData);
@@ -55,7 +55,7 @@ class InfoCommitteeDivisionTaskController extends Controller
     {
         try {
             $validatedData = $request->validate([
-                'name' => 'required|string|max:150',
+                'name' => 'required|string',
             ]);
             $infoCommitteeDivisionTask->update($validatedData);
             return redirect()->back()->with('success', 'Berhasil mengedit tugas divisi panitia!');

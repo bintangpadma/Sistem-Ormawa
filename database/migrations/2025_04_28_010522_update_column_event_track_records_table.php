@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('news', function (Blueprint $table) {
-            $table->longText('name')->change();
+        Schema::table('event_track_records', function (Blueprint $table) {
+            $table->text('title')->change();
         });
     }
 
@@ -21,8 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('news', function (Blueprint $table) {
-            $table->string('name', 150)->change();
+        Schema::table('event_track_records', function (Blueprint $table) {
+            $table->string('title', 150)->change();
         });
     }
 };

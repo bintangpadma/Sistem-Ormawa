@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('news', function (Blueprint $table) {
-            $table->longText('name')->change();
+        Schema::table('users', function (Blueprint $table) {
+            $table->bigInteger('student_activity_units_id')->nullable()->index()->after('student_organizations_id');
         });
     }
 
@@ -21,8 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('news', function (Blueprint $table) {
-            $table->string('name', 150)->change();
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('student_activity_units_id');
         });
     }
 };

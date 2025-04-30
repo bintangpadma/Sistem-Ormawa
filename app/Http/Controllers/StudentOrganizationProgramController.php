@@ -40,7 +40,7 @@ class StudentOrganizationProgramController extends Controller
         try {
             $validatedData = $request->validate([
                 'image_path' => 'required|file|image|mimes:png,jpg,jpeg,gif,webp,svg|max:2048',
-                'name' => 'required|string|max:150',
+                'name' => 'required|string',
                 'description' => 'required|string',
             ]);
 
@@ -65,7 +65,7 @@ class StudentOrganizationProgramController extends Controller
         try {
             $validatedData = $request->validate([
                 'image_path' => 'nullable|file|image|mimes:png,jpg,jpeg,gif,webp,svg|max:2048',
-                'name' => 'required|string|max:150',
+                'name' => 'required|string',
                 'description' => 'required|string',
             ]);
 
