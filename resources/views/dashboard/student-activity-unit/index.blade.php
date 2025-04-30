@@ -16,7 +16,7 @@
                 <input type="search" class="input" name="search" placeholder="Cari ukm..." value="{{ $search }}">
             </form>
             @if(auth()->user()->admin)
-                <button class="button-primary" data-target="createModal" onclick="openModal(this)">Tambah UKM</button>
+                <a href="{{ route('student-activity-unit.create') }}" class="button-primary">Tambah UKM</a>
             @endif
         </div>
         <div class="table-group">
@@ -40,13 +40,13 @@
                             <td>{{ \Illuminate\Support\Str::limit($studentActivityUnit->description, 40) }}</td>
                             <td>
                                 <div class="action-button">
-                                    <button class="button icon-detail" data-target="detailModal" data-id="{{ $studentActivityUnit->id }}" onclick="openModal(this)">
+                                    <a href="{{ route('student-activity-unit.show', $studentActivityUnit) }}" class="button icon-detail">
                                         <span class="bg-detail-primary"></span>
-                                    </button>
+                                    </a>
                                     @if(auth()->user()->admin)
-                                        <button class="button icon-edit" data-target="editModal" data-id="{{ $studentActivityUnit->id }}" onclick="openModal(this)">
+                                        <a href="{{ route('student-activity-unit.edit', $studentActivityUnit) }}" class="button icon-edit">
                                             <span class="bg-edit-warning"></span>
-                                        </button>
+                                        </a>
                                         <button class="button icon-delete" data-target="deleteModal" data-id="{{ $studentActivityUnit->id }}" onclick="openModal(this)">
                                             <span class="bg-delete-danger"></span>
                                         </button>
@@ -68,38 +68,12 @@
     @include('modal.student-activity-unit')
 
     <script>
-        function fetchStudentActivityUnit(modal, studentActivityUnitId) {
-            fetch('/student-activity-unit/' + studentActivityUnitId, {
-                method: 'GET',
-            })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.status_code === 200) {
-                        modal.querySelector('input[name="name"]').value = data.student_activity_unit.name;
-                        modal.querySelector('input[name="abbreviation"]').value = data.student_activity_unit.abbreviation;
-                        modal.querySelector('textarea[name="description"]').value = data.student_activity_unit.description;
-                    } else {
-                        console.log('Data student activity unit not found!');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error fetching data:', error);
-                });
-        }
-
         async function openModal(element) {
+            console.log(element)
             const modalTarget = element.getAttribute('data-target')
             const modalId = element.getAttribute('data-id')
-            const modal = document.getElementById(`${modalTarget}`)
-            modal.classList.add('show')
-            if (modalTarget.includes('create')) {
-                document.getElementById('buttonCreateStudentActivityUnit').setAttribute('action', '/student-activity-unit/')
-            } else if (modalTarget.includes('detail')) {
-                await fetchStudentActivityUnit(modal, modalId)
-            } else if (modalTarget.includes('edit')) {
-                await fetchStudentActivityUnit(modal, modalId)
-                document.getElementById('buttonEditStudentActivityUnit').setAttribute('action', '/student-activity-unit/' + modalId)
-            } else if (modalTarget.includes('delete')) {
+            document.getElementById(`${modalTarget}`).classList.add('show')
+            if (modalTarget.includes('delete')) {
                 document.getElementById('buttonDeleteStudentActivityUnit').setAttribute('action', '/student-activity-unit/' + modalId)
             }
         }
