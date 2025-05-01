@@ -11,7 +11,7 @@ class ProfileController extends Controller
 {
     public function index()
     {
-        $view = auth()->user()->admin ? 'dashboard.profile-admin.index' : 'dashboard.profile-student-organization.index';
+        $view = auth()->user()->admin ? 'dashboard.profile-admin.index' : (auth()->user()->student_organization ? 'dashboard.profile-student-organization.index' : 'dashboard.profile-student-activity-unit.index');
 
         return view($view, [
             'page' => 'Halaman Profil'
@@ -20,7 +20,7 @@ class ProfileController extends Controller
 
     public function edit()
     {
-        $view = auth()->user()->admin ? 'dashboard.profile-admin.edit' : 'dashboard.profile-student-organization.edit';
+        $view = auth()->user()->admin ? 'dashboard.profile-admin.edit' : (auth()->user()->student_organization ? 'dashboard.profile-student-organization.edit' : 'dashboard.profile-student-activity-unit.edit');
 
         return view($view, [
             'page' => 'Halaman Edit Profil',
@@ -80,6 +80,27 @@ class ProfileController extends Controller
                 }
 
                 auth()->user()->student_organization->update($validatedDataStudentOrganization);
+            } else if (auth()->user()->student_activity_unit) {
+                $validatedDataStudentActivityUnit = $request->validate([
+                    'image_path' => 'nullable|file|image|mimes:png,jpg,jpeg,gif,webp,svg|max:2048',
+                    'name' => 'required|string|max:100',
+                    'abbreviation' => 'required|string|max:50',
+                    'description' => 'required|string',
+                ]);
+
+                if ($request->hasFile('image_path')) {
+                    $imageFile = $request->file('image_path');
+                    $imageName = time() . '.' . $imageFile->getClientOriginalExtension();
+                    if (auth()->user()->student_activity_unit->image_path && File::exists(public_path('assets/image/student-activity-unit/' . auth()->user()->student_activity_unit->image_path))) {
+                        File::delete(public_path('assets/image/student-activity-unit/' . auth()->user()->student_activity_unit->image_path));
+                    }
+                    $imageFile->move(public_path('assets/image/student-activity-unit'), $imageName);
+                    $validatedDataStudentActivityUnit['image_path'] = $imageName;
+                } else {
+                    $validatedDataStudentActivityUnit['image_path'] = auth()->user()->student_activity_unit->image_path;
+                }
+
+                auth()->user()->student_activity_unit->update($validatedDataStudentActivityUnit);
             }
 
             if (!empty($validatedDataUser['old_password']) && !empty($validatedDataUser['new_password'])) {

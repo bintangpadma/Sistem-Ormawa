@@ -12,15 +12,22 @@ class ActivityReportController extends Controller
     {
         $search = $request->input('search');
         $isStudentOrganization = auth()->user()->student_organization;
-        $activityReports = ActivityReport::with('student_organization')
+        $isStudentActivityUnit = auth()->user()->student_activity_unit;
+        $activityReports = ActivityReport::with(['student_organization', 'student_activity_unit'])
             ->when($isStudentOrganization, function ($query) use ($isStudentOrganization) {
                 $query->where('student_organizations_id', $isStudentOrganization->id);
+            })
+            ->when($isStudentActivityUnit, function ($query) use ($isStudentActivityUnit) {
+                $query->where('student_activity_units_id', $isStudentActivityUnit->id);
             })
             ->when($search, function ($query, $search) {
                 $query->where('name', 'LIKE', '%' . $search . '%')
                     ->orWhere('description', 'LIKE', '%' . $search . '%')
                     ->orWhere('status', 'LIKE', '%' . $search . '%')
                     ->orWhereHas('student_organization', function ($query) use ($search) {
+                        $query->where('name', 'LIKE', '%' . $search . '%')
+                            ->orWhere('abbreviation', 'LIKE', '%' . $search . '%');
+                    })->orWhereHas('student_activity_unit', function ($query) use ($search) {
                         $query->where('name', 'LIKE', '%' . $search . '%')
                             ->orWhere('abbreviation', 'LIKE', '%' . $search . '%');
                     });
@@ -44,7 +51,7 @@ class ActivityReportController extends Controller
 
     public function show(ActivityReport $activityReport)
     {
-        $activityReport->load('student_organization');
+        $activityReport->load(['student_organization', 'student_activity_unit']);
 
         return view('dashboard.activity-report.detail', [
             'page' => 'Halaman Detail LPJ',
@@ -63,7 +70,8 @@ class ActivityReportController extends Controller
     {
         try {
             $validatedData = $request->validate([
-                'student_organizations_id' => 'required',
+                'student_organizations_id' => 'nullable|required_without:student_activity_units_id',
+                'student_activity_units_id' => 'nullable|required_without:student_organizations_id',
                 'file_path' => 'required|file|mimes:pdf,doc,docx,xls,xlsx|max:10240',
                 'name' => 'required|string|max:100',
                 'description' => 'required|string|max:255',
@@ -86,7 +94,7 @@ class ActivityReportController extends Controller
 
     public function edit(ActivityReport $activityReport)
     {
-        $activityReport->load('student_organization');
+        $activityReport->load(['student_organization', 'student_activity_unit']);
 
         return view('dashboard.activity-report.edit', [
             'page' => 'Halaman Edit LPJ',

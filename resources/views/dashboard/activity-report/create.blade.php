@@ -9,7 +9,12 @@
         @endif
         <form action="{{ route('activity-report.store') }}" method="POST" class="form lg:!grid-cols-2" enctype="multipart/form-data">
             @csrf
-            <input type="hidden" name="student_organizations_id" value="{{ auth()->user()->student_organization->id }}">
+            @if(auth()->user()->student_organization)
+                <input type="hidden" name="student_organizations_id" value="{{ auth()->user()->student_organization->id }}">
+            @endif
+            @if(auth()->user()->student_activity_unit)
+                <input type="hidden" name="student_activity_units_id" value="{{ auth()->user()->student_activity_unit->id }}">
+            @endif
             <div class="form-input lg:col-span-2">
                 <label>
                     File LPJ

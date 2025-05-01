@@ -15,7 +15,7 @@
             <form method="GET" class="form">
                 <input type="search" class="input" name="search" placeholder="Cari lpj..." value="{{ $search }}">
             </form>
-            @if(auth()->user()->student_organization)
+            @if(auth()->user()->student_organization || auth()->user()->student_activity_unit)
                 <a href="{{ route('activity-report.create') }}" class="button-primary">Tambah LPJ</a>
             @endif
         </div>
@@ -23,6 +23,7 @@
             <table>
                 <thead>
                 <tr>
+                    <th>Pembuat</th>
                     <th>Nama</th>
                     <th>Deskripsi</th>
                     <th>Status</th>
@@ -31,10 +32,11 @@
                 </thead>
                 <tbody>
                 @if ($activityReports->count() == 0)
-                    <td colspan="4">Data lpj tidak ditemukan!</td>
+                    <td colspan="5">Data lpj tidak ditemukan!</td>
                 @else
                     @foreach ($activityReports as $activityReport)
                         <tr>
+                            <td>{{ $activityReport->student_organization ? 'Ormawa: ' . $activityReport->student_organization->name : 'UKM: ' . $activityReport->student_activity_unit->name }}</td>
                             <td>{{ $activityReport->name }}</td>
                             <td>{{ \Illuminate\Support\Str::limit($activityReport->description, 40) }}</td>
                             <td>
