@@ -39,6 +39,51 @@
                 </div>
                 <hr class="style-gap lg:col-span-2">
                 <div class="form-input">
+                    <label for="vision">Total Visi</label>
+                    <div class="input-wrapper">
+                        <input type="text" class="input" name="vision" value="{{ count(auth()->user()->student_activity_unit->student_activity_unit_visions) }}" readonly>
+                        <a href="{{ route('student-activity-unit-vision.index', auth()->user()->student_activity_unit) }}" class="button-redirect group">
+                            <span class="bg-link-move-light group-hover:opacity-100"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="form-input">
+                    <label for="mission">Total Misi</label>
+                    <div class="input-wrapper">
+                        <input type="text" class="input" name="mission" value="{{ count(auth()->user()->student_activity_unit->student_activity_unit_missions) }}" readonly>
+                        <a href="{{ route('student-activity-unit-mission.index', auth()->user()->student_activity_unit) }}" class="button-redirect group">
+                            <span class="bg-link-move-light group-hover:opacity-100"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="form-input">
+                    <label for="program">Total Program</label>
+                    <div class="input-wrapper">
+                        <input type="text" class="input" name="program" value="{{ count(auth()->user()->student_activity_unit->student_activity_unit_programs) }}" readonly>
+                        <a href="{{ route('student-activity-unit-program.index', auth()->user()->student_activity_unit) }}" class="button-redirect group">
+                            <span class="bg-link-move-light group-hover:opacity-100"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="form-input">
+                    <label for="structure">Total Struktur</label>
+                    <div class="input-wrapper">
+                        <input type="text" class="input" name="structure" value="{{ count(auth()->user()->student_activity_unit->student_activity_unit_structures) }}" readonly>
+                        <a href="{{ route('student-activity-unit-structure.index', auth()->user()->student_activity_unit) }}" class="button-redirect group">
+                            <span class="bg-link-move-light group-hover:opacity-100"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="form-input lg:col-span-2">
+                    <label for="achievement">Total Prestasi</label>
+                    <div class="input-wrapper">
+                        <input type="text" class="input" name="achievement" value="{{ count(auth()->user()->student_activity_unit->student_activity_unit_achievements) }}" readonly>
+                        <a href="{{ route('student-activity-unit-achievement.index', auth()->user()->student_activity_unit) }}" class="button-redirect group">
+                            <span class="bg-link-move-light group-hover:opacity-100"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="form-input">
                     <label for="news">Berita</label>
                     <input type="text" class="input" name="news" value="{{ count(auth()->user()->student_activity_unit->newses) }}" readonly>
                 </div>
