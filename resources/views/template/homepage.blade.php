@@ -13,7 +13,7 @@
 <body>
 <main class="homepage w-full flex flex-col min-h-dvh md:min-h-screen">
     @include('component.navbar')
-    <div class="homepage-content w-full">
+    <div class="homepage-content w-full pb-[120px]">
         @yield('content')
     </div>
 </main>

@@ -51,7 +51,7 @@
             <form class="form">
                 <div class="form-input lg:col-span-2">
                     <label>
-                        Foto Profil
+                        Foto Program
                         <span class="input-image">
                         <img src="https://placehold.co/100?text=Image+Not+Found" alt="Image Not Found" class="image-preview image-preview-detail">
                     </span>

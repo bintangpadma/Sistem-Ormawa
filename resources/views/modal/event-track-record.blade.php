@@ -4,8 +4,21 @@
             <p>Tambah Rekam Jejak Event</p>
         </div>
         <div class="content-body">
-            <form id="buttonCreateEventTrackRecord" class="form" method="POST">
+            <form id="buttonCreateEventTrackRecord" class="form" method="POST" enctype="multipart/form-data">
                 @csrf
+                <div class="form-input lg:col-span-2">
+                    <label>
+                        Foto Rekam Jejak
+                        <span class="input-image">
+                            <img src="https://placehold.co/100?text=Image+Not+Found" alt="Image Not Found" class="image-preview image-preview-create">
+                            <input type="file" class="image-input-hidden image-input-hidden-create" id="image_path" name="image_path">
+                            <div class="button-secondary image-button">Pilih foto</div>
+                        </span>
+                    </label>
+                    @error('image_path')
+                    <p class="text-invalid">{{ $message }}</p>
+                    @enderror
+                </div>
                 <div class="form-input lg:col-span-2">
                     <label for="title">Nama Event</label>
                     <input type="text" class="input" name="title" placeholder="Masukkan nama rekam jejak event...">
@@ -44,6 +57,14 @@
         <div class="content-body">
             <form class="form">
                 <div class="form-input lg:col-span-2">
+                    <label>
+                        Foto Rekam Jejak
+                        <span class="input-image">
+                        <img src="https://placehold.co/100?text=Image+Not+Found" alt="Image Not Found" class="image-preview image-preview-detail">
+                    </span>
+                    </label>
+                </div>
+                <div class="form-input lg:col-span-2">
                     <label for="title">Nama Event</label>
                     <input type="text" class="input" name="title" placeholder="Masukkan nama rekam jejak event..." readonly>
                 </div>
@@ -69,9 +90,22 @@
             <p>Edit Rekam Jejak Event</p>
         </div>
         <div class="content-body">
-            <form id="buttonEditEventTrackRecord" class="form" method="POST">
+            <form id="buttonEditEventTrackRecord" class="form" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
+                <div class="form-input lg:col-span-2">
+                    <label>
+                        Foto Rekam Jejak
+                        <span class="input-image">
+                        <img src="https://placehold.co/100?text=Image+Not+Found" alt="Image Not Found" class="image-preview image-preview-edit">
+                        <input type="file" class="image-input-hidden image-input-hidden-edit" id="image_path" name="image_path">
+                        <div class="button-secondary image-button">Pilih foto</div>
+                    </span>
+                    </label>
+                    @error('image_path')
+                    <p class="text-invalid">{{ $message }}</p>
+                    @enderror
+                </div>
                 <div class="form-input lg:col-span-2">
                     <label for="title">Nama Event</label>
                     <input type="text" class="input" name="title" placeholder="Masukkan nama rekam jejak event...">

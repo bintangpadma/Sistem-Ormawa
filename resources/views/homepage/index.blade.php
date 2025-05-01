@@ -81,7 +81,6 @@
                             </div>
                         </div>
                     @endforeach
-{{--                    <div class="swiper-pagination"></div>--}}
                 </div>
             </div>
         </section>

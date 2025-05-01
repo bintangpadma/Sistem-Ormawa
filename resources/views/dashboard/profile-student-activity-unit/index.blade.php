@@ -74,11 +74,20 @@
                         </a>
                     </div>
                 </div>
-                <div class="form-input lg:col-span-2">
+                <div class="form-input">
                     <label for="achievement">Total Prestasi</label>
                     <div class="input-wrapper">
                         <input type="text" class="input" name="achievement" value="{{ count(auth()->user()->student_activity_unit->student_activity_unit_achievements) }}" readonly>
                         <a href="{{ route('student-activity-unit-achievement.index', auth()->user()->student_activity_unit) }}" class="button-redirect group">
+                            <span class="bg-link-move-light group-hover:opacity-100"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="form-input">
+                    <label for="division">Total Divisi</label>
+                    <div class="input-wrapper">
+                        <input type="text" class="input" name="division" value="{{ count(auth()->user()->student_activity_unit->student_activity_unit_divisions) }}" readonly>
+                        <a href="{{ route('student-activity-unit-division.index', auth()->user()->student_activity_unit) }}" class="button-redirect group">
                             <span class="bg-link-move-light group-hover:opacity-100"></span>
                         </a>
                     </div>

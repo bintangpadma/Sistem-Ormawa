@@ -8,7 +8,7 @@
                 @csrf
                 <div class="form-input lg:col-span-2">
                     <label>
-                        Foto Profil
+                        Foto Mahasiswa
                         <span class="input-image">
                             <img src="https://placehold.co/100?text=Image+Not+Found" alt="Image Not Found" class="image-preview image-preview-create">
                             <input type="file" class="image-input-hidden image-input-hidden-create" id="profile_path" name="profile_path">
@@ -58,7 +58,7 @@
             <form class="form">
                 <div class="form-input lg:col-span-2">
                     <label>
-                        Foto Profil
+                        Foto Mahasiswa
                         <span class="input-image">
                         <img src="https://placehold.co/100?text=Image+Not+Found" alt="Image Not Found" class="image-preview image-preview-detail">
                     </span>
@@ -95,7 +95,7 @@
                 @method('PUT')
                 <div class="form-input lg:col-span-2">
                     <label>
-                        Foto Profil
+                        Foto Mahasiswa
                         <span class="input-image">
                         <img src="https://placehold.co/100?text=Image+Not+Found" alt="Image Not Found" class="image-preview image-preview-edit">
                         <input type="file" class="image-input-hidden image-input-hidden-edit" id="profile_path" name="profile_path">

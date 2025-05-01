@@ -65,6 +65,10 @@
 
     <script>
         const eventId = @json($event->id);
+        const imagePreviewCreate = document.querySelector('.image-preview-create');
+        const imageInputCreate = document.querySelector('.image-input-hidden-create');
+        const imagePreviewEdit = document.querySelector('.image-preview-edit');
+        const imageInputEdit = document.querySelector('.image-input-hidden-edit');
 
         function fetchTrackRecord(modal, trackRecordId) {
             fetch('/event/' + eventId + '/track-record/' + trackRecordId, {
@@ -76,6 +80,11 @@
                         modal.querySelector('input[name="title"]').value = data.event_track_record.title;
                         modal.querySelector('input[name="year"]').value = data.event_track_record.year;
                         modal.querySelector('textarea[name="description"]').value = data.event_track_record.description;
+                        if (modal.getAttribute('id').includes('detail')) {
+                            modal.querySelector('img.image-preview-detail').setAttribute('src', '/assets/image/track-record/' + data.event_track_record.image_path);
+                        } else if(modal.getAttribute('id').includes('edit')) {
+                            modal.querySelector('img.image-preview-edit').setAttribute('src', '/assets/image/track-record/' + data.event_track_record.image_path);
+                        }
                     } else {
                         console.log('Data event track record not found!');
                     }
@@ -105,5 +114,13 @@
         function closeModal(modalTarget) {
             document.getElementById(`${modalTarget}`).classList.remove('show')
         }
+
+        imageInputCreate.addEventListener('change', function() {
+            imagePreviewCreate.src = URL.createObjectURL(imageInputCreate.files[0]);
+        });
+
+        imageInputEdit.addEventListener('change', function() {
+            imagePreviewEdit.src = URL.createObjectURL(imageInputEdit.files[0]);
+        });
     </script>
 @endsection

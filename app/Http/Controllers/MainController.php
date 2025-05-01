@@ -44,6 +44,7 @@ class MainController extends Controller
                 'student_organization_structures',
                 'student_organization_achievements',
                 'student_organization_divisions.student_organization_division_tasks',
+                'events.event_track_records',
             ]),
         ]);
     }
