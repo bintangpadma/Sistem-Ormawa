@@ -18,7 +18,7 @@
                 <p class="text-invalid">{{ $message }}</p>
                 @enderror
             </div>
-            <div class="form-input lg:col-span-2">
+            <div class="form-input {{ !auth()->user()->admin ? 'lg:col-span-2' : '' }}">
                 <label for="name">Nama</label>
                 <input type="text" class="input" name="name" placeholder="Masukkan nama lpj..." value="{{ $activityReport->name }}">
                 @error('name')
@@ -26,7 +26,7 @@
                 @enderror
             </div>
             @if(auth()->user()->admin)
-                <div class="form-input lg:col-span-2">
+                <div class="form-input">
                     <label for="status">Status</label>
                     <select class="input" name="status">
                         <option value="pending" {{ $activityReport->status === 'pending' ? 'selected' : '' }}>Tertunda</option>
