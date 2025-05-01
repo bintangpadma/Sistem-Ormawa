@@ -18,6 +18,11 @@ class Event extends Model
         return $this->belongsTo(StudentOrganization::class, 'student_organizations_id', 'id');
     }
 
+    public function student_activity_unit(): BelongsTo
+    {
+        return $this->belongsTo(StudentActivityUnit::class, 'student_activity_units_id', 'id');
+    }
+
     public function event_divisions(): HasMany
     {
         return $this->hasMany(EventDivision::class, 'events_id', 'id');

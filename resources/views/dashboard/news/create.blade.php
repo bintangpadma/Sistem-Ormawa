@@ -38,7 +38,23 @@
             @elseif(auth()->user()->student_organization)
                 <input type="hidden" name="student_organizations_id" value="{{ auth()->user()->student_organization->id }}">
             @endif
-            <div class="form-input {{ auth()->user()->student_organization ? 'lg:col-span-2' : '' }}">
+            @if(auth()->user()->admin)
+                <div class="form-input">
+                    <label for="student_activity_units_id">UKM</label>
+                    <select class="input" name="student_activity_units_id" id="student_activity_units_id">
+                        <option value="">Pilih ukm berita...</option>
+                        @foreach($studentActivityUnits as $studentActivityUnit)
+                            <option value="{{ $studentActivityUnit->id }}">{{ $studentActivityUnit->name }}</option>
+                        @endforeach
+                    </select>
+                    @error('student_activity_units_id')
+                    <p class="text-invalid">{{ $message }}</p>
+                    @enderror
+                </div>
+            @elseif(auth()->user()->student_activity_unit)
+                <input type="hidden" name="student_activity_units_id" value="{{ auth()->user()->student_activity_unit->id }}">
+            @endif
+            <div class="form-input lg:col-span-2">
                 <label for="name">Nama Berita</label>
                 <input type="text" class="input" name="name" placeholder="Masukkan nama berita...">
                 @error('name')

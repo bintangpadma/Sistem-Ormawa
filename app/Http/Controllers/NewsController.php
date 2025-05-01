@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\News;
+use App\Models\StudentActivityUnit;
 use App\Models\StudentOrganization;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -13,9 +14,13 @@ class NewsController extends Controller
     {
         $search = $request->input('search');
         $isStudentOrganization = auth()->user()->student_organization;
+        $isStudentActivityUnit = auth()->user()->student_activity_unit;
         $newses = News::with('student_organization')
             ->when($isStudentOrganization, function ($query) use ($isStudentOrganization) {
                 $query->where('student_organizations_id', $isStudentOrganization->id);
+            })
+            ->when($isStudentActivityUnit, function ($query) use ($isStudentActivityUnit) {
+                $query->where('student_activity_units_id', $isStudentActivityUnit->id);
             })
             ->when($search, function ($query, $search) {
                 $query->where(function ($q) use ($search) {
@@ -39,7 +44,7 @@ class NewsController extends Controller
 
     public function show(News $news)
     {
-        $news->load('student_organization');
+        $news->load(['student_organization', 'student_activity_unit']);
 
         return view('dashboard.news.detail', [
             'page' => 'Halaman Detail Berita',
@@ -50,10 +55,12 @@ class NewsController extends Controller
     public function create()
     {
         $studentOrganizations = StudentOrganization::latest()->get();
+        $studentActivityUnits = StudentActivityUnit::latest()->get();
 
         return view('dashboard.news.create', [
             'page' => 'Halaman Tambah Berita',
             'studentOrganizations' => $studentOrganizations,
+            'studentActivityUnits' => $studentActivityUnits,
         ]);
     }
 
@@ -62,7 +69,8 @@ class NewsController extends Controller
         try {
             $validatedData = $request->validate([
                 'image_path' => 'required|file|image|mimes:png,jpg,jpeg,gif,webp,svg|max:2048',
-                'student_organizations_id' => 'required',
+                'student_organizations_id' => 'nullable|required_without:student_activity_units_id',
+                'student_activity_units_id' => 'nullable|required_without:student_organizations_id',
                 'name' => 'required|string',
                 'description' => 'required|string',
             ]);
@@ -85,13 +93,15 @@ class NewsController extends Controller
 
     public function edit(News $news)
     {
-        $news->load('student_organization');
+        $news->load(['student_organization', 'student_activity_unit']);
         $studentOrganizations = StudentOrganization::latest()->get();
+        $studentActivityUnits = StudentActivityUnit::latest()->get();
 
         return view('dashboard.news.edit', [
             'page' => 'Halaman Edit Berita',
             'news' => $news,
             'studentOrganizations' => $studentOrganizations,
+            'studentActivityUnits' => $studentActivityUnits,
         ]);
     }
 
@@ -100,7 +110,8 @@ class NewsController extends Controller
         try {
             $validatedData = $request->validate([
                 'image_path' => 'nullable|file|image|mimes:png,jpg,jpeg,gif,webp,svg|max:2048',
-                'student_organizations_id' => 'required',
+                'student_organizations_id' => 'nullable|required_without:student_activity_units_id',
+                'student_activity_units_id' => 'nullable|required_without:student_organizations_id',
                 'name' => 'required|string',
                 'description' => 'required|string',
             ]);

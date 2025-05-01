@@ -21,7 +21,7 @@
             <table>
                 <thead>
                 <tr>
-                    <th>Organisasi Mahasiswa</th>
+                    <th>Pembuat</th>
                     <th>Nama Berita</th>
                     <th>Deskripsi</th>
                     <th></th>
@@ -33,7 +33,7 @@
                 @else
                     @foreach ($newses as $news)
                         <tr>
-                            <td>{{ $news->student_organization->name }}</td>
+                            <td>{{ $news->student_organization ? 'Ormawa: ' . $news->student_organization->name : 'UKM: ' . $news->student_activity_unit->name }}</td>
                             <td>{{ $news->name }}</td>
                             <td>{{ \Illuminate\Support\Str::limit($news->description, 40) }}</td>
                             <td>
