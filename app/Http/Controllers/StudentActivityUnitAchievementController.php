@@ -1,0 +1,78 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\StudentActivityUnit;
+use App\Models\StudentActivityUnitAchievement;
+use Illuminate\Http\Request;
+
+class StudentActivityUnitAchievementController extends Controller
+{
+    public function index(StudentActivityUnit $studentActivityUnit, Request $request)
+    {
+        $search = $request->input('search');
+        $studentActivityUnitAchievements = StudentActivityUnitAchievement::where('student_activities_id', $studentActivityUnit->id)
+            ->when($search, function ($query, $search) {
+                $query->where('name', 'LIKE', '%' . $search . '%')
+                    ->orWhere('description', 'LIKE', '%' . $search . '%');
+            })->latest()->paginate(10);
+
+        return view('dashboard.student-activity-unit-achievement.index', [
+            'page' => 'Halaman Prestasi',
+            'studentActivityUnitAchievements' => $studentActivityUnitAchievements,
+            'studentActivityUnit' => $studentActivityUnit,
+            'search' => $search,
+        ]);
+    }
+
+    public function show(StudentActivityUnit $studentActivityUnit, StudentActivityUnitAchievement $studentActivityUnitAchievement)
+    {
+        return response()->json([
+            'status_code' => 200,
+            'student_activity_unit' => $studentActivityUnit,
+            'student_activity_unit_achievement' => $studentActivityUnitAchievement,
+        ]);
+    }
+
+    public function store(StudentActivityUnit $studentActivityUnit, Request $request)
+    {
+        try {
+            $validatedData = $request->validate([
+                'name' => 'required|string',
+                'description' => 'required|string',
+            ]);
+            $validatedData['student_activities_id'] = $studentActivityUnit->id;
+            StudentActivityUnitAchievement::create($validatedData);
+            return redirect()->back()->with('success', 'Berhasil menambahkan prestasi baru!');
+        } catch (\Exception $e) {
+            logger($e->getMessage());
+            return redirect()->back()->with('failed', 'Gagal menambahkan prestasi baru!');
+        }
+    }
+
+    public function update(StudentActivityUnit $studentActivityUnit, StudentActivityUnitAchievement $studentActivityUnitAchievement, Request $request)
+    {
+        try {
+            $validatedData = $request->validate([
+                'name' => 'required|string',
+                'description' => 'required|string',
+            ]);
+            $studentActivityUnitAchievement->update($validatedData);
+            return redirect()->back()->with('success', 'Berhasil mengedit prestasi!');
+        } catch (\Exception $e) {
+            logger($e->getMessage());
+            return redirect()->back()->with('failed', 'Gagal mengedit prestasi!');
+        }
+    }
+
+    public function destroy(StudentActivityUnit $studentActivityUnit, StudentActivityUnitAchievement $studentActivityUnitAchievement)
+    {
+        try {
+            $studentActivityUnitAchievement->delete();
+            return redirect()->back()->with('success', 'Berhasil menghapus prestasi!');
+        } catch (\Exception $e) {
+            logger($e->getMessage());
+            return redirect()->back()->with('failed', 'Gagal menghapus prestasi!');
+        }
+    }
+}
