@@ -130,6 +130,27 @@
             </div>
         </div>
     </section>
+    <section class="program container" id="program">
+        <div class="section-header">
+            <h2 class="title">Rekam Jejak ORMAWA</h2>
+        </div>
+        <div class="section-content content-gap swiper mySwiper">
+            <div class="swiper-wrapper">
+                @foreach($eventTrackRecords as $eventTrackRecord)
+                    <div class="swiper-slide">
+                        <div class="card-program">
+                            <img src="{{ $eventTrackRecord->image_path ? asset('assets/image/track-record/' . $eventTrackRecord->image_path) : 'https://placehold.co/48x48?text=Image+Not+Found' }}" alt="Image Ormawa" class="program-image">
+                            <div class="program-content">
+                                <h4 class="content-title">{{ $eventTrackRecord->title }}</h4>
+                                <h6 class="content-author">{{ $eventTrackRecord->year }}</h6>
+                                <p class="content-description">{{ $eventTrackRecord->description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>

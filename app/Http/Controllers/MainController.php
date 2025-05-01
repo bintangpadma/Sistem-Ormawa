@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\EventTrackRecord;
 use App\Models\InfoCommittee;
 use App\Models\News;
 use App\Models\StudentActivityUnit;
@@ -34,6 +35,9 @@ class MainController extends Controller
 
     public function showOrmawa(StudentOrganization $studentOrganization)
     {
+        $eventIds = $studentOrganization->load('events')->events->pluck('id')->toArray();
+        $eventTrackRecords = EventTrackRecord::whereIn('events_id', $eventIds)->get();
+
         return view('homepage.detail-ormawa', [
             'page' => 'Halaman Detail Organisasi Mahasiswa',
             'studentOrganization' => $studentOrganization->load([
@@ -46,6 +50,7 @@ class MainController extends Controller
                 'student_organization_divisions.student_organization_division_tasks',
                 'events.event_track_records',
             ]),
+            'eventTrackRecords' => $eventTrackRecords
         ]);
     }
 
