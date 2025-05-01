@@ -12,8 +12,8 @@
                 </label>
             </div>
             <div class="form-input">
-                <label for="student_organizations_id">Organisasi Mahasiswa</label>
-                <input type="text" class="input" name="student_organizations_id" value="{{ $event->student_organization->name }}" readonly>
+                <label for="author">Pembuat</label>
+                <input type="text" class="input" name="author" value="{{ $event->student_organization ? 'Ormawa: ' . $event->student_organization->name : 'UKM: ' . $event->student_activity_unit->name }}" readonly>
             </div>
             <div class="form-input">
                 <label for="name">Nama Event</label>

@@ -15,7 +15,7 @@ class NewsController extends Controller
         $search = $request->input('search');
         $isStudentOrganization = auth()->user()->student_organization;
         $isStudentActivityUnit = auth()->user()->student_activity_unit;
-        $newses = News::with('student_organization')
+        $newses = News::with(['student_organization', 'student_activity_unit'])
             ->when($isStudentOrganization, function ($query) use ($isStudentOrganization) {
                 $query->where('student_organizations_id', $isStudentOrganization->id);
             })
