@@ -33,12 +33,12 @@ class MainController extends Controller
         ]);
     }
 
-    public function showOrmawa(StudentOrganization $studentOrganization)
+    public function showStudentOrganization(StudentOrganization $studentOrganization)
     {
         $eventIds = $studentOrganization->load('events')->events->pluck('id')->toArray();
         $eventTrackRecords = EventTrackRecord::whereIn('events_id', $eventIds)->get();
 
-        return view('homepage.detail-ormawa', [
+        return view('homepage.detail-student-organization', [
             'page' => 'Halaman Detail Organisasi Mahasiswa',
             'studentOrganization' => $studentOrganization->load([
                 'user',
@@ -48,6 +48,27 @@ class MainController extends Controller
                 'student_organization_structures',
                 'student_organization_achievements',
                 'student_organization_divisions.student_organization_division_tasks',
+                'events.event_track_records',
+            ]),
+            'eventTrackRecords' => $eventTrackRecords
+        ]);
+    }
+
+    public function showStudentActivityUnit(StudentActivityUnit $studentActivityUnit)
+    {
+        $eventIds = $studentActivityUnit->load('events')->events->pluck('id')->toArray();
+        $eventTrackRecords = EventTrackRecord::whereIn('events_id', $eventIds)->get();
+
+        return view('homepage.detail-student-activity-unit', [
+            'page' => 'Halaman Detail UKM',
+            'studentActivityUnit' => $studentActivityUnit->load([
+                'user',
+                'student_activity_unit_visions',
+                'student_activity_unit_missions',
+                'student_activity_unit_programs',
+                'student_activity_unit_structures',
+                'student_activity_unit_achievements',
+                'student_activity_unit_divisions.student_activity_unit_division_tasks',
                 'events.event_track_records',
             ]),
             'eventTrackRecords' => $eventTrackRecords

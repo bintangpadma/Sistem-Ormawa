@@ -39,7 +39,7 @@
                 <div class="content-card">
                     <h3 class="card-title">ORMAWA</h3>
                     @foreach($studentOrganizations as $i => $studentOrganization)
-                        <a href="{{ route('main.show-ormawa', $studentOrganization) }}" class="card-list group">
+                        <a href="{{ route('main.show-student-organization', $studentOrganization) }}" class="card-list group">
                             <span class="list-wrapper">
                                 <span class="list-number">{{ $i + 1 }}</span>
                                 {{ $studentOrganization->abbreviation }}
@@ -51,12 +51,13 @@
                 <div class="content-card">
                     <h3 class="card-title">UKM</h3>
                     @foreach($studentActivityUnits as $i => $studentActivityUnit)
-                        <p class="card-list">
-                                <span class="list-wrapper">
-                                    <span class="list-number">{{ $i + 1 }}</span>
-                                    {{ $studentActivityUnit->abbreviation }}
-                                </span>
-                        </p>
+                        <a href="{{ route('main.show-student-activity-unit', $studentActivityUnit) }}" class="card-list group">
+                            <span class="list-wrapper">
+                                <span class="list-number">{{ $i + 1 }}</span>
+                                {{ $studentActivityUnit->abbreviation }}
+                            </span>
+                            <span class="arrow-icon group-hover:translate-x-[4px]"></span>
+                        </a>
                     @endforeach
                 </div>
             </div>
@@ -132,7 +133,7 @@
                 @foreach($studentOrganizations as $studentOrganization)
                     <div class="card-structure">
                         <h5 class="structure-title">{{ $studentOrganization->name }}</h5>
-                        <a href="{{ route('main.show-ormawa', $studentOrganization) }}" class="button-primary px-[18px] py-[12px] text-[0.913rem] font-xd-prime-regular">Lihat Detail</a>
+                        <a href="{{ route('main.show-student-organization', $studentOrganization) }}" class="button-primary px-[18px] py-[12px] text-[0.913rem] font-xd-prime-regular">Lihat Detail</a>
                     </div>
                 @endforeach
             </div>
