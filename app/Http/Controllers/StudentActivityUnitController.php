@@ -13,7 +13,9 @@ class StudentActivityUnitController extends Controller
     public function index(Request $request)
     {
         $search = $request->input('search');
-        $studentActivityUnits = StudentActivityUnit::when($search, function ($query, $search) {
+        $studentActivityUnits = StudentActivityUnit::with('user')
+            ->whereHas('user')
+            ->when($search, function ($query, $search) {
                 $query->where('name', 'LIKE', '%' . $search . '%')
                     ->orWhere('abbreviation', 'LIKE', '%' . $search . '%')
                     ->orWhere('description', 'LIKE', '%' . $search . '%');
@@ -139,7 +141,7 @@ class StudentActivityUnitController extends Controller
             if ($studentActivityUnit->image_path && File::exists(public_path('assets/image/student-activity-unit/' . $studentActivityUnit->image_path))) {
                 File::delete(public_path('assets/image/student-activity-unit/' . $studentActivityUnit->image_path));
             }
-            $studentActivityUnit->user->delete();
+            $studentActivityUnit->user ?? $studentActivityUnit->user->delete();
             $studentActivityUnit->delete();
             return redirect()->route('student-activity-unit.index')->with('success', 'Berhasil menghapus ukm!');
         } catch (\Exception $e) {
