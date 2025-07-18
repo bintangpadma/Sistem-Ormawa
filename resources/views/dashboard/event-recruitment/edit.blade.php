@@ -10,7 +10,7 @@
         <form action="{{ route('event-recruitment.update', ['event' => $event, 'eventRecruitment' => $eventRecruitment]) }}" method="POST" class="form lg:!grid-cols-2">
             @csrf
             @method('PUT')
-            <div class="form-input">
+            <div class="form-input lg:col-span-2">
                 <label for="event_divisions_id">Divisi</label>
                 <select class="input" name="event_divisions_id">
                     @foreach($eventDivisions as $eventDivision)
@@ -32,6 +32,13 @@
                 <label for="student_code">NIM</label>
                 <input type="text" class="input" name="student_code" placeholder="Masukkan nim perekrut..." value="{{ $eventRecruitment->student_code }}">
                 @error('student_code')
+                <p class="text-invalid">{{ $message }}</p>
+                @enderror
+            </div>
+            <div class="form-input">
+                <label for="email">Email</label>
+                <input type="email" class="input" name="email" placeholder="Masukkan email perekrut..." value="{{ $eventRecruitment->email }}">
+                @error('email')
                 <p class="text-invalid">{{ $message }}</p>
                 @enderror
             </div>

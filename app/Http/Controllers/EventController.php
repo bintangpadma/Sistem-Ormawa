@@ -73,6 +73,7 @@ class EventController extends Controller
                 'student_activity_units_id' => 'nullable|required_without:student_organizations_id',
                 'name' => 'required|string',
                 'description' => 'required|string',
+                'link_group_wa' => 'required|string',
             ]);
 
             if ($request->hasFile('image_path')) {
@@ -114,6 +115,7 @@ class EventController extends Controller
                 'student_activity_units_id' => 'nullable|required_without:student_organizations_id',
                 'name' => 'required|string',
                 'description' => 'required|string',
+                'link_group_wa' => 'required|string',
             ]);
 
             if ($request->hasFile('image_path')) {

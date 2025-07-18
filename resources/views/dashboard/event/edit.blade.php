@@ -50,10 +50,17 @@
             @elseif(auth()->user()->student_activity_unit)
                 <input type="hidden" name="student_activity_units_id" value="{{ auth()->user()->student_activity_unit->id }}">
             @endif
-            <div class="form-input lg:col-span-2">
+            <div class="form-input">
                 <label for="name">Nama Event</label>
                 <input type="text" class="input" name="name" placeholder="Masukkan nama event..." value="{{ $event->name }}">
                 @error('name')
+                <p class="text-invalid">{{ $message }}</p>
+                @enderror
+            </div>
+            <div class="form-input">
+                <label for="link_group_wa">Link Grup WA</label>
+                <input type="text" class="input" name="link_group_wa" placeholder="Masukkan link grup wa event..." value="{{ $event->link_group_wa }}">
+                @error('link_group_wa')
                 <p class="text-invalid">{{ $message }}</p>
                 @enderror
             </div>

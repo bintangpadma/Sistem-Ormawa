@@ -11,13 +11,17 @@
                     </span>
                 </label>
             </div>
-            <div class="form-input">
+            <div class="form-input lg:col-span-2">
                 <label for="author">Pembuat</label>
                 <input type="text" class="input" name="author" value="{{ $event->student_organization ? 'Ormawa: ' . $event->student_organization->name : 'UKM: ' . $event->student_activity_unit->name }}" readonly>
             </div>
             <div class="form-input">
                 <label for="name">Nama Event</label>
                 <input type="text" class="input" name="name" value="{{ $event->name }}" readonly>
+            </div>
+            <div class="form-input">
+                <label for="link_group_wa">Link Grup WA</label>
+                <input type="text" class="input" name="link_group_wa" value="{{ $event->link_group_wa }}" readonly>
             </div>
             <div class="form-input lg:col-span-2">
                 <label for="description">Deskripsi</label>

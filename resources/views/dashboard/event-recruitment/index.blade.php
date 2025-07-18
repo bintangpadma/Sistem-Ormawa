@@ -24,6 +24,7 @@
                     <th>Divisi</th>
                     <th>Nama Mahasiswa</th>
                     <th>NIM</th>
+                    <th>Email</th>
                     <th>Nomor Telepon</th>
                     <th>Program Studi</th>
                     <th>Status</th>
@@ -39,6 +40,7 @@
                             <td>{{ $eventRecruitment->event_division->name }}</td>
                             <td>{{ $eventRecruitment->student_name }}</td>
                             <td>{{ $eventRecruitment->student_code }}</td>
+                            <td>{{ $eventRecruitment->email }}</td>
                             <td>{{ $eventRecruitment->number_phone }}</td>
                             <td>{{ $eventRecruitment->study_program }}</td>
                             <td>

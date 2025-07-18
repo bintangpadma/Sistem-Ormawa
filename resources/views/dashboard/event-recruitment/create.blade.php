@@ -9,7 +9,7 @@
         @endif
         <form action="{{ route('event-recruitment.store', $event) }}" method="POST" class="form lg:!grid-cols-2">
             @csrf
-            <div class="form-input lg:col-span-2">
+            <div class="form-input">
                 <label for="event_divisions_id">Divisi</label>
                 <select class="input" name="event_divisions_id">
                     <option value="">Pilih divisi perekrut...</option>
@@ -32,6 +32,13 @@
                 <label for="student_code">NIM</label>
                 <input type="text" class="input" name="student_code" placeholder="Masukkan nim perekrut...">
                 @error('student_code')
+                <p class="text-invalid">{{ $message }}</p>
+                @enderror
+            </div>
+            <div class="form-input">
+                <label for="email">Email</label>
+                <input type="email" class="input" name="email" placeholder="Masukkan email perekrut...">
+                @error('email')
                 <p class="text-invalid">{{ $message }}</p>
                 @enderror
             </div>

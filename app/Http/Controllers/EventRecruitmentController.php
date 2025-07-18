@@ -6,6 +6,8 @@ use App\Models\Event;
 use App\Models\EventDivision;
 use App\Models\EventRecruitment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendRecruitmentEmail;
 
 class EventRecruitmentController extends Controller
 {
@@ -65,6 +67,7 @@ class EventRecruitmentController extends Controller
                 'event_divisions_id' => 'required',
                 'student_name' => 'required|string|max:255',
                 'student_code' => 'required|string|max:50',
+                'email' => 'required|email:dns|max:255',
                 'number_phone' => 'required|string|max:15',
                 'study_program' => 'required|string|max:50',
                 'class' => 'required|string|max:25',
@@ -102,6 +105,7 @@ class EventRecruitmentController extends Controller
             $validatedData = $request->validate([
                 'student_name' => 'required|string|max:255',
                 'student_code' => 'required|string|max:50',
+                'email' => 'required|email:dns|max:255',
                 'number_phone' => 'required|string|max:15',
                 'study_program' => 'required|string|max:50',
                 'class' => 'required|string|max:25',
@@ -110,6 +114,11 @@ class EventRecruitmentController extends Controller
                 'status' => 'required|string',
             ]);
             $eventRecruitment->update($validatedData);
+            if ($validatedData['status'] === 'accepted') {
+                $this->sendRecruitmentEmail($eventRecruitment->id, 'accepted');
+            } else if ($validatedData['status'] === 'rejected') {
+                $this->sendRecruitmentEmail($eventRecruitment->id, 'rejected');
+            }
             return redirect()->route('event-recruitment.index', $event)->with('success', 'Berhasil mengedit perekrut!');
         } catch (\Exception $e) {
             logger($e->getMessage());
@@ -127,5 +136,23 @@ class EventRecruitmentController extends Controller
             logger($e->getMessage());
             return redirect()->back()->with('failed', 'Gagal menghapus perekrut!');
         }
+    }
+
+    public function sendRecruitmentEmail(int $id, string $status)
+    {
+        $eventRecruitment = EventRecruitment::with(['event', 'event_division'])->where('id', $id)->firstOrFail();
+
+        $data = [
+            'student_name' => $eventRecruitment->student_name,
+            'student_code' => $eventRecruitment->student_code,
+            'event' => $eventRecruitment->event->name,
+            'event_division' => $eventRecruitment->event_division->name,
+            'link_group_wa' => $eventRecruitment->event->link_group_wa,
+            'status' => $status,
+            'from_email' => env('MAIL_FROM_ADDRESS'),
+            'from_name' => 'Admin ' . $eventRecruitment->event->name,
+        ];
+
+        Mail::to($eventRecruitment->email)->send(new SendRecruitmentEmail($data));
     }
 }
