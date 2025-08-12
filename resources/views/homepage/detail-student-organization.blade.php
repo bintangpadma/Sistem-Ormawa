@@ -53,7 +53,7 @@
         <div class="section-header">
             <h2 class="title">Visi & Misi Organisasi Mahasiswa</h2>
         </div>
-        <div class="section-content content-gap">
+        <div class="section-content content-gap !grid-cols-1">
             <div class="content-card">
                 <h3 class="card-title">VISI</h3>
                 @foreach($studentOrganization->student_organization_visions as $i => $studentOrganizationVision)
