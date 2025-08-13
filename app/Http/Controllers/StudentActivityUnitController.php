@@ -14,7 +14,6 @@ class StudentActivityUnitController extends Controller
     {
         $search = $request->input('search');
         $studentActivityUnits = StudentActivityUnit::with('user')
-            ->whereHas('user')
             ->when($search, function ($query, $search) {
                 $query->where('name', 'LIKE', '%' . $search . '%')
                     ->orWhere('abbreviation', 'LIKE', '%' . $search . '%')
