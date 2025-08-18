@@ -351,11 +351,11 @@
     }
 
     .dashboard .content-menu.content-dashboard .dashboard-menu {
-        @apply p-[14px] bg-dark-700 rounded-[3px] flex items-center gap-[12px] lg:gap-[16px];
+        @apply p-[14px] bg-dark-700 rounded-[3px] flex gap-[12px] lg:gap-[16px] h-fit;
     }
 
     .dashboard .content-menu.content-dashboard .dashboard-menu .menu-icon {
-        @apply w-[48px] h-[48px] rounded-[2px] bg-primary flex items-center justify-center;
+        @apply w-[48px] h-[48px] aspect-square rounded-[2px] bg-primary flex items-center justify-center;
     }
 
     .dashboard .content-menu.content-dashboard .dashboard-menu .menu-icon span {
@@ -367,7 +367,7 @@
     }
 
     .dashboard .content-menu.content-dashboard .dashboard-menu .menu-data .data-value {
-        @apply text-[1.5rem] text-primary font-xd-prime-bold;
+        @apply text-[1.5rem] text-primary font-xd-prime-bold leading-[120%];
     }
 
     .dashboard .content-menu.content-table {

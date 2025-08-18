@@ -9,6 +9,7 @@
         @endif
         <form action="{{ route('administrative-document.store') }}" method="POST" class="form lg:!grid-cols-2" enctype="multipart/form-data">
             @csrf
+            <input type="hidden" name="users_id" value="{{auth()->user()->id}}">
             <div class="form-input lg:col-span-2">
                 <label>
                     File Dokumen Administrasi

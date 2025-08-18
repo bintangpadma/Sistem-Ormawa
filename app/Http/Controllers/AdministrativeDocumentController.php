@@ -14,7 +14,9 @@ class AdministrativeDocumentController extends Controller
         $administrativeDocuments = AdministrativeDocument::when($search, function ($query, $search) {
                 $query->where('name', 'LIKE', '%' . $search . '%')
                     ->orWhere('description', 'LIKE', '%' . $search . '%');
-            })->latest()->paginate(10);
+            })->when(auth()->user()->student_organization, function ($query) {
+                $query->where('users_id', auth()->user()->id);
+        })->latest()->paginate(10);
 
         return view('dashboard.administrative-document.index', [
             'page' => 'Halaman Dokumen Administrasi',
@@ -51,6 +53,7 @@ class AdministrativeDocumentController extends Controller
     {
         try {
             $validatedData = $request->validate([
+                'users_id' => 'required',
                 'file_path' => 'required|file|mimes:pdf,doc,docx,xls,xlsx|max:10240',
                 'name' => 'required|string|max:100',
                 'description' => 'required|string|max:255',

@@ -19,7 +19,6 @@ class MainController extends Controller
             'page' => 'Halaman Beranda',
             'studentOrganizations' => StudentOrganization::with('student_organization_programs')->orderBy('sort', 'asc')->get(),
             'studentActivityUnits' => StudentActivityUnit::latest()->get(),
-            'studentOrganizationPrograms' => StudentOrganizationProgram::with('student_organization')->latest()->get(),
             'events' => Event::latest()->get(),
             'newses' => News::latest()->get(),
         ]);
