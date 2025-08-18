@@ -68,22 +68,24 @@
             <div class="section-header">
                 <h2 class="title">Kisah Setiap Program Kerja ORMAWA dan UKM</h2>
             </div>
-            <div class="section-content content-gap swiper mySwiper">
-                <div class="swiper-wrapper">
-                    @foreach($studentOrganizationPrograms as $studentOrganizationProgram)
-                        <div class="swiper-slide">
-                            <div class="card-program">
-                                <img src="{{ $studentOrganizationProgram->image_path ? asset('assets/image/program/' . $studentOrganizationProgram->image_path) : 'https://placehold.co/48x48?text=Image+Not+Found' }}" alt="Image Ormawa" class="program-image">
-                                <div class="program-content">
-                                    <h4 class="content-title">{{ $studentOrganizationProgram->name }}</h4>
-                                    <h6 class="content-author">{{ $studentOrganizationProgram->student_organization->abbreviation }}</h6>
-                                    <p class="content-description">{{ $studentOrganizationProgram->description }}</p>
+            @foreach($studentOrganizations as $studentOrganization)
+                <div class="section-content content-gap swiper mySwiper">
+                    <div class="swiper-wrapper">
+                        @foreach($studentOrganization->student_organization_programs as $studentOrganizationProgram)
+                            <div class="swiper-slide">
+                                <div class="card-program">
+                                    <img src="{{ $studentOrganizationProgram->image_path ? asset('assets/image/program/' . $studentOrganizationProgram->image_path) : 'https://placehold.co/48x48?text=Image+Not+Found' }}" alt="Image Ormawa" class="program-image">
+                                    <div class="program-content">
+                                        <h4 class="content-title">{{ $studentOrganizationProgram->name }}</h4>
+                                        <h6 class="content-author">{{ $studentOrganizationProgram->student_organization->abbreviation }}</h6>
+                                        <p class="content-description">{{ $studentOrganizationProgram->description }}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    </div>
                 </div>
-            </div>
+            @endforeach
         </section>
     </div>
     <div class="container">
