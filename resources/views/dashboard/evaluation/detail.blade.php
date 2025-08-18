@@ -24,7 +24,7 @@
             <hr class="style-gap lg:col-span-2">
             <div class="form-input lg:col-span-2">
                 <label for="assessment">Penilaian</label>
-                <input type="text" class="input" name="assessment" value="{{ $evaluation->assessment === 'excellent' ? 'Sangat Bagus' : ($evaluation->assessment === 'good' ? 'Bagus' : ($evaluation->assessment === 'poor' ? 'Buruk' : 'Sangat Buruk')) }}" readonly>
+                <input type="text" class="input" name="assessment" value="{{ $evaluation->assessment === 'active' ? 'Aktif' : ($evaluation->assessment === 'less active' ? 'Kurang Aktif' : 'Tidak Aktif') }}" readonly>
             </div>
             <div class="form-input lg:col-span-2">
                 <label for="criticism">Kritik</label>

@@ -15,7 +15,7 @@
                     {{ session('failed') }}
                 </div>
             @endif
-            <h2 class="title mb-[20px] lg:mb-[24px]">Masukkan Akun Ormawa/ Admin Anda Sekarang</h2>
+            <h2 class="title mb-[20px] lg:mb-[24px]">Pendaftaran Panitia {{$event->name}}</h2>
             <form action="{{ route('event-recruitment.store', $event) }}" method="POST" class="form lg:!grid-cols-2">
                 @csrf
                 <div class="form-input">

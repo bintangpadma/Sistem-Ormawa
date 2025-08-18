@@ -31,10 +31,9 @@
                 <label for="assessment">Penilaian</label>
                 <select class="input" name="assessment">
                     <option value="">Pilih penilaian panitia...</option>
-                    <option value="excellent">Sangat Bagus</option>
-                    <option value="good">Bagus</option>
-                    <option value="poor">Buruk</option>
-                    <option value="very_poor">Sangat Buruk</option>
+                    <option value="active">Aktif</option>
+                    <option value="less active">Kurang Aktif</option>
+                    <option value="inactive">Tidak Aktif</option>
                 </select>
                 @error('assessment')
                 <p class="text-invalid">{{ $message }}</p>

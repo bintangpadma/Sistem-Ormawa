@@ -30,10 +30,9 @@
             <div class="form-input lg:col-span-2">
                 <label for="assessment">Penilaian</label>
                 <select class="input" name="assessment">
-                    <option value="excellent" {{ $evaluation->assessment === 'excellent' ? 'selected' : '' }}>Sangat Bagus</option>
-                    <option value="good" {{ $evaluation->assessment === 'good' ? 'selected' : '' }}>Bagus</option>
-                    <option value="poor" {{ $evaluation->assessment === 'poor' ? 'selected' : '' }}>Buruk</option>
-                    <option value="very_poor" {{ $evaluation->assessment === 'very_poor' ? 'selected' : '' }}>Sangat Buruk</option>
+                    <option value="active" {{ $evaluation->assessment === 'active' ? 'selected' : '' }}>Aktif</option>
+                    <option value="less active" {{ $evaluation->assessment === 'less active' ? 'selected' : '' }}>Kurang Aktif</option>
+                    <option value="inactive" {{ $evaluation->assessment === 'inactive' ? 'selected' : '' }}>Tidak Aktif</option>
                 </select>
                 @error('assessment')
                 <p class="text-invalid">{{ $message }}</p>

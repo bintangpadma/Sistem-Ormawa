@@ -41,18 +41,12 @@
                             <td>{{ $evaluation->event_recruitment->student_code }}</td>
                             <td>{{ $evaluation->event_recruitment->study_program }}</td>
                             <td>
-                                @if($evaluation->assessment === 'excellent' || $evaluation->assessment === 'good')
-                                    @if($evaluation->assessment === 'excellent')
-                                        <p class="status-accepted">Sangat Baik</p>
-                                    @elseif($evaluation->assessment === 'good')
-                                        <p class="status-accepted">Bagus</p>
-                                    @endif
-                                @elseif($evaluation->assessment === 'poor' || $evaluation->assessment === 'very_poor')
-                                    @if($evaluation->assessment === 'poor')
-                                        <p class="status-rejected">Buruk</p>
-                                    @elseif($evaluation->assessment === 'very_poor')
-                                        <p class="status-rejected">Sangat Buruk</p>
-                                    @endif
+                                @if($evaluation->assessment === 'active')
+                                    <p class="status-accepted">Aktif</p>
+                                @elseif($evaluation->assessment === 'less active')
+                                    <p class="status-accepted">Kurang Aktif</p>
+                                @elseif($evaluation->assessment === 'inactive')
+                                    <p class="status-accepted">Tidak Aktif</p>
                                 @endif
                             </td>
                             <td>
