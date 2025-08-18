@@ -46,10 +46,17 @@
                 <p class="text-invalid">{{ $message }}</p>
                 @enderror
             </div>
-            <div class="form-input lg:col-span-2">
+            <div class="form-input">
                 <label for="abbreviation">Singkatan</label>
                 <input type="text" class="input" name="abbreviation" value="{{ $studentOrganization->abbreviation }}">
                 @error('abbreviation')
+                <p class="text-invalid">{{ $message }}</p>
+                @enderror
+            </div>
+            <div class="form-input">
+                <label for="sort">Urutan</label>
+                <input type="text" class="input" name="sort" value="{{ $studentOrganization->sort }}">
+                @error('sort')
                 <p class="text-invalid">{{ $message }}</p>
                 @enderror
             </div>

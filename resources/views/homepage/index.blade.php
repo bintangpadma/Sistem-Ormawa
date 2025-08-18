@@ -42,7 +42,7 @@
                         <a href="{{ route('main.show-student-organization', $studentOrganization) }}" class="card-list group">
                             <span class="list-wrapper">
                                 <span class="list-number">{{ $i + 1 }}</span>
-                                {{ $studentOrganization->abbreviation }}
+                                <span class="list-value">{{ $studentOrganization->abbreviation }}</span>
                             </span>
                             <span class="arrow-icon group-hover:translate-x-[4px]"></span>
                         </a>
@@ -54,7 +54,7 @@
                         <a href="{{ route('main.show-student-activity-unit', $studentActivityUnit) }}" class="card-list group">
                             <span class="list-wrapper">
                                 <span class="list-number">{{ $i + 1 }}</span>
-                                {{ $studentActivityUnit->abbreviation }}
+                                <span class="list-value">{{ $studentActivityUnit->abbreviation }}</span>
                             </span>
                             <span class="arrow-icon group-hover:translate-x-[4px]"></span>
                         </a>

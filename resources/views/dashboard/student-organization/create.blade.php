@@ -50,10 +50,17 @@
                 <p class="text-invalid">{{ $message }}</p>
                 @enderror
             </div>
-            <div class="form-input lg:col-span-2">
+            <div class="form-input">
                 <label for="abbreviation">Singkatan</label>
                 <input type="text" class="input" name="abbreviation" placeholder="Masukkan singkatan ormawa...">
                 @error('abbreviation')
+                <p class="text-invalid">{{ $message }}</p>
+                @enderror
+            </div>
+            <div class="form-input">
+                <label for="sort">Urutan</label>
+                <input type="number" class="input" name="sort" value="{{count($studentOrganizations) + 1}}" placeholder="Masukkan urutan ormawa...">
+                @error('sort')
                 <p class="text-invalid">{{ $message }}</p>
                 @enderror
             </div>

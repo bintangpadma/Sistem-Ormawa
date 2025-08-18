@@ -28,6 +28,10 @@
                 <input type="text" class="input" name="abbreviation" value="{{ $studentOrganization->abbreviation }}" readonly>
             </div>
             <div class="form-input lg:col-span-2">
+                <label for="sort">Urutan</label>
+                <input type="text" class="input" name="sort" value="{{ $studentOrganization->sort }}" readonly>
+            </div>
+            <div class="form-input lg:col-span-2">
                 <label for="description">Deskripsi</label>
                 <textarea class="input" name="description" rows="4" readonly>{{ $studentOrganization->description }}</textarea>
             </div>

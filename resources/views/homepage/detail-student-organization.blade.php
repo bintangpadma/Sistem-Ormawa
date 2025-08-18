@@ -60,7 +60,7 @@
                     <p class="card-list">
                         <span class="list-wrapper">
                             <span class="list-number">{{ $i + 1 }}</span>
-                            {{ $studentOrganizationVision->name }}
+                            <span class="list-value">{{ $studentOrganizationVision->name }}</span>
                         </span>
                     </p>
                 @endforeach
@@ -71,7 +71,7 @@
                     <p class="card-list">
                         <span class="list-wrapper">
                             <span class="list-number">{{ $i + 1 }}</span>
-                            {{ $studentOrganizationMission->name }}
+                            <span class="list-value">{{ $studentOrganizationMission->name }}</span>
                         </span>
                     </p>
                 @endforeach

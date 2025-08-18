@@ -18,7 +18,7 @@ class StudentOrganizationController extends Controller
                 $query->where('name', 'LIKE', '%' . $search . '%')
                     ->orWhere('abbreviation', 'LIKE', '%' . $search . '%')
                     ->orWhere('description', 'LIKE', '%' . $search . '%');
-            })->latest()->paginate(10);
+            })->orderBy('sort', 'asc')->paginate(10);
 
         return view('dashboard.student-organization.index', [
             'page' => 'Halaman Organisasi Mahasiswa',
@@ -50,6 +50,7 @@ class StudentOrganizationController extends Controller
     {
         return view('dashboard.student-organization.create', [
             'page' => 'Halaman Tambah Organisasi Mahasiswa',
+            'studentOrganizations' => StudentOrganization::all(),
         ]);
     }
 
@@ -60,6 +61,7 @@ class StudentOrganizationController extends Controller
                 'image_path' => 'required|file|image|mimes:png,jpg,jpeg,gif,webp,svg|max:2048',
                 'name' => 'required|string|max:100',
                 'abbreviation' => 'required|max:50',
+                'sort' => 'required|integer',
                 'description' => 'required|string',
             ]);
 
@@ -106,6 +108,7 @@ class StudentOrganizationController extends Controller
                 'image_path' => 'nullable|file|image|mimes:png,jpg,jpeg,gif,webp,svg|max:2048',
                 'name' => 'required|string|max:100',
                 'abbreviation' => 'required|max:50',
+                'sort' => 'required|integer',
                 'description' => 'required|string',
             ]);
 

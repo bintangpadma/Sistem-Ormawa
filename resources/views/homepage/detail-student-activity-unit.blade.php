@@ -53,14 +53,14 @@
         <div class="section-header">
             <h2 class="title">Visi & Misi UKM</h2>
         </div>
-        <div class="section-content content-gap">
+        <div class="section-content content-gap !grid-cols-1">
             <div class="content-card">
                 <h3 class="card-title">VISI</h3>
                 @foreach($studentActivityUnit->student_activity_unit_visions as $i => $studentActivityUnitVision)
                     <p class="card-list">
                         <span class="list-wrapper">
                             <span class="list-number">{{ $i + 1 }}</span>
-                            {{ $studentActivityUnitVision->name }}
+                            <span class="list-value">{{ $studentActivityUnitVision->name }}</span>
                         </span>
                     </p>
                 @endforeach
@@ -71,7 +71,7 @@
                     <p class="card-list">
                         <span class="list-wrapper">
                             <span class="list-number">{{ $i + 1 }}</span>
-                            {{ $studentActivityUnitMission->name }}
+                            <span class="list-value">{{ $studentActivityUnitMission->name }}</span>
                         </span>
                     </p>
                 @endforeach
