@@ -14,7 +14,7 @@ class EventDivisionController extends Controller
         $eventDivisions = EventDivision::where('events_id', $event->id)
             ->when($search, function ($query, $search) {
                 $query->where('name', 'LIKE', '%' . $search . '%');
-            })->latest()->paginate(10);
+            })->orderBy('sort', 'asc')->paginate(10);
 
         return view('dashboard.event-division.index', [
             'page' => 'Halaman Divisi',
@@ -38,6 +38,7 @@ class EventDivisionController extends Controller
         try {
             $validatedData = $request->validate([
                 'name' => 'required|string',
+                'sort' => 'required|integer',
             ]);
             $validatedData['events_id'] = $event->id;
             EventDivision::create($validatedData);
@@ -54,6 +55,7 @@ class EventDivisionController extends Controller
         try {
             $validatedData = $request->validate([
                 'name' => 'required|string',
+                'sort' => 'required|integer',
             ]);
             $eventDivision->update($validatedData);
 

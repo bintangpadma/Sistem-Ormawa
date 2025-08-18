@@ -22,6 +22,7 @@
                 <thead>
                 <tr>
                     <th>Nama</th>
+                    <th>Urutan</th>
                     <th></th>
                 </tr>
                 </thead>
@@ -32,6 +33,7 @@
                     @foreach ($eventDivisions as $eventDivision)
                         <tr>
                             <td>{{ $eventDivision->name }}</td>
+                            <td>{{ $eventDivision->sort }}</td>
                             <td>
                                 <div class="action-button">
                                     <button class="button icon-detail" data-target="detailModal" data-id="{{ $eventDivision->id }}" onclick="openModal(this)">
@@ -70,6 +72,7 @@
                 .then(data => {
                     if (data.status_code === 200) {
                         modal.querySelector('input[name="name"]').value = data.event_division.name;
+                        modal.querySelector('input[name="sort"]').value = data.event_division.sort;
                     } else {
                         console.log('Data event division not found!');
                     }

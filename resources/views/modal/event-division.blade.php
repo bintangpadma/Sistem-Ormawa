@@ -4,7 +4,7 @@
             <p>Tambah Divisi</p>
         </div>
         <div class="content-body">
-            <form id="buttonCreateEventDivision" class="form" method="POST">
+            <form id="buttonCreateEventDivision" class="form !grid-cols-1" method="POST">
                 @csrf
                 <div class="form-input">
                     <label for="name">Divisi</label>
@@ -13,7 +13,14 @@
                     <p class="text-invalid">{{ $message }}</p>
                     @enderror
                 </div>
-                <div class="button-group">
+                <div class="form-input">
+                    <label for="sort">Urutan</label>
+                    <input type="number" class="input" name="sort" placeholder="Masukkan urutan divisi...">
+                    @error('sort')
+                    <p class="text-invalid">{{ $message }}</p>
+                    @enderror
+                </div>
+                <div class="button-group !col-span-1">
                     <button type="submit" class="button-primary">Tambah Divisi</button>
                     <button type="button" onclick="closeModal('createModal')" class="button-secondary">Batal Tambah</button>
                 </div>
@@ -28,12 +35,16 @@
             <p>Detail Divisi</p>
         </div>
         <div class="content-body">
-            <form class="form">
+            <form class="form !grid-cols-1">
                 <div class="form-input">
                     <label for="name">Divisi</label>
                     <input type="text" class="input" name="name" placeholder="Masukkan nama divisi..." readonly>
                 </div>
-                <div class="button-group">
+                <div class="form-input">
+                    <label for="sort">Urutan</label>
+                    <input type="number" class="input" name="sort" placeholder="Masukkan urutan divisi..." readonly>
+                </div>
+                <div class="button-group !col-span-1">
                     <button type="button" onclick="closeModal('detailModal')" class="button-secondary">Tutup Modal</button>
                 </div>
             </form>
@@ -47,7 +58,7 @@
             <p>Edit Divisi</p>
         </div>
         <div class="content-body">
-            <form id="buttonEditEventDivision" class="form" method="POST">
+            <form id="buttonEditEventDivision" class="form !grid-cols-1" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="form-input">
@@ -57,7 +68,14 @@
                     <p class="text-invalid">{{ $message }}</p>
                     @enderror
                 </div>
-                <div class="button-group">
+                <div class="form-input">
+                    <label for="sort">Urutan</label>
+                    <input type="number" class="input" name="sort" placeholder="Masukkan urutan divisi...">
+                    @error('sort')
+                    <p class="text-invalid">{{ $message }}</p>
+                    @enderror
+                </div>
+                <div class="button-group !col-span-1">
                     <button type="submit" class="button-primary">Simpan Perubahan</button>
                     <button type="button" onclick="closeModal('editModal')" class="button-secondary">Batal Edit</button>
                 </div>
