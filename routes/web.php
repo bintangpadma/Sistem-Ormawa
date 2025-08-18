@@ -15,6 +15,7 @@ Route::controller(\App\Http\Controllers\MainController::class)->group(function (
 
 Route::controller(\App\Http\Controllers\EventRecruitmentController::class)->group(function () {
     Route::get('/event/{event}/recruitment', 'index')->name('event-recruitment.index');
+    Route::get('/event/{event}/recruitment/generate/sk', 'generateSK')->name('event-recruitment.generate-sk');
     Route::get('/event/{event}/recruitment/create', 'create')->name('event-recruitment.create');
     Route::get('/event/{event}/recruitment/{eventRecruitment}', 'show')->name('event-recruitment.show');
     Route::post('/event/{event}/recruitment', 'store')->name('event-recruitment.store');

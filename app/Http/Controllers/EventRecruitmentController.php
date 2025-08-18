@@ -8,6 +8,7 @@ use App\Models\EventRecruitment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SendRecruitmentEmail;
+use PDF;
 
 class EventRecruitmentController extends Controller
 {
@@ -38,6 +39,24 @@ class EventRecruitmentController extends Controller
             'event' => $event,
             'search' => $search,
         ]);
+    }
+
+    public function generateSK(Event $event)
+    {
+        $eventRecruitments = EventRecruitment::with(['event_division', 'event'])
+            ->join('event_divisions', 'event_recruitments.event_divisions_id', '=', 'event_divisions.id')
+            ->where('event_recruitments.events_id', $event->id)
+            ->orderBy('event_divisions.sort', 'asc')
+            ->select('event_recruitments.*')
+            ->get();
+
+        $data = [
+            'event' => $event,
+            'eventRecruitments' => $eventRecruitments,
+        ];
+
+        $pdf = PDF::loadView('pdf.generate-sk', $data);
+        return $pdf->download('sk-panitia.pdf');
     }
 
     public function show(Event $event, EventRecruitment $eventRecruitment)
