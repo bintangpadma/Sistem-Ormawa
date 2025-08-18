@@ -74,6 +74,9 @@ class EventController extends Controller
                 'name' => 'required|string',
                 'description' => 'required|string',
                 'link_group_wa' => 'required|string',
+                'protector' => 'required|string',
+                'responsible_person' => 'required|string',
+                'steering_committee_chair' => 'required|string',
             ]);
 
             if ($request->hasFile('image_path')) {
@@ -116,6 +119,9 @@ class EventController extends Controller
                 'name' => 'required|string',
                 'description' => 'required|string',
                 'link_group_wa' => 'required|string',
+                'protector' => 'required|string',
+                'responsible_person' => 'required|string',
+                'steering_committee_chair' => 'required|string',
             ]);
 
             if ($request->hasFile('image_path')) {

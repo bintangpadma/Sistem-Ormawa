@@ -46,6 +46,7 @@ class EventRecruitmentController extends Controller
         $eventRecruitments = EventRecruitment::with(['event_division', 'event'])
             ->join('event_divisions', 'event_recruitments.event_divisions_id', '=', 'event_divisions.id')
             ->where('event_recruitments.events_id', $event->id)
+            ->where('status', 'accepted')
             ->orderBy('event_divisions.sort', 'asc')
             ->select('event_recruitments.*')
             ->get();

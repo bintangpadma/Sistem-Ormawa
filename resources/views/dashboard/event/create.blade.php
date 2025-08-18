@@ -68,6 +68,27 @@
                 <p class="text-invalid">{{ $message }}</p>
                 @enderror
             </div>
+            <div class="form-input">
+                <label for="protector">Pelindung</label>
+                <input type="text" class="input" name="protector" placeholder="Masukkan pelindung event...">
+                @error('protector')
+                <p class="text-invalid">{{ $message }}</p>
+                @enderror
+            </div>
+            <div class="form-input">
+                <label for="responsible_person">Penanggung Jawab</label>
+                <input type="text" class="input" name="responsible_person" placeholder="Masukkan penanggung jawab event...">
+                @error('responsible_person')
+                <p class="text-invalid">{{ $message }}</p>
+                @enderror
+            </div>
+            <div class="form-input lg:col-span-2">
+                <label for="steering_committee_chair">Ketua Steering Committee</label>
+                <input type="text" class="input" name="steering_committee_chair" placeholder="Masukkan ketua steering committee event...">
+                @error('steering_committee_chair')
+                <p class="text-invalid">{{ $message }}</p>
+                @enderror
+            </div>
             <div class="form-input lg:col-span-2">
                 <label for="description">Deskripsi</label>
                 <textarea class="input" name="description" placeholder="Masukkan deskripsi event..." rows="4"></textarea>

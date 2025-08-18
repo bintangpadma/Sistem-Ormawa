@@ -23,6 +23,18 @@
                 <label for="link_group_wa">Link Grup WA</label>
                 <input type="text" class="input" name="link_group_wa" value="{{ $event->link_group_wa }}" readonly>
             </div>
+            <div class="form-input">
+                <label for="protector">Pelindung</label>
+                <input type="text" class="input" name="protector" value="{{ $event->protector }}" readonly>
+            </div>
+            <div class="form-input">
+                <label for="responsible_person">Penanggung Jawab</label>
+                <input type="text" class="input" name="responsible_person" value="{{ $event->responsible_person }}" readonly>
+            </div>
+            <div class="form-input lg:col-span-2">
+                <label for="steering_committee_chair">Ketua Steering Committee</label>
+                <input type="text" class="input" name="steering_committee_chair" value="{{ $event->steering_committee_chair }}" readonly>
+            </div>
             <div class="form-input lg:col-span-2">
                 <label for="description">Deskripsi</label>
                 <textarea class="input" name="description" rows="4" readonly>{{ $event->description }}</textarea>

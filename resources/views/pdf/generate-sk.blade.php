@@ -26,15 +26,15 @@
 <table>
     <tr>
         <td style="font-size: 0.875rem; padding: 4px;">PELINDUNG</td>
-        <td style="font-size: 0.875rem; padding: 4px;">: Dr. I Made Artana, S.Kom., M.M.</td>
+        <td style="font-size: 0.875rem; padding: 4px;">: {{$event->protector}}</td>
     </tr>
     <tr>
         <td style="font-size: 0.875rem; padding: 4px;">PENANGGUNG JAWAB</td>
-        <td style="font-size: 0.875rem; padding: 4px;">: Dr. Ni Made Satvika Iswari, S.T., M.T.</td>
+        <td style="font-size: 0.875rem; padding: 4px;">: {{$event->responsible_person}}</td>
     </tr>
     <tr>
         <td style="font-size: 0.875rem; padding: 4px;">KETUA STEERING COMMITTEE</td>
-        <td style="font-size: 0.875rem; padding: 4px;">: A.A. Istri Ita Paramitha, S.Pd., M.Kom.</td>
+        <td style="font-size: 0.875rem; padding: 4px;">: {{$event->steering_committee_chair}}</td>
     </tr>
 </table>
 
