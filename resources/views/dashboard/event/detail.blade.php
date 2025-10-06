@@ -24,6 +24,18 @@
                 <input type="text" class="input" name="link_group_wa" value="{{ $event->link_group_wa }}" readonly>
             </div>
             <div class="form-input">
+                <label for="start_date">Tanggal Mulai Pendaftaran</label>
+                <input type="text" class="input" name="start_date" value="{{ \Carbon\Carbon::parse($event->start_date)->translatedFormat('l, d F Y') }}" readonly>
+            </div>
+            <div class="form-input">
+                <label for="end_date">Tanggal Akhir Pendaftaran</label>
+                <input type="text" class="input" name="end_date" value="{{ \Carbon\Carbon::parse($event->end_date)->translatedFormat('l, d F Y') }}" readonly>
+            </div>
+            <div class="form-input">
+                <label for="quota">Kuota</label>
+                <input type="number" class="input" name="quota" value="{{ $event->quota }}" readonly>
+            </div>
+            <div class="form-input">
                 <label for="protector">Pelindung</label>
                 <input type="text" class="input" name="protector" value="{{ $event->protector }}" readonly>
             </div>
@@ -31,7 +43,7 @@
                 <label for="responsible_person">Penanggung Jawab</label>
                 <input type="text" class="input" name="responsible_person" value="{{ $event->responsible_person }}" readonly>
             </div>
-            <div class="form-input lg:col-span-2">
+            <div class="form-input">
                 <label for="steering_committee_chair">Ketua Steering Committee</label>
                 <input type="text" class="input" name="steering_committee_chair" value="{{ $event->steering_committee_chair }}" readonly>
             </div>

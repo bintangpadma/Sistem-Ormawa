@@ -15,7 +15,25 @@
                     {{ session('failed') }}
                 </div>
             @endif
-            <h2 class="title mb-[20px] lg:mb-[24px]">Pendaftaran Panitia {{$event->name}}</h2>
+            @php
+                \Carbon\Carbon::setLocale('id');
+                $today = \Carbon\Carbon::now('Asia/Jakarta');
+                $start = \Carbon\Carbon::parse($event->start_date)->startOfDay();
+                $end = \Carbon\Carbon::parse($event->end_date)->endOfDay();
+
+                $isOpen = $today->between($start, $end);
+            @endphp
+            <div class="detail-group flex gap-[16px] items-center mb-[12px]">
+                <p class="detail-date text-[0.813rem] lg:text-[0.875rem] leading-[112%] text-light/[0.62] flex gap-[8px] items-center">
+                    <i class="fa-regular fa-calendar text-light/[0.62]"></i>
+                    {{ $start->translatedFormat('d F Y') }} - {{ $end->translatedFormat('d F Y') }}
+                </p>
+                <p class="detail-quota text-[0.813rem] lg:text-[0.875rem] leading-[112%] text-light/[0.62] flex gap-[8px] items-center">
+                    <i class="fa-regular fa-user text-light/[0.62]"></i>
+                    Kuota {{ $event->quota }} Orang
+                </p>
+            </div>
+            <h2 class="title mb-[24px]">Pendaftaran Panitia {{$event->name}}</h2>
             <form action="{{ route('event-recruitment.store', $event) }}" method="POST" class="form lg:!grid-cols-2">
                 @csrf
                 <div class="form-input">

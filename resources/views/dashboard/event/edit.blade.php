@@ -65,6 +65,27 @@
                 @enderror
             </div>
             <div class="form-input">
+                <label for="start_date">Tanggal Mulai Pendaftaran</label>
+                <input type="date" class="input" name="start_date" value="{{ $event->start_date }}">
+                @error('start_date')
+                <p class="text-invalid">{{ $message }}</p>
+                @enderror
+            </div>
+            <div class="form-input">
+                <label for="end_date">Tanggal Akhir Pendaftaran</label>
+                <input type="date" class="input" name="end_date" value="{{ $event->end_date }}">
+                @error('end_date')
+                <p class="text-invalid">{{ $message }}</p>
+                @enderror
+            </div>
+            <div class="form-input">
+                <label for="quota">Kuota</label>
+                <input type="number" class="input" name="quota" placeholder="Masukkan kuota event..." value="{{ $event->quota }}">
+                @error('quota')
+                <p class="text-invalid">{{ $message }}</p>
+                @enderror
+            </div>
+            <div class="form-input">
                 <label for="protector">Pelindung</label>
                 <input type="text" class="input" name="protector" placeholder="Masukkan pelindung event..." value="{{ $event->protector }}">
                 @error('protector')
@@ -78,7 +99,7 @@
                 <p class="text-invalid">{{ $message }}</p>
                 @enderror
             </div>
-            <div class="form-input lg:col-span-2">
+            <div class="form-input">
                 <label for="steering_committee_chair">Ketua Steering Committee</label>
                 <input type="text" class="input" name="steering_committee_chair" placeholder="Masukkan ketua steering committee event..." value="{{ $event->steering_committee_chair }}">
                 @error('steering_committee_chair')

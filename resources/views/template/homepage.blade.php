@@ -6,6 +6,7 @@
     <title>{{ $page }} | Organisasi Mahasiswa Universitas Primakara</title>
 
     {{-- STYLE CSS --}}
+    <script src="https://kit.fontawesome.com/e5ccf98c71.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     @vite('resources/css/app.css')
     {{-- END STYLE CSS --}}

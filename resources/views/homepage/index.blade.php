@@ -95,13 +95,38 @@
             </div>
             <div class="section-content content-gap">
                 @foreach($events as $event)
+                    @php
+                        \Carbon\Carbon::setLocale('id');
+                        $today = \Carbon\Carbon::now('Asia/Jakarta');
+                        $start = \Carbon\Carbon::parse($event->start_date)->startOfDay();
+                        $end = \Carbon\Carbon::parse($event->end_date)->endOfDay();
+
+                        $isOpen = $today->between($start, $end);
+                    @endphp
                     <div class="card-event">
-                        <a href="{{ route('main.show-event', $event) }}" class="inline-block">
-                            <img src="{{ asset('assets/image/event/' . $event->image_path) }}" alt="Event Image" class="event-image">
-                        </a>
+                        <div class="inline-block relative">
+                            <img src="{{ asset('assets/image/event/' . $event->image_path) }}" alt="Event Image" class="event-image relative">
+                            <p class="event-status {{ $isOpen ? 'status-open' : 'status-closed' }}">
+                                {{ $isOpen ? 'Dibuka' : 'Tutup' }}
+                            </p>
+                        </div>
                         <div class="event-content">
-                            <a href="{{ route('main.show-event', $event) }}" class="content-title">{{ $event->name }}</a>
-                            <a href="{{ route('main.show-recruitment', $event) }}" class="button-primary px-[18px] py-[12px] text-[0.913rem] font-xd-prime-regular">Daftar Sekarang</a>
+                            <h6 class="content-title">{{ $event->name }}</h6>
+                            <p class="content-date">
+                                <i class="fa-regular fa-calendar text-light/[0.62]"></i>
+                                {{ $start->translatedFormat('d F Y') }} - {{ $end->translatedFormat('d F Y') }}
+                            </p>
+                            <p class="content-quota">
+                                <i class="fa-regular fa-user text-light/[0.62]"></i>
+                                Kuota {{ $event->quota }} Orang
+                                <span class="ms-auto text-inherit">({{ $event->event_recruitments->count() }} Pendaftar)</span>
+                            </p>
+                            <div class="content-button flex gap-[8px]">
+                                <a href="{{ route('main.show-event', $event) }}" class="button-secondary w-full text-center px-[18px] py-[12px] text-[0.913rem] font-xd-prime-regular bg-dark-800">Lihat Event</a>
+                                @if($isOpen)
+                                    <a href="{{ route('main.show-recruitment', $event) }}" class="button-primary w-full text-center px-[18px] py-[12px] text-[0.913rem] font-xd-prime-regular">Daftar Sekarang</a>
+                                @endif
+                            </div>
                         </div>
                     </div>
                 @endforeach
