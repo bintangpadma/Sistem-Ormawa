@@ -203,7 +203,8 @@
         @apply bg-primary/[0.12] hover:bg-primary/[0.24];
     }
 
-    .table-group table td .action-button .button.icon-edit {
+    .table-group table td .action-button .button.icon-edit,
+    .table-group table td .action-button .button.icon-evaluation {
         @apply bg-yellow/[0.20] hover:bg-yellow/[0.32];
     }
 
