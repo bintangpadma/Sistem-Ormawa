@@ -38,56 +38,71 @@
             <div class="section-content content-gap">
                 <div class="content-card">
                     <h3 class="card-title">ORMAWA</h3>
-                    @foreach($studentOrganizations as $i => $studentOrganization)
-                        <a href="{{ route('main.show-student-organization', $studentOrganization) }}" class="card-list group">
-                            <span class="list-wrapper">
-                                <span class="list-number">{{ $i + 1 }}</span>
-                                <span class="list-value">{{ $studentOrganization->abbreviation }}</span>
-                            </span>
-                            <span class="arrow-icon group-hover:translate-x-[4px]"></span>
-                        </a>
+                    @php
+                        $counterStudentOrganization = 1;
+                        $counterStudentActivityUnit = 1;
+                    @endphp
+                    @foreach($studentOrganizations as $studentOrganization)
+                        @foreach($studentOrganization->student_organization_programs as $studentOrganizationProgram)
+                            <a href="{{ route('main.show-student-organization', $studentOrganization) }}" class="card-list group">
+                                <span class="list-wrapper">
+                                    <span class="list-number">{{ $counterStudentOrganization++ }}</span>
+                                    <span class="list-value">{{ $studentOrganization->name }}: {{ $studentOrganizationProgram->name }}</span>
+                                </span>
+                                <span class="arrow-icon group-hover:translate-x-[4px]"></span>
+                            </a>
+                        @endforeach
                     @endforeach
                 </div>
                 <div class="content-card">
                     <h3 class="card-title">UKM</h3>
-                    @foreach($studentActivityUnits as $i => $studentActivityUnit)
-                        <a href="{{ route('main.show-student-activity-unit', $studentActivityUnit) }}" class="card-list group">
-                            <span class="list-wrapper">
-                                <span class="list-number">{{ $i + 1 }}</span>
-                                <span class="list-value">{{ $studentActivityUnit->abbreviation }}</span>
-                            </span>
-                            <span class="arrow-icon group-hover:translate-x-[4px]"></span>
-                        </a>
+                    @foreach($studentActivityUnits as $studentActivityUnit)
+                        @foreach($studentActivityUnit->student_activity_unit_programs as $studentActivityUnitProgram)
+                            <a href="{{ route('main.show-student-activity-unit', $studentActivityUnit) }}" class="card-list group">
+                                <span class="list-wrapper">
+                                    <span class="list-number">{{ $counterStudentActivityUnit++ }}</span>
+                                    <span class="list-value">{{ $studentActivityUnit->name }}: {{ $studentActivityUnitProgram->name }}</span>
+                                </span>
+                                <span class="arrow-icon group-hover:translate-x-[4px]"></span>
+                            </a>
+                        @endforeach
                     @endforeach
                 </div>
             </div>
         </section>
     </div>
-    <div class="container">
-        <section class="program" id="program">
-            <div class="section-header">
-                <h2 class="title">Kisah Setiap Program Kerja ORMAWA dan UKM</h2>
-            </div>
-            @foreach($studentOrganizations as $studentOrganization)
-                <div class="section-content content-gap swiper mySwiper">
-                    <div class="swiper-wrapper">
-                        @foreach($studentOrganization->student_organization_programs as $studentOrganizationProgram)
-                            <div class="swiper-slide">
-                                <div class="card-program">
-                                    <img src="{{ $studentOrganizationProgram->image_path ? asset('assets/image/program/' . $studentOrganizationProgram->image_path) : 'https://placehold.co/48x48?text=Image+Not+Found' }}" alt="Image Ormawa" class="program-image">
-                                    <div class="program-content">
-                                        <h4 class="content-title">{{ $studentOrganizationProgram->name }}</h4>
-                                        <h6 class="content-author">{{ $studentOrganizationProgram->student_organization->abbreviation }}</h6>
-                                        <p class="content-description">{{ $studentOrganizationProgram->description }}</p>
+    @php
+        $totalPrograms = $studentOrganizations->sum(function ($org) {
+            return $org->student_organization_programs->count();
+        });
+    @endphp
+    @if($studentOrganizations->count() > 0 && $totalPrograms > 0)
+        <div class="container">
+            <section class="program" id="program">
+                <div class="section-header">
+                    <h2 class="title">Kisah Setiap Program Kerja ORMAWA dan UKM</h2>
+                </div>
+                @foreach($studentOrganizations as $studentOrganization)
+                    <div class="section-content content-gap swiper mySwiper">
+                        <div class="swiper-wrapper">
+                            @foreach($studentOrganization->student_organization_programs as $studentOrganizationProgram)
+                                <div class="swiper-slide">
+                                    <div class="card-program">
+                                        <img src="{{ $studentOrganizationProgram->image_path ? asset('assets/image/program/' . $studentOrganizationProgram->image_path) : 'https://placehold.co/48x48?text=Image+Not+Found' }}" alt="Image Ormawa" class="program-image">
+                                        <div class="program-content">
+                                            <h4 class="content-title">{{ $studentOrganizationProgram->name }}</h4>
+                                            <h6 class="content-author">{{ $studentOrganizationProgram->student_organization->abbreviation }}</h6>
+                                            <p class="content-description">{{ $studentOrganizationProgram->description }}</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        @endforeach
+                            @endforeach
+                        </div>
                     </div>
-                </div>
-            @endforeach
-        </section>
-    </div>
+                @endforeach
+            </section>
+        </div>
+    @endif
     <div class="container">
         <section class="recruitment" id="recruitment">
             <div class="section-header">
@@ -133,24 +148,26 @@
             </div>
         </section>
     </div>
-    <div class="container">
-        <section class="recruitment" id="news">
-            <div class="section-header">
-                <h2 class="title">Berita Saat Ini</h2>
-            </div>
-            <div class="section-content content-gap">
-                @foreach($newses as $news)
-                    <a href="{{ route('main.show-news', $news) }}" class="card-event">
-                        <img src="{{ asset('assets/image/news/' . $news->image_path) }}" alt="Berita Image" class="event-image">
-                        <div class="event-content">
-                            <p class="content-title">{{ $news->name }}</p>
-                            <button type="button" class="button-primary px-[18px] py-[12px] text-[0.913rem] font-xd-prime-regular">Lihat Detail</button>
-                        </div>
-                    </a>
-                @endforeach
-            </div>
-        </section>
-    </div>
+    @if($newses->count() > 0)
+        <div class="container">
+            <section class="recruitment" id="news">
+                <div class="section-header">
+                    <h2 class="title">Berita Saat Ini</h2>
+                </div>
+                <div class="section-content content-gap">
+                    @foreach($newses as $news)
+                        <a href="{{ route('main.show-news', $news) }}" class="card-event">
+                            <img src="{{ asset('assets/image/news/' . $news->image_path) }}" alt="Berita Image" class="event-image">
+                            <div class="event-content">
+                                <p class="content-title">{{ $news->name }}</p>
+                                <button type="button" class="button-primary px-[18px] py-[12px] text-[0.913rem] font-xd-prime-regular">Lihat Detail</button>
+                            </div>
+                        </a>
+                    @endforeach
+                </div>
+            </section>
+        </div>
+    @endif
     <div class="container">
         <section class="structure" id="structure">
             <div class="section-header">

@@ -18,7 +18,7 @@ class MainController extends Controller
         return view('homepage.index', [
             'page' => 'Halaman Beranda',
             'studentOrganizations' => StudentOrganization::with('student_organization_programs')->orderBy('sort', 'asc')->get(),
-            'studentActivityUnits' => StudentActivityUnit::latest()->get(),
+            'studentActivityUnits' => StudentActivityUnit::with('student_activity_unit_programs')->latest()->get(),
             'events' => Event::with('event_recruitments')->latest()->get(),
             'newses' => News::latest()->get(),
         ]);
