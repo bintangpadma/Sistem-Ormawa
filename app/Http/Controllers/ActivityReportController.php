@@ -34,7 +34,7 @@ class ActivityReportController extends Controller
             })->latest()->paginate(10);
 
         return view('dashboard.activity-report.index', [
-            'page' => 'Halaman LPJ',
+            'page' => 'Halaman Arsip Administrasi',
             'activityReports' => $activityReports,
             'search' => $search,
         ]);
@@ -54,7 +54,7 @@ class ActivityReportController extends Controller
         $activityReport->load(['student_organization', 'student_activity_unit']);
 
         return view('dashboard.activity-report.detail', [
-            'page' => 'Halaman Detail LPJ',
+            'page' => 'Halaman Detail Arsip Administrasi',
             'activityReport' => $activityReport,
         ]);
     }
@@ -62,7 +62,7 @@ class ActivityReportController extends Controller
     public function create()
     {
         return view('dashboard.activity-report.create', [
-            'page' => 'Halaman Tambah LPJ',
+            'page' => 'Halaman Tambah Arsip Administrasi',
         ]);
     }
 
@@ -76,6 +76,7 @@ class ActivityReportController extends Controller
                 'name' => 'required|string|max:100',
                 'description' => 'required|string|max:255',
             ]);
+            $validatedData['status'] = 'accepted';
 
             if ($request->hasFile('file_path')) {
                 $file = $request->file('file_path');
@@ -85,10 +86,10 @@ class ActivityReportController extends Controller
 
             ActivityReport::create($validatedData);
 
-            return redirect()->route('activity-report.index')->with('success', 'Berhasil menambahkan lpj baru!');
+            return redirect()->route('activity-report.index')->with('success', 'Berhasil menambahkan arsip administrasi baru!');
         } catch (\Exception $e) {
             logger($e->getMessage());
-            return redirect()->back()->with('failed', 'Gagal menambahkan lpj baru!');
+            return redirect()->back()->with('failed', 'Gagal menambahkan arsip administrasi baru!');
         }
     }
 
@@ -97,7 +98,7 @@ class ActivityReportController extends Controller
         $activityReport->load(['student_organization', 'student_activity_unit']);
 
         return view('dashboard.activity-report.edit', [
-            'page' => 'Halaman Edit LPJ',
+            'page' => 'Halaman Edit Arsip Administrasi',
             'activityReport' => $activityReport,
         ]);
     }
@@ -125,10 +126,10 @@ class ActivityReportController extends Controller
 
             $activityReport->update($validatedData);
 
-            return redirect()->route('activity-report.index')->with('success', 'Berhasil mengedit lpj!');
+            return redirect()->route('activity-report.index')->with('success', 'Berhasil mengedit arsip administrasi!');
         } catch (\Exception $e) {
             logger($e->getMessage());
-            return redirect()->back()->with('failed', 'Gagal mengedit lpj!');
+            return redirect()->back()->with('failed', 'Gagal mengedit arsip administrasi!');
         }
     }
 
@@ -139,10 +140,10 @@ class ActivityReportController extends Controller
                 Storage::disk('public')->delete('assets/file/lpj/' . $activityReport->file_path);
             }
             $activityReport->delete();
-            return redirect()->route('activity-report.index')->with('success', 'Berhasil menghapus lpj!');
+            return redirect()->route('activity-report.index')->with('success', 'Berhasil menghapus arsip administrasi!');
         } catch (\Exception $e) {
             logger($e->getMessage());
-            return redirect()->back()->with('failed', 'Gagal menghapus lpj!');
+            return redirect()->back()->with('failed', 'Gagal menghapus arsip administrasi!');
         }
     }
 }

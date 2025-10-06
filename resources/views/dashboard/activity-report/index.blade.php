@@ -13,10 +13,10 @@
     <div class="content-menu content-table">
         <div class="table-header">
             <form method="GET" class="form">
-                <input type="search" class="input" name="search" placeholder="Cari lpj..." value="{{ $search }}">
+                <input type="search" class="input" name="search" placeholder="Cari arsip administrasi..." value="{{ $search }}">
             </form>
             @if(auth()->user()->student_organization || auth()->user()->student_activity_unit)
-                <a href="{{ route('activity-report.create') }}" class="button-primary">Tambah LPJ</a>
+                <a href="{{ route('activity-report.create') }}" class="button-primary">Tambah Arsip Administrasi</a>
             @endif
         </div>
         <div class="table-group">
@@ -26,28 +26,28 @@
                     <th>Pembuat</th>
                     <th>Nama</th>
                     <th>Deskripsi</th>
-                    <th>Status</th>
+{{--                    <th>Status</th>--}}
                     <th></th>
                 </tr>
                 </thead>
                 <tbody>
                 @if ($activityReports->count() == 0)
-                    <td colspan="5">Data lpj tidak ditemukan!</td>
+                    <td colspan="5">Data arsip administrasi tidak ditemukan!</td>
                 @else
                     @foreach ($activityReports as $activityReport)
                         <tr>
                             <td>{{ $activityReport->student_organization ? 'Ormawa: ' . $activityReport->student_organization->name : 'UKM: ' . $activityReport->student_activity_unit->name }}</td>
                             <td>{{ $activityReport->name }}</td>
                             <td>{{ \Illuminate\Support\Str::limit($activityReport->description, 40) }}</td>
-                            <td>
-                                @if($activityReport->status === 'pending')
-                                    <p class="status-pending">Tertunda</p>
-                                @elseif($activityReport->status === 'accepted')
-                                    <p class="status-accepted">Diterima</p>
-                                @elseif($activityReport->status === 'rejected')
-                                    <p class="status-rejected">Tidak Diterima</p>
-                                @endif
-                            </td>
+{{--                            <td>--}}
+{{--                                @if($activityReport->status === 'pending')--}}
+{{--                                    <p class="status-pending">Tertunda</p>--}}
+{{--                                @elseif($activityReport->status === 'accepted')--}}
+{{--                                    <p class="status-accepted">Diterima</p>--}}
+{{--                                @elseif($activityReport->status === 'rejected')--}}
+{{--                                    <p class="status-rejected">Tidak Diterima</p>--}}
+{{--                                @endif--}}
+{{--                            </td>--}}
                             <td>
                                 <div class="action-button">
                                     <a href="{{ route('activity-report.download', $activityReport) }}" class="button icon-download">

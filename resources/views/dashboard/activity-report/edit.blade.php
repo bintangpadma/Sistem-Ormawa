@@ -7,7 +7,7 @@
             @method('PUT')
             <div class="form-input lg:col-span-2">
                 <label>
-                    File LPJ
+                    File Arsip Administrasi
                     <span class="input-file">
                         <input type="file" class="file-input-hidden" id="file_path" name="file_path">
                         <div class="button-secondary file-button">Pilih File</div>
@@ -18,29 +18,29 @@
                 <p class="text-invalid">{{ $message }}</p>
                 @enderror
             </div>
-            <div class="form-input {{ !auth()->user()->admin ? 'lg:col-span-2' : '' }}">
+            <div class="form-input lg:col-span-2"> {{-- {{ !auth()->user()->admin ? 'lg:col-span-2' : '' }} --}}
                 <label for="name">Nama</label>
-                <input type="text" class="input" name="name" placeholder="Masukkan nama lpj..." value="{{ $activityReport->name }}">
+                <input type="text" class="input" name="name" placeholder="Masukkan nama arsip administrasi..." value="{{ $activityReport->name }}">
                 @error('name')
                 <p class="text-invalid">{{ $message }}</p>
                 @enderror
             </div>
-            @if(auth()->user()->admin)
-                <div class="form-input">
-                    <label for="status">Status</label>
-                    <select class="input" name="status">
-                        <option value="pending" {{ $activityReport->status === 'pending' ? 'selected' : '' }}>Tertunda</option>
-                        <option value="accepted" {{ $activityReport->status === 'accepted' ? 'selected' : '' }}>Diterima</option>
-                        <option value="rejected" {{ $activityReport->status === 'rejected' ? 'selected' : '' }}>Tidak Diterima</option>
-                    </select>
-                    @error('status')
-                    <p class="text-invalid">{{ $message }}</p>
-                    @enderror
-                </div>
-            @endif
+{{--            @if(auth()->user()->admin)--}}
+{{--                <div class="form-input">--}}
+{{--                    <label for="status">Status</label>--}}
+{{--                    <select class="input" name="status">--}}
+{{--                        <option value="pending" {{ $activityReport->status === 'pending' ? 'selected' : '' }}>Tertunda</option>--}}
+{{--                        <option value="accepted" {{ $activityReport->status === 'accepted' ? 'selected' : '' }}>Diterima</option>--}}
+{{--                        <option value="rejected" {{ $activityReport->status === 'rejected' ? 'selected' : '' }}>Tidak Diterima</option>--}}
+{{--                    </select>--}}
+{{--                    @error('status')--}}
+{{--                    <p class="text-invalid">{{ $message }}</p>--}}
+{{--                    @enderror--}}
+{{--                </div>--}}
+{{--            @endif--}}
             <div class="form-input lg:col-span-2">
                 <label for="description">Deskripsi</label>
-                <textarea rows="4" class="input" name="description" placeholder="Masukkan deskripsi lpj...">{{ $activityReport->description }}</textarea>
+                <textarea rows="4" class="input" name="description" placeholder="Masukkan deskripsi arsip administrasi...">{{ $activityReport->description }}</textarea>
                 @error('description')
                 <p class="text-invalid">{{ $message }}</p>
                 @enderror
