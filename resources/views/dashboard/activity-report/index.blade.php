@@ -56,12 +56,14 @@
                                     <a href="{{ route('activity-report.show', $activityReport) }}" class="button icon-detail">
                                         <span class="bg-detail-primary"></span>
                                     </a>
-                                    <a href="{{ route('activity-report.edit', $activityReport) }}" class="button icon-edit">
-                                        <span class="bg-edit-warning"></span>
-                                    </a>
-                                    <button class="button icon-delete" data-target="deleteModal" data-id="{{ $activityReport->id }}" onclick="openModal(this)">
-                                        <span class="bg-delete-danger"></span>
-                                    </button>
+                                    @if(auth()->user()->student_organization || auth()->user()->student_activity_unit)
+                                        <a href="{{ route('activity-report.edit', $activityReport) }}" class="button icon-edit">
+                                            <span class="bg-edit-warning"></span>
+                                        </a>
+                                        <button class="button icon-delete" data-target="deleteModal" data-id="{{ $activityReport->id }}" onclick="openModal(this)">
+                                            <span class="bg-delete-danger"></span>
+                                        </button>
+                                    @endif
                                 </div>
                             </td>
                         </tr>
