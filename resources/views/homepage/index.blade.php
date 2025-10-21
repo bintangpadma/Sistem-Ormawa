@@ -38,34 +38,26 @@
             <div class="section-content content-gap">
                 <div class="content-card">
                     <h3 class="card-title">ORMAWA</h3>
-                    @php
-                        $counterStudentOrganization = 1;
-                        $counterStudentActivityUnit = 1;
-                    @endphp
-                    @foreach($studentOrganizations as $studentOrganization)
-                        @foreach($studentOrganization->student_organization_programs as $studentOrganizationProgram)
-                            <a href="{{ route('main.show-student-organization', $studentOrganization) }}" class="card-list group">
-                                <span class="list-wrapper">
-                                    <span class="list-number">{{ $counterStudentOrganization++ }}</span>
-                                    <span class="list-value">{{ $studentOrganization->name }}: {{ $studentOrganizationProgram->name }}</span>
-                                </span>
-                                <span class="arrow-icon group-hover:translate-x-[4px]"></span>
-                            </a>
-                        @endforeach
+                    @foreach($studentOrganizations as $i => $studentOrganization)
+                        <a href="{{ route('main.show-student-organization', $studentOrganization) }}" class="card-list group">
+                            <span class="list-wrapper">
+                                <span class="list-number">{{ $i + 1 }}</span>
+                                <span class="list-value">{{ $studentOrganization->abbreviation }}</span>
+                            </span>
+                            <span class="arrow-icon group-hover:translate-x-[4px]"></span>
+                        </a>
                     @endforeach
                 </div>
                 <div class="content-card">
                     <h3 class="card-title">UKM</h3>
-                    @foreach($studentActivityUnits as $studentActivityUnit)
-                        @foreach($studentActivityUnit->student_activity_unit_programs as $studentActivityUnitProgram)
-                            <a href="{{ route('main.show-student-activity-unit', $studentActivityUnit) }}" class="card-list group">
-                                <span class="list-wrapper">
-                                    <span class="list-number">{{ $counterStudentActivityUnit++ }}</span>
-                                    <span class="list-value">{{ $studentActivityUnit->name }}: {{ $studentActivityUnitProgram->name }}</span>
-                                </span>
-                                <span class="arrow-icon group-hover:translate-x-[4px]"></span>
-                            </a>
-                        @endforeach
+                    @foreach($studentActivityUnits as $i => $studentActivityUnit)
+                        <a href="{{ route('main.show-student-activity-unit', $studentActivityUnit) }}" class="card-list group">
+                            <span class="list-wrapper">
+                                <span class="list-number">{{ $i + 1 }}</span>
+                                <span class="list-value">{{ $studentActivityUnit->abbreviation }}</span>
+                            </span>
+                            <span class="arrow-icon group-hover:translate-x-[4px]"></span>
+                        </a>
                     @endforeach
                 </div>
             </div>
