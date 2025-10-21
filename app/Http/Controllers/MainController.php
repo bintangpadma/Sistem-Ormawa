@@ -18,18 +18,30 @@ class MainController extends Controller
         return view('homepage.index', [
             'page' => 'Halaman Beranda',
             'studentOrganizations' => StudentOrganization::with('student_organization_programs')->orderBy('sort', 'asc')->get(),
-            'studentActivityUnits' => StudentActivityUnit::latest()->get(),
-            'events' => Event::latest()->get(),
+            'studentActivityUnits' => StudentActivityUnit::with('student_activity_unit_programs')->latest()->get(),
+            'events' => Event::with('event_recruitments')->latest()->get(),
             'newses' => News::latest()->get(),
         ]);
     }
 
     public function showRecruitment(Event $event)
     {
-        return view('homepage.recruitment', [
-            'page' => 'Halaman Daftar Event',
-            'event' => $event->load(['student_organization', 'event_divisions']),
-        ]);
+        \Carbon\Carbon::setLocale('id');
+        $today = \Carbon\Carbon::now('Asia/Jakarta');
+        $start = \Carbon\Carbon::parse($event->start_date)->startOfDay();
+        $end = \Carbon\Carbon::parse($event->end_date)->endOfDay();
+
+        $event = $event->load(['student_organization', 'event_divisions', 'event_recruitments']);
+        $isOpen = $today->between($start, $end) || $event->event_recruitments->count() >= $event->quota;
+
+        if ($isOpen) {
+            return view('homepage.recruitment', [
+                'page' => 'Halaman Daftar Event',
+                'event' => $event,
+            ]);
+        } else {
+            return redirect()->route('main.index');
+        }
     }
 
     public function showStudentOrganization(StudentOrganization $studentOrganization)

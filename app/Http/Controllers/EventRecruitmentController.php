@@ -31,7 +31,15 @@ class EventRecruitmentController extends Controller
                         })
                     ;
                 });
-            })->latest()->paginate(10);
+            })
+            ->select('*')
+            ->selectSub(function ($query) {
+                $query->from('event_recruitments as er2')
+                    ->selectRaw('COUNT(DISTINCT er2.events_id)')
+                    ->whereColumn('er2.student_code', 'event_recruitments.student_code');
+            }, 'total_event')
+            ->latest()
+            ->paginate(10);
 
         return view('dashboard.event-recruitment.index', [
             'page' => 'Halaman Perekrutan',

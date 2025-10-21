@@ -27,7 +27,7 @@
                     <th>NIM</th>
                     <th>Email</th>
                     <th>Nomor Telepon</th>
-                    <th>Program Studi</th>
+                    <th>Total Mendaftar Event</th>
                     <th>Status</th>
                     <th></th>
                 </tr>
@@ -43,7 +43,7 @@
                             <td>{{ $eventRecruitment->student_code }}</td>
                             <td>{{ $eventRecruitment->email }}</td>
                             <td>{{ $eventRecruitment->number_phone }}</td>
-                            <td>{{ $eventRecruitment->study_program }}</td>
+                            <td>{{ $eventRecruitment->total_event }}</td>
                             <td>
                                 @if($eventRecruitment->status === 'pending')
                                     <p class="status-pending">Tertunda</p>
@@ -55,6 +55,9 @@
                             </td>
                             <td>
                                 <div class="action-button">
+                                    <a href="{{ route('evaluation.index', ['search' => $eventRecruitment->student_code]) }}" class="button icon-evaluation">
+                                        <i class="fa-regular fa-folder-open text-yellow"></i>
+                                    </a>
                                     <a href="{{ route('event-recruitment.show', ['event' => $event, 'eventRecruitment' => $eventRecruitment->id]) }}" class="button icon-detail">
                                         <span class="bg-detail-primary"></span>
                                     </a>

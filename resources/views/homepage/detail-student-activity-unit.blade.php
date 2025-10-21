@@ -21,7 +21,7 @@
     <div class="gap-[100px] md:gap-[110px] lg:gap-[120px] flex flex-col py-[100px] md:py-[110px] lg:py-[120px] bg-dark-900">
         <section class="structure-ormawa container">
             <div class="section-header">
-                <h2 class="title">Struktur Kepanitiaan UKM</h2>
+                <h2 class="title">Struktur Organisasi UKM</h2>
             </div>
             <div class="section-content content-gap grid grid-cols-2 lg:grid-cols-4 gap-[16px] lg:gap-[20px]">
                 @foreach($studentActivityUnit->student_activity_unit_structures as $StudentOrganizationStructure)

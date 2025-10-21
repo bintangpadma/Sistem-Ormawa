@@ -45,10 +45,10 @@
                 Info Panitia
             </a>
         @endif
-{{--        <a href="{{ route('activity-report.index') }}" class="content-item group {{ Route::is('activity-report*') ? 'active' : '' }}">--}}
-{{--            <span class="group-hover:bg-activity-report-dark group-hover:opacity-100 {{ Route::is('activity-report*') ? 'bg-activity-report-dark opacity-100' : 'bg-activity-report-light opacity-[0.62]' }}"></span>--}}
-{{--            LPJ--}}
-{{--        </a>--}}
+        <a href="{{ route('activity-report.index') }}" class="content-item group {{ Route::is('activity-report*') ? 'active' : '' }}">
+            <span class="group-hover:bg-activity-report-dark group-hover:opacity-100 {{ Route::is('activity-report*') ? 'bg-activity-report-dark opacity-100' : 'bg-activity-report-light opacity-[0.62]' }}"></span>
+            Arsip Administrasi
+        </a>
         @if(auth()->user()->admin || auth()->user()->student_organization)
             <a href="{{ route('administrative-document.index') }}" class="content-item group {{ Route::is('administrative-document*') ? 'active' : '' }}">
                 <span class="group-hover:bg-administrative-document-dark group-hover:opacity-100 {{ Route::is('administrative-document*') ? 'bg-administrative-document-dark opacity-100' : 'bg-administrative-document-light opacity-[0.62]' }}"></span>

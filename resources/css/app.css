@@ -203,7 +203,8 @@
         @apply bg-primary/[0.12] hover:bg-primary/[0.24];
     }
 
-    .table-group table td .action-button .button.icon-edit {
+    .table-group table td .action-button .button.icon-edit,
+    .table-group table td .action-button .button.icon-evaluation {
         @apply bg-yellow/[0.20] hover:bg-yellow/[0.32];
     }
 
@@ -544,7 +545,19 @@
     }
 
     .homepage-content section.recruitment .section-content .card-event .event-image {
-        @apply w-full aspect-square object-cover;
+        @apply w-full aspect-[4/3] object-cover;
+    }
+
+    .homepage-content section.recruitment .section-content .card-event .event-status {
+        @apply absolute py-[8px] px-[12px] rounded-[2px] top-[12px] right-[12px] text-[0.913rem];
+    }
+
+    .homepage-content section.recruitment .section-content .card-event .event-status.status-open {
+        @apply bg-primary text-light;
+    }
+
+    .homepage-content section.recruitment .section-content .card-event .event-status.status-closed {
+        @apply bg-red text-light;
     }
 
     .homepage-content section.structure .section-content .card-structure,
@@ -554,7 +567,15 @@
 
     .homepage-content section.structure .section-content .card-structure .structure-title,
     .homepage-content section.recruitment .section-content .card-event .event-content .content-title {
-        @apply text-[0.913rem] lg:text-[1rem] font-xd-prime-medium leading-[112%] mb-[16px];
+        @apply text-[0.913rem] lg:text-[1rem] font-xd-prime-medium leading-[112%] mb-[12px];
+    }
+
+    .homepage-content section.recruitment .section-content .card-event .event-content .content-date {
+        @apply text-[0.813rem] lg:text-[0.875rem] leading-[112%] text-light/[0.62] mb-[8px] flex gap-[8px] items-center;
+    }
+
+    .homepage-content section.recruitment .section-content .card-event .event-content .content-quota {
+        @apply text-[0.813rem] lg:text-[0.875rem] leading-[112%] text-light/[0.62] mb-[16px] flex gap-[8px] items-center;
     }
 
     footer.footer {

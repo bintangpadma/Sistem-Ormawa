@@ -15,7 +15,9 @@
             <form method="GET" class="form">
                 <input type="search" class="input" name="search" placeholder="Cari dokumen administrasi..." value="{{ $search }}">
             </form>
-            <a href="{{ route('administrative-document.create') }}" class="button-primary">Tambah Dokumen Administrasi</a>
+            @if(auth()->user()->admin)
+                <a href="{{ route('administrative-document.create') }}" class="button-primary">Tambah Dokumen Administrasi</a>
+            @endif
         </div>
         <div class="table-group">
             <table>
@@ -42,12 +44,14 @@
                                     <a href="{{ route('administrative-document.show', $administrativeDocument) }}" class="button icon-detail">
                                         <span class="bg-detail-primary"></span>
                                     </a>
-                                    <a href="{{ route('administrative-document.edit', $administrativeDocument) }}" class="button icon-edit">
-                                        <span class="bg-edit-warning"></span>
-                                    </a>
-                                    <button class="button icon-delete" data-target="deleteModal" data-id="{{ $administrativeDocument->id }}" onclick="openModal(this)">
-                                        <span class="bg-delete-danger"></span>
-                                    </button>
+                                    @if(auth()->user()->admin)
+                                        <a href="{{ route('administrative-document.edit', $administrativeDocument) }}" class="button icon-edit">
+                                            <span class="bg-edit-warning"></span>
+                                        </a>
+                                        <button class="button icon-delete" data-target="deleteModal" data-id="{{ $administrativeDocument->id }}" onclick="openModal(this)">
+                                            <span class="bg-delete-danger"></span>
+                                        </button>
+                                    @endif
                                 </div>
                             </td>
                         </tr>

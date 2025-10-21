@@ -1,6 +1,6 @@
 <div class="container">
     <div class="topbar">
-        <a class="topbar-link">Pendaftaran Panitia</a>
+        <a href="/#recruitment" class="topbar-link">Pendaftaran Panitia</a>
         <a href="/#ormawa" class="topbar-link">UKM</a>
         <a href="/#news" class="topbar-link">News</a>
     </div>
